@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -6,6 +5,7 @@ import InsurancePlanCard from '@/components/InsurancePlanCard';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { UserInfo } from '@/types';
+import { ArrowLeft, RefreshCw, MessageCircle } from 'lucide-react';
 
 // Real insurance plan data
 const insurancePlans = [
@@ -126,7 +126,7 @@ const RecommendedPlans: React.FC = () => {
 After evaluating these options, the **Medibank Gold Protect and Growing Family 60** policy stands out as the top recommendation due to its comprehensive coverage for both hospital and extras, particularly for your current and future family needs. While the premium is high, the extensive benefits and coverage for pregnancy and child-related services justify the cost, making it the best fit for your situation.`;
 
   return (
-    <div className="min-h-screen flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
+    <div className="min-h-screen flex bg-white">
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md">
         <ProgressBar steps={steps} currentStep={2} />
@@ -134,15 +134,36 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
         <Button 
           variant="outline" 
           onClick={handleEditInfo}
-          className="mt-4 text-cc-blue border-cc-blue hover:bg-cc-light-blue"
+          className="mt-4 text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center gap-2"
         >
-          &lt; Edit info
+          <ArrowLeft size={16} />
+          Edit info
         </Button>
       </div>
       
       {/* Right content area */}
-      <div className="w-5/8 flex-1 p-8 overflow-y-auto">
+      <div className="w-5/8 flex-1 p-8 overflow-y-auto bg-[#EEE]">
         <div className="max-w-4xl mx-auto">
+          {/* AI-driven recommendation tag */}
+          <div className="mb-6 flex items-center">
+            <div className="bg-gradient-to-r from-cc-blue to-cc-dark-blue text-white text-sm font-bold px-4 py-2 rounded-full flex items-center">
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="w-4 h-4 mr-1"
+              >
+                <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
+                <circle cx="17" cy="7" r="5" />
+              </svg>
+              AI-Driven Personalized Recommendations
+            </div>
+          </div>
+          
           {/* Plan cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {insurancePlans.map(plan => (
@@ -191,15 +212,17 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
             <Button 
               variant="outline" 
               onClick={handleRegenerateOptions}
-              className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md"
+              className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2"
             >
+              <RefreshCw size={16} />
               I don't like these options
             </Button>
             
             <Button 
               onClick={handleAskQuestions}
-              className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white shadow-md"
+              className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white shadow-md flex items-center gap-2"
             >
+              <MessageCircle size={16} />
               Ask questions about these plans
             </Button>
           </div>

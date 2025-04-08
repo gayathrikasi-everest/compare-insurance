@@ -1,6 +1,8 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Check, Tag } from 'lucide-react';
+import { Check, Tag, ShoppingCart, Info } from 'lucide-react';
+
 interface InsurancePlanProps {
   name: string;
   provider: string;
@@ -9,6 +11,7 @@ interface InsurancePlanProps {
   onSeeMore: () => void;
   onBuyPlan: () => void;
 }
+
 const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   name,
   provider,
@@ -37,18 +40,26 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
           <span className="text-gray-500 ml-1 text-sm">/ month</span>
         </div>
         
-        
-        
         <div className="flex flex-col space-y-3 mt-auto">
-          <button onClick={onSeeMore} className="text-cc-green hover:text-cc-dark-green hover:underline text-sm font-medium">
-            View details
-          </button>
+          <Button 
+            onClick={onSeeMore} 
+            variant="outline" 
+            className="text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center justify-center gap-2"
+          >
+            <Info size={16} />
+            Learn more
+          </Button>
           
-          <Button onClick={onBuyPlan} className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white w-full font-medium shadow-md">
+          <Button 
+            onClick={onBuyPlan} 
+            className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white w-full font-medium shadow-md flex items-center justify-center gap-2"
+          >
+            <ShoppingCart size={16} />
             Buy plan
           </Button>
         </div>
       </div>
     </div>;
 };
+
 export default InsurancePlanCard;
