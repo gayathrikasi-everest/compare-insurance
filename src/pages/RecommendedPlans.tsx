@@ -64,15 +64,15 @@ const RecommendedPlans: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex bg-white">
+    <div className="h-screen flex bg-white overflow-hidden">
       {/* Left sidebar with progress */}
-      <div className="w-1/4 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md">
+      <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
         <ProgressBar steps={steps} currentStep={2} />
       </div>
       
-      {/* Right content area with new layout */}
-      <div className="w-3/4 flex-1 p-8 overflow-y-auto bg-[#EEE]">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-6">
+      {/* Right content area with new layout - taking full height */}
+      <div className="w-3/4 flex-1 py-4 px-2 bg-[#EEE] flex flex-col">
+        <div className="flex-grow flex flex-col md:flex-row gap-4">
           {/* Left column: Stacked insurance plan cards - 35% width */}
           <div className="md:w-[35%]">
             <InsurancePlanList
@@ -90,10 +90,12 @@ const RecommendedPlans: React.FC = () => {
         </div>
         
         {/* Action buttons */}
-        <PlanActionButtons
-          onRegenerateOptions={handleRegenerateOptions}
-          onAskQuestions={handleAskQuestions}
-        />
+        <div className="mt-2">
+          <PlanActionButtons
+            onRegenerateOptions={handleRegenerateOptions}
+            onAskQuestions={handleAskQuestions}
+          />
+        </div>
       </div>
     </div>
   );
