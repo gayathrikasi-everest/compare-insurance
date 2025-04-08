@@ -1,35 +1,44 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
 import { Check } from 'lucide-react';
+
 const Index = () => {
   const navigate = useNavigate();
-  const steps = [{
-    number: 1,
-    title: "Understanding You",
-    description: "Tell us about your needs",
-    completed: false,
-    active: true
-  }, {
-    number: 2,
-    title: "Recommended Plans",
-    description: "Review your top options",
-    completed: false,
-    active: false
-  }, {
-    number: 3,
-    title: "Ask Questions",
-    description: "Get answers about your plans",
-    completed: false,
-    active: false
-  }, {
-    number: 4,
-    title: "Purchase Insurance",
-    description: "Buy your ideal insurance",
-    completed: false,
-    active: false
-  }];
+  
+  const steps = [
+    {
+      number: 1,
+      title: "Understanding You",
+      description: "Tell us about your needs",
+      completed: false,
+      active: true
+    }, 
+    {
+      number: 2,
+      title: "Recommended Plans",
+      description: "Review your top options",
+      completed: false,
+      active: false
+    }, 
+    {
+      number: 3,
+      title: "Ask Questions",
+      description: "Get answers about your plans",
+      completed: false,
+      active: false
+    }, 
+    {
+      number: 4,
+      title: "Purchase Insurance",
+      description: "Buy your ideal insurance",
+      completed: false,
+      active: false
+    }
+  ];
+
   return <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white to-blue-50 p-4 md:p-8">
       <div className="w-full max-w-5xl flex flex-col items-center">
         {/* Insurance Illustration */}
@@ -76,7 +85,7 @@ const Index = () => {
         </div>
         
         {/* Trust Badge */}
-        <div className="bg-gray-50 rounded-md p-6 max-w-md">
+        <div className="bg-[#E83F6F] rounded-md p-6 max-w-md">
           <div className="flex items-center">
             <div className="bg-cc-green rounded-md p-2 mr-4">
               <Check className="w-5 h-5 text-white" />
@@ -95,4 +104,5 @@ const Index = () => {
       </div>
     </div>;
 };
+
 export default Index;
