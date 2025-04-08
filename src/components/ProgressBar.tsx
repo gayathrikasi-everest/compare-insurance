@@ -28,7 +28,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   const navigate = useNavigate();
 
   const handleEditInfo = () => {
-    navigate('/');
+    navigate('/understanding-you');
   };
 
   return <div className="relative py-4 max-w-xs">

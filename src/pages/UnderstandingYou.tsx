@@ -1,51 +1,72 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
+
 const UnderstandingYou: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  const steps = [{
-    number: 1,
-    title: 'Understanding You',
-    description: 'Tell us about your needs',
-    completed: false,
-    active: true
-  }, {
-    number: 2,
-    title: 'Recommended Plans',
-    description: 'Review your top options',
-    completed: false,
-    active: false
-  }, {
-    number: 3,
-    title: 'Ask Questions',
-    description: 'Get answers about your plans',
-    completed: false,
-    active: false
-  }, {
-    number: 4,
-    title: 'Purchase Insurance',
-    description: 'Buy your ideal insurance',
-    completed: false,
-    active: false
-  }];
+  
+  useEffect(() => {
+    const savedUserInfo = localStorage.getItem('userInfo');
+    if (savedUserInfo) {
+      const userInfo = JSON.parse(savedUserInfo) as UserInfo;
+      if (userInfo.query) {
+        setQuery(userInfo.query);
+      }
+    }
+  }, []);
+
+  const steps = [
+    {
+      number: 1,
+      title: 'Understanding You',
+      description: 'Tell us about your needs',
+      completed: false,
+      active: true
+    }, 
+    {
+      number: 2,
+      title: 'Recommended Plans',
+      description: 'Review your top options',
+      completed: false,
+      active: false
+    }, 
+    {
+      number: 3,
+      title: 'Ask Questions',
+      description: 'Get answers about your plans',
+      completed: false,
+      active: false
+    }, 
+    {
+      number: 4,
+      title: 'Purchase Insurance',
+      description: 'Buy your ideal insurance',
+      completed: false,
+      active: false
+    }
+  ];
+
   const handleSubmit = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
+    
     const userInfo: UserInfo = {
       query
     };
+    
     setTimeout(() => {
       localStorage.setItem('userInfo', JSON.stringify(userInfo));
       navigate('/recommended-plans');
       setIsSubmitting(false);
     }, 1000);
   };
+
   return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
         <ProgressBar steps={steps} currentStep={1} />
@@ -78,4 +99,5 @@ const UnderstandingYou: React.FC = () => {
       </div>
     </div>;
 };
+
 export default UnderstandingYou;
