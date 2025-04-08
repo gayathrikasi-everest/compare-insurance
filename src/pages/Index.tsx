@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
-
 const Index = () => {
   const navigate = useNavigate();
   const steps = [{
@@ -32,7 +30,6 @@ const Index = () => {
     completed: false,
     active: false
   }];
-
   return <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-white to-blue-50 p-4 md:p-8">
       <div className="w-full md:w-1/2 max-w-xl">
         <img src="/lovable-uploads/856d3ede-141c-42e6-9b25-045580f72363.png" alt="Insurance Illustration" className="w-[40%] max-w-[40%] mx-auto mb-8 object-scale-down" />
@@ -50,5 +47,4 @@ const Index = () => {
       </div>
     </div>;
 };
-
 export default Index;
