@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
-
 const UnderstandingYou: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,14 +27,7 @@ const UnderstandingYou: React.FC = () => {
     description: 'Get answers about your plans',
     completed: false,
     active: false
-  }, {
-    number: 4,
-    title: 'Purchase Insurance',
-    description: 'Buy your ideal insurance',
-    completed: false,
-    active: false
   }];
-
   const handleSubmit = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
@@ -51,19 +42,18 @@ const UnderstandingYou: React.FC = () => {
       setIsSubmitting(false);
     }, 1000);
   };
-
-  return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in bg-gray-100">
+  return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
         <ProgressBar steps={steps} currentStep={1} />
       </div>
       
       {/* Main content area */}
-      <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8">
+      <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
             <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
-            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2">
+            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2 glass-card py-2 px-4">
               Find your ideal health insurance
             </h1>
             <p className="text-gray-600 max-w-md mx-auto">
@@ -78,7 +68,7 @@ const UnderstandingYou: React.FC = () => {
           
           <Button onClick={handleSubmit} disabled={query.trim() === '' || isSubmitting} className="w-full glass-card bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white py-6 text-lg font-medium shadow-md flex items-center justify-center border-none">
             {isSubmitting ? 'Processing...' : <>
-                Find your insurance 
+                FIND YOUR INSURANCE 
                 <ArrowRight className="ml-2" size={18} />
               </>}
           </Button>
@@ -90,5 +80,4 @@ const UnderstandingYou: React.FC = () => {
       </div>
     </div>;
 };
-
 export default UnderstandingYou;
