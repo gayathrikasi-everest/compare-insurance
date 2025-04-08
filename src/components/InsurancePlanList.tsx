@@ -42,8 +42,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
-      {/* Cards container - set to flex-1 to take available space but leave room for button */}
-      <div className="flex-1 overflow-y-auto mb-4">
+      {/* Cards container */}
+      <div className="flex-1 overflow-y-auto">
         {plans.map(plan => (
           <InsurancePlanCard
             key={plan.id}
@@ -57,8 +57,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         ))}
       </div>
       
-      {/* "I don't like" button - fixed at the bottom */}
-      <div className="border-t border-gray-100 bg-[#f8f9fa] py-4">
+      {/* "I don't like" button - visible at the bottom */}
+      <div className="mt-auto pt-4 border-t border-gray-100 bg-[#f8f9fa]">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}

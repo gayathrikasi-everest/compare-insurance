@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,10 +8,14 @@ import { Phone, Mail } from "lucide-react";
 import UnderstandingYou from "./pages/UnderstandingYou";
 import RecommendedPlans from "./pages/RecommendedPlans";
 import AskQuestions from "./pages/AskQuestions";
+import ChatPlans from "./pages/ChatPlans";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
+
 const queryClient = new QueryClient();
-const Header = () => <header className="header">
+
+const Header = () => (
+  <header className="header">
     <div className="flex items-center space-x-2">
       <div className="text-lg font-bold text-cc-blue">CompareInsurance</div>
     </div>
@@ -29,8 +34,11 @@ const Header = () => <header className="header">
         <Mail size={18} />
       </a>
     </div>
-  </header>;
-const App = () => <QueryClientProvider client={queryClient}>
+  </header>
+);
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -43,11 +51,14 @@ const App = () => <QueryClientProvider client={queryClient}>
               <Route path="/understanding-you" element={<UnderstandingYou />} />
               <Route path="/recommended-plans" element={<RecommendedPlans />} />
               <Route path="/ask-questions" element={<AskQuestions />} />
+              <Route path="/chat-plans" element={<ChatPlans />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
         </div>
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>;
+  </QueryClientProvider>
+);
+
 export default App;

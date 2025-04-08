@@ -4,16 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
 import { UserInfo } from '@/types';
 import InsurancePlanList from '@/components/InsurancePlanList';
-import RecommendationExplanation from '@/components/RecommendationExplanation';
-import { recommendedInsurancePlans, recommendationText } from '@/data/mockData';
+import ChatInterface from '@/components/ChatInterface';
+import { recommendedInsurancePlans } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
 
-const RecommendedPlans: React.FC = () => {
+const ChatPlans: React.FC = () => {
   const navigate = useNavigate();
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);
 
   // In a real app, this would come from an API based on user input
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
+  
   const steps = [{
     number: 1,
     title: 'Understanding You',
@@ -24,14 +25,14 @@ const RecommendedPlans: React.FC = () => {
     number: 2,
     title: 'Recommended Plans',
     description: 'Review your top options',
-    completed: false,
-    active: true
+    completed: true,
+    active: false
   }, {
     number: 3,
     title: 'Ask Questions',
     description: 'Get answers about your plans',
     completed: false,
-    active: false
+    active: true
   }, {
     number: 4,
     title: 'Purchase Insurance',
@@ -53,16 +54,22 @@ const RecommendedPlans: React.FC = () => {
     alert(`In a real application, this would start the process to purchase plan ${planId}`);
   };
 
-  const handleAskQuestions = () => {
-    navigate('/chat-plans');
+  const handleBack = () => {
+    navigate('/recommended-plans');
   };
+
+  // Extract plan names for the chat context
+  const planNames = recommendedInsurancePlans.map(plan => plan.name);
 
   return (
     <>
       <div className="h-screen flex bg-white overflow-hidden">
         {/* Left sidebar with progress */}
         <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
-          <ProgressBar steps={steps} currentStep={2} />
+          <ProgressBar steps={steps} currentStep={3} />
+          <Button variant="outline" onClick={handleBack} className="mt-4 text-cc-blue border-cc-blue hover:bg-cc-light-blue">
+            &lt; Back to recommended plans
+          </Button>
         </div>
         
         {/* Right content area */}
@@ -78,12 +85,9 @@ const RecommendedPlans: React.FC = () => {
             />
           </div>
           
-          {/* Right column: Recommendation explanation - 65% width */}
+          {/* Right column: Chat interface - 65% width */}
           <div className="w-[65%] p-4 flex flex-col h-screen">
-            <RecommendationExplanation 
-              recommendationText={recommendationText} 
-              onAskQuestions={handleAskQuestions} 
-            />
+            <ChatInterface planNames={planNames} />
           </div>
         </div>
       </div>
@@ -92,4 +96,4 @@ const RecommendedPlans: React.FC = () => {
   );
 };
 
-export default RecommendedPlans;
+export default ChatPlans;
