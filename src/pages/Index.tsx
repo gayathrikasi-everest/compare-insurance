@@ -66,7 +66,7 @@ const Index = () => {
           return <div key={index} className="relative flex flex-col items-center text-center">
                 {/* Step Circle */}
                 <div className={`flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold 
-                  bg-[#E83F6F] bg-opacity-80 text-white`}>
+                  bg-[#0A1D39] bg-opacity-80 text-white`}>
                   {step.number}
                 </div>
                 
