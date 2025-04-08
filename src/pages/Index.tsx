@@ -60,7 +60,7 @@ const Index = () => {
         </Button>
         
         {/* Process Steps */}
-        <div className="w-full max-w-4xl flex justify-between items-start mb-16">
+        <div className="w-full max-w-4xl flex justify-between items-start mb-16 bg-[#E83F6F] rounded-xl p-6">
           {steps.map((step, index) => {
           const isLast = index === steps.length - 1;
           return <div key={index} className="relative flex flex-col items-center text-center">
@@ -72,13 +72,13 @@ const Index = () => {
                 
                 {/* Step Title */}
                 <div className="mt-3">
-                  <h3 className="font-semibold text-cc-blue">{step.title}</h3>
-                  <p className="text-sm text-gray-500">{step.description}</p>
+                  <h3 className="font-semibold text-white">{step.title}</h3>
+                  <p className="text-sm text-white/80">{step.description}</p>
                 </div>
                 
                 {/* Connecting Arrow */}
-                {!isLast && <div className="absolute top-7 left-full w-20 h-0.5 bg-gray-200 -z-10 transform translate-x-1">
-                    <ArrowRight className="absolute right-0 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                {!isLast && <div className="absolute top-7 left-full w-20 h-0.5 bg-white/50 -z-10 transform translate-x-1">
+                    <ArrowRight className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white" />
                   </div>}
               </div>;
         })}
