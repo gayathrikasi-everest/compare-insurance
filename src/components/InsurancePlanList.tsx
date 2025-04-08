@@ -36,29 +36,31 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
       {/* Header - 10vh */}
       <div className="h-[10vh] flex items-center">
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
-      {/* Cards container - taking remaining space except for button area */}
-      <div className="flex-1 flex flex-col space-y-4 overflow-y-auto pr-2 pb-16">
-        {plans.map(plan => (
-          <InsurancePlanCard
-            key={plan.id}
-            name={plan.name}
-            provider={plan.provider}
-            price={plan.price}
-            isTopRecommendation={plan.isTopRecommendation}
-            onSeeMore={() => handleSeeMore(plan.id)}
-            onBuyPlan={() => onBuyPlan(plan.id)}
-          />
-        ))}
+      {/* Cards container */}
+      <div className="overflow-y-auto pr-2 mb-16">
+        <div className="flex flex-col space-y-4 pb-4">
+          {plans.map(plan => (
+            <InsurancePlanCard
+              key={plan.id}
+              name={plan.name}
+              provider={plan.provider}
+              price={plan.price}
+              isTopRecommendation={plan.isTopRecommendation}
+              onSeeMore={() => handleSeeMore(plan.id)}
+              onBuyPlan={() => onBuyPlan(plan.id)}
+            />
+          ))}
+        </div>
       </div>
       
-      {/* "I don't like" button - fixed to the bottom of the container */}
-      <div className="sticky bottom-0 left-0 w-full py-4 bg-[#f8f9fa] mt-auto border-t border-gray-100">
+      {/* "I don't like" button - fixed to the bottom of the viewport */}
+      <div className="fixed bottom-0 left-0 w-[35%] p-4 bg-[#f8f9fa] border-t border-gray-100">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}
