@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -66,26 +65,22 @@ const RecommendedPlans: React.FC = () => {
   const steps = [
     { 
       number: 1, 
-      title: 'Understanding you', 
-      description: userInfo.query.slice(0, 100) + (userInfo.query.length > 100 ? '...' : ''),
+      title: 'Understanding You', 
+      description: 'Tell us about your needs',
       completed: true, 
       active: false 
     },
     { 
       number: 2, 
-      title: 'Finding your best insurance options', 
-      completed: true, 
+      title: 'Recommended Plans', 
+      description: 'Review your top options',
+      completed: false, 
       active: true 
     },
     { 
       number: 3, 
-      title: 'Clarify any questions', 
-      completed: false, 
-      active: false 
-    },
-    { 
-      number: 4, 
-      title: 'Easily contract online with best price guarantee', 
+      title: 'Ask Questions', 
+      description: 'Get answers about your plans',
       completed: false, 
       active: false 
     }
@@ -126,10 +121,6 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
     <div className="min-h-screen flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md">
-        <h2 className="text-2xl font-bold text-cc-blue mb-6">
-          Find and contract your ideal<br/>health insurance
-        </h2>
-        
         <ProgressBar steps={steps} currentStep={2} />
         
         <Button 
