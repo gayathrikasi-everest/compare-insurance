@@ -6,6 +6,7 @@ export interface InsurancePlan {
   price: number;
   description: string;
   features: string[];
+  isTopRecommendation?: boolean;
 }
 
 export interface UserInfo {
