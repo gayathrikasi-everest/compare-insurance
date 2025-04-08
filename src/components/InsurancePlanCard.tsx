@@ -41,14 +41,13 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
         </div>
         
         <div className="flex flex-col space-y-3 mt-auto">
-          <Button 
+          <a 
             onClick={onSeeMore} 
-            variant="outline" 
-            className="text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center justify-center gap-2"
+            className="text-cc-blue underline hover:text-cc-green cursor-pointer flex items-center justify-center gap-2"
           >
             <Info size={16} />
             Learn more
-          </Button>
+          </a>
           
           <Button 
             onClick={onBuyPlan} 
