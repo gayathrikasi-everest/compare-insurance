@@ -42,8 +42,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
-      {/* Cards container - 85vh */}
-      <div className="flex flex-col space-y-6 h-[85vh]">
+      {/* Cards container - 80vh to leave room for the button */}
+      <div className="flex flex-col space-y-4 h-[80vh] overflow-y-auto pr-2">
         {plans.map(plan => (
           <InsurancePlanCard
             key={plan.id}
@@ -57,8 +57,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         ))}
       </div>
       
-      {/* Footer with button - 5vh */}
-      <div className="h-[5vh] flex items-center mt-auto">
+      {/* "I don't like" button - 10vh, moved closer to cards */}
+      <div className="h-[10vh] mt-4">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}
