@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -81,6 +82,13 @@ const RecommendedPlans: React.FC = () => {
       number: 3, 
       title: 'Ask Questions', 
       description: 'Get answers about your plans',
+      completed: false, 
+      active: false 
+    },
+    { 
+      number: 4, 
+      title: 'Purchase Insurance', 
+      description: 'Buy your ideal insurance',
       completed: false, 
       active: false 
     }
