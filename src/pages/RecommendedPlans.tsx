@@ -144,26 +144,6 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
       {/* Right content area */}
       <div className="w-5/8 flex-1 p-8 overflow-y-auto bg-[#EEE]">
         <div className="max-w-4xl mx-auto">
-          {/* AI-driven recommendation tag */}
-          <div className="mb-6 flex items-center">
-            <div className="bg-gradient-to-r from-cc-blue to-cc-dark-blue text-white text-sm font-bold px-4 py-2 rounded-full flex items-center">
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="w-4 h-4 mr-1"
-              >
-                <path d="m12 8-9.04 9.06a2.82 2.82 0 1 0 3.98 3.98L16 12" />
-                <circle cx="17" cy="7" r="5" />
-              </svg>
-              AI-Driven Personalized Recommendations
-            </div>
-          </div>
-          
           {/* Plan cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {insurancePlans.map(plan => (
