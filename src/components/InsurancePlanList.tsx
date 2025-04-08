@@ -18,7 +18,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   onBuyPlan
 }) => {
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 h-[80%] overflow-y-auto">
       {plans.map(plan => (
         <InsurancePlanCard
           key={plan.id}
