@@ -90,7 +90,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full pb-[3%]">
       {/* Chat header bar */}
       <div className="bg-cc-green text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -142,7 +142,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
         </div>
       </div>
       
-      {/* Input area - visible at the bottom */}
+      {/* Input area - now with proper spacing for navbar */}
       <div className="mt-auto pt-4 border-t border-gray-100 bg-[#f8f9fa]">
         <div className="flex gap-2">
           <Input 
