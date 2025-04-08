@@ -2,6 +2,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Check, Circle } from 'lucide-react';
+import { UserInfo } from '@/types';
 
 interface Step {
   number: number;
@@ -17,12 +18,16 @@ interface ProgressBarProps {
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ steps, currentStep }) => {
+  // Get user info from localStorage
+  const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
+  
   return (
     <div className="relative py-4 max-w-xs">
       <h1 className="text-2xl font-bold text-cc-blue mb-8">Find Your Ideal Health Plan</h1>
       
       {steps.map((step, index) => {
         const isLast = index === steps.length - 1;
+        const showUserQuery = step.number === 1 && step.completed && userInfo.query;
         
         return (
           <div key={step.number} className="relative">
@@ -64,13 +69,20 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ steps, currentStep }) => {
                 <p className="text-gray-500 mt-1">
                   {step.description}
                 </p>
+                
+                {/* User Query Display */}
+                {showUserQuery && (
+                  <div className="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-700">
+                    {userInfo.query}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         );
       })}
       
-      {/* Trust Badge - Updated to use bg-gray-100 for consistency */}
+      {/* Trust Badge */}
       <div className="mt-10 bg-gray-100 rounded-md p-4">
         <div className="flex items-center">
           <div className="bg-cc-green rounded-md p-2 mr-4">
