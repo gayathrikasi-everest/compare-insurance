@@ -7,6 +7,7 @@ import InsurancePlanList from '@/components/InsurancePlanList';
 import ChatInterface from '@/components/ChatInterface';
 import { recommendedInsurancePlans } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
+import { Button } from "@/components/ui/button";
 
 const ChatPlans: React.FC = () => {
   const navigate = useNavigate();
