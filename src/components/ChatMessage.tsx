@@ -18,12 +18,17 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ content, isUser, timestamp })
         "p-3 rounded-2xl",
         isUser 
           ? "bg-gradient-to-r from-cc-green to-cc-dark-green text-white" 
-          : "glass"
+          : "bg-white shadow-md border border-gray-100"
       )}>
-        <p>{content}</p>
+        <p className={cn(
+          "text-sm md:text-base",
+          !isUser && "text-cc-blue"
+        )}>
+          {content}
+        </p>
       </div>
       {timestamp && (
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-gray-500 mt-1 px-1">
           {timestamp}
         </p>
       )}

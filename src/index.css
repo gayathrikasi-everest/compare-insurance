@@ -96,7 +96,7 @@
 
 @layer components {
   .glass {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-lg;
+    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg;
   }
   
   .glass-card {
@@ -121,5 +121,25 @@
   
   .progress-line-active {
     @apply bg-cc-green;
+  }
+  
+  .header {
+    @apply flex items-center justify-between py-4 px-6 bg-white shadow-sm border-b;
+  }
+  
+  .nav-link {
+    @apply text-cc-blue hover:text-cc-green transition-colors;
+  }
+  
+  .compare-club-gradient {
+    @apply bg-gradient-to-r from-cc-green to-cc-dark-green;
+  }
+  
+  .btn-primary {
+    @apply bg-cc-green hover:bg-cc-dark-green text-white transition-all rounded-md px-4 py-2 shadow-sm;
+  }
+  
+  .btn-outline {
+    @apply border border-cc-blue text-cc-blue hover:bg-cc-light-blue transition-all rounded-md px-4 py-2;
   }
 }
