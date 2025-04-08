@@ -36,14 +36,14 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full relative">
+    <div className="flex flex-col h-full">
       {/* Header - 10vh */}
       <div className="h-[10vh] flex items-center">
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
-      {/* Cards container */}
-      <div className="overflow-y-auto pr-2 pb-20">
+      {/* Cards container - with limited height to ensure button visibility */}
+      <div className="flex-1 overflow-y-auto">
         <div className="flex flex-col space-y-4 pb-4">
           {plans.map(plan => (
             <InsurancePlanCard
@@ -59,12 +59,12 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         </div>
       </div>
       
-      {/* "I don't like" button - sticky to the bottom of the content area */}
-      <div className="sticky bottom-0 left-0 w-full p-4 bg-[#f8f9fa] border-t border-gray-100 mt-auto">
+      {/* "I don't like" button - at the bottom of the container */}
+      <div className="mt-4 pt-2 border-t border-gray-100 bg-[#f8f9fa]">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}
-          className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2 w-full"
+          className="text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center gap-2 w-full"
         >
           <RefreshCw size={16} />
           I don't like these options
