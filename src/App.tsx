@@ -12,7 +12,7 @@ import Index from "./pages/Index";
 const queryClient = new QueryClient();
 const Header = () => <header className="header">
     <div className="flex items-center space-x-2">
-      <div className="text-lg font-bold text-cc-blue">🤑</div>
+      <div className="text-lg font-bold text-cc-blue">CompareInsurance</div>
     </div>
     <nav className="hidden md:flex items-center space-x-8">
       <Link to="/" className="nav-link font-medium">Insurance</Link>
