@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -9,6 +8,7 @@ import UnderstandingYou from "./pages/UnderstandingYou";
 import RecommendedPlans from "./pages/RecommendedPlans";
 import AskQuestions from "./pages/AskQuestions";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
@@ -45,7 +45,8 @@ const App = () => (
           <Header />
           <main className="flex-1">
             <Routes>
-              <Route path="/" element={<UnderstandingYou />} />
+              <Route path="/" element={<Index />} />
+              <Route path="/understanding-you" element={<UnderstandingYou />} />
               <Route path="/recommended-plans" element={<RecommendedPlans />} />
               <Route path="/ask-questions" element={<AskQuestions />} />
               <Route path="*" element={<NotFound />} />

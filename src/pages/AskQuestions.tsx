@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -33,30 +32,27 @@ const AskQuestions: React.FC = () => {
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
   
   const steps = [
-    { 
-      number: 1, 
-      title: 'Understanding you', 
-      completed: true, 
-      active: false 
+    {
+      number: 1,
+      title: "Understanding you",
+      description: "Tell us about your needs",
+      completed: true,
+      active: false,
     },
-    { 
-      number: 2, 
-      title: 'Finding your best insurance options', 
-      completed: true, 
-      active: false 
+    {
+      number: 2,
+      title: "Recommended plans",
+      description: "View your personalized options",
+      completed: true,
+      active: false,
     },
-    { 
-      number: 3, 
-      title: 'Clarify any questions', 
-      completed: false, 
-      active: true 
+    {
+      number: 3,
+      title: "Ask questions",
+      description: "Get expert answers",
+      completed: false,
+      active: true,
     },
-    { 
-      number: 4, 
-      title: 'Easily contract online with best price guarantee', 
-      completed: false, 
-      active: false 
-    }
   ];
 
   useEffect(() => {
