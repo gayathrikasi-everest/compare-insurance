@@ -68,7 +68,7 @@ const RecommendedPlans: React.FC = () => {
         {/* Right content area - taking full height */}
         <div className="w-3/4 flex bg-[#f8f9fa] h-screen">
           {/* Left column: Stacked insurance plan cards - 35% width */}
-          <div className="w-[35%] p-4">
+          <div className="w-[35%] p-4 h-full">
             <InsurancePlanList 
               plans={recommendedInsurancePlans} 
               expandedPlanId={expandedPlanId} 

@@ -69,21 +69,23 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   };
 
   return (
-    <div className="h-full flex flex-col relative">
+    <div className="flex flex-col h-full">
       {/* Header area - 10vh to match the left column */}
       <div className="h-[10vh]">
         {/* Empty space to match height */}
       </div>
       
-      {/* Content area - adjusted to leave space for sticky button */}
-      <ScrollArea className="pr-4 pb-24">
-        <div className="pr-4">
-          {formatNumberedExplanations(recommendationText)}
-        </div>
-      </ScrollArea>
+      {/* Content area - takes remaining space minus the "Still have doubts" section */}
+      <div className="flex-1 overflow-y-auto">
+        <ScrollArea className="h-full pr-4 pb-16">
+          <div className="pr-4">
+            {formatNumberedExplanations(recommendationText)}
+          </div>
+        </ScrollArea>
+      </div>
       
-      {/* "Still have doubts" section - sticky to the bottom */}
-      <div className="absolute bottom-0 left-0 right-0 py-4 bg-[#f8f9fa]">
+      {/* "Still have doubts" section - sticky to the bottom of the container */}
+      <div className="sticky bottom-0 left-0 w-full py-4 bg-[#f8f9fa] mt-auto border-t border-gray-100">
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 flex items-center justify-between">
           <p className="text-gray-900 font-medium">Still have doubts? We get it.</p>
           <Button 
