@@ -76,7 +76,7 @@ const UnderstandingYou: React.FC = () => {
           
           <Button onClick={handleSubmit} disabled={query.trim() === '' || isSubmitting} className="w-full glass-card bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white py-6 text-lg font-medium shadow-md flex items-center justify-center border-none">
             {isSubmitting ? 'Processing...' : <>
-                FIND YOUR INSURANCE 
+                Find your insurance 
                 <ArrowRight className="ml-2" size={18} />
               </>}
           </Button>
