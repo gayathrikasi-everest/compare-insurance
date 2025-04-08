@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Check, Circle, ArrowLeft } from 'lucide-react';
 import { UserInfo } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+
 interface Step {
   number: number;
   title: string;
@@ -11,10 +13,12 @@ interface Step {
   completed: boolean;
   active: boolean;
 }
+
 interface ProgressBarProps {
   steps: Step[];
   currentStep: number;
 }
+
 const ProgressBar: React.FC<ProgressBarProps> = ({
   steps,
   currentStep
@@ -22,9 +26,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   // Get user info from localStorage
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
   const navigate = useNavigate();
+
   const handleEditInfo = () => {
     navigate('/');
   };
+
   return <div className="relative py-4 max-w-xs">
       <h1 className="text-2xl font-bold text-cc-blue mb-8">Find Your Ideal Health Plan</h1>
       
@@ -42,7 +48,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
               </div>
               
               {/* Step Text */}
-              <div className="bg-gray-200">
+              <div className="bg-transparent">
                 <h3 className={cn("font-semibold text-lg", step.active || step.completed ? "text-cc-blue" : "text-gray-500")}>
                   {step.title}
                 </h3>
@@ -84,4 +90,5 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       </div>
     </div>;
 };
+
 export default ProgressBar;
