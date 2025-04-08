@@ -132,8 +132,8 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
       {/* Right content area with new layout */}
       <div className="w-3/4 flex-1 p-8 overflow-y-auto bg-[#EEE]">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-6">
-          {/* Left column: Stacked insurance plan cards */}
-          <div className="md:w-1/2 flex flex-col gap-6">
+          {/* Left column: Stacked insurance plan cards - changed from 1/2 to 35% */}
+          <div className="md:w-[35%] flex flex-col gap-6">
             {insurancePlans.map(plan => (
               <InsurancePlanCard
                 key={plan.id}
@@ -165,8 +165,8 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
             )}
           </div>
           
-          {/* Right column: Profile-based recommendation explanation */}
-          <div className="md:w-1/2">
+          {/* Right column: Profile-based recommendation explanation - changed from 1/2 to 65% */}
+          <div className="md:w-[65%]">
             <div className="glass-card backdrop-blur-md bg-white/70 border border-white/20 shadow-xl p-6 h-full">
               <ScrollArea className="h-[600px]">
                 <div className="pr-4">
