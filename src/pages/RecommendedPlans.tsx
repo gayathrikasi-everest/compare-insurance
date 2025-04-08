@@ -5,8 +5,9 @@ import ProgressBar from '@/components/ProgressBar';
 import { UserInfo } from '@/types';
 import InsurancePlanList from '@/components/InsurancePlanList';
 import RecommendationExplanation from '@/components/RecommendationExplanation';
-import PlanActionButtons from '@/components/PlanActionButtons';
 import { recommendedInsurancePlans, recommendationText } from '@/data/mockData';
+import { Button } from '@/components/ui/button';
+import { RefreshCw } from 'lucide-react';
 
 const RecommendedPlans: React.FC = () => {
   const navigate = useNavigate();
@@ -71,16 +72,33 @@ const RecommendedPlans: React.FC = () => {
       </div>
       
       {/* Right content area with new layout - taking full height */}
-      <div className="w-3/4 flex-1 py-4 px-[8%] bg-[#EEE] flex flex-col">
+      <div className="w-3/4 flex-1 py-4 px-[8%] bg-[#EEE] flex flex-col h-screen">
+        {/* Title for the section */}
+        <h2 className="text-2xl font-bold text-cc-blue mb-6">Your recommended plans</h2>
+        
         <div className="flex-grow flex flex-col md:flex-row gap-4">
           {/* Left column: Stacked insurance plan cards - 35% width */}
-          <div className="md:w-[35%]">
-            <InsurancePlanList
-              plans={recommendedInsurancePlans}
-              expandedPlanId={expandedPlanId}
-              onSeeMore={handleSeeMore}
-              onBuyPlan={handleBuyPlan}
-            />
+          <div className="md:w-[35%] flex flex-col">
+            <div className="flex-grow">
+              <InsurancePlanList
+                plans={recommendedInsurancePlans}
+                expandedPlanId={expandedPlanId}
+                onSeeMore={handleSeeMore}
+                onBuyPlan={handleBuyPlan}
+              />
+            </div>
+            
+            {/* "I don't like..." button positioned at the bottom of this column */}
+            <div className="mt-6">
+              <Button 
+                variant="outline" 
+                onClick={handleRegenerateOptions}
+                className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2 w-full"
+              >
+                <RefreshCw size={16} />
+                I don't like these options
+              </Button>
+            </div>
           </div>
           
           {/* Right column: Profile-based recommendation explanation - 65% width */}
@@ -90,14 +108,6 @@ const RecommendedPlans: React.FC = () => {
               onAskQuestions={handleAskQuestions}
             />
           </div>
-        </div>
-        
-        {/* Action buttons */}
-        <div className="mt-2">
-          <PlanActionButtons
-            onRegenerateOptions={handleRegenerateOptions}
-            onAskQuestions={handleAskQuestions}
-          />
         </div>
       </div>
     </div>

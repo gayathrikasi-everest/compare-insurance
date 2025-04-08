@@ -40,22 +40,25 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
           <span className="text-gray-500 ml-1 text-sm">/ month</span>
         </div>
         
-        <div className="flex flex-col space-y-3 mt-auto">
-          <a 
-            onClick={onSeeMore} 
-            className="text-cc-blue underline hover:text-cc-green cursor-pointer flex items-center justify-center gap-2"
-          >
-            <Info size={16} />
-            Learn more
-          </a>
-          
-          <Button 
-            onClick={onBuyPlan} 
-            className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white w-full font-medium shadow-md flex items-center justify-center gap-2"
-          >
-            <ShoppingCart size={16} />
-            Buy plan
-          </Button>
+        <div className="mt-auto">
+          {/* Buttons side by side */}
+          <div className="flex space-x-2">
+            <a 
+              onClick={onSeeMore} 
+              className="flex-1 text-cc-blue hover:text-cc-green cursor-pointer flex items-center justify-center gap-1 border border-cc-blue rounded-md py-2"
+            >
+              <Info size={16} />
+              Learn more
+            </a>
+            
+            <Button 
+              onClick={onBuyPlan} 
+              className="flex-1 bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white font-medium shadow-md flex items-center justify-center gap-1"
+            >
+              <ShoppingCart size={16} />
+              Buy plan
+            </Button>
+          </div>
         </div>
       </div>
     </div>;
