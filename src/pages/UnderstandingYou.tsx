@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -42,7 +41,6 @@ const UnderstandingYou: React.FC = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
 
-    // In a real app, this would send the query to an API
     const userInfo: UserInfo = {
       query
     };
@@ -55,17 +53,15 @@ const UnderstandingYou: React.FC = () => {
 
   return (
     <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
-      {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
         <ProgressBar steps={steps} currentStep={1} />
       </div>
       
-      {/* Main content area - Updated background to gray-100 */}
       <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
             <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
-            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2 glass-card py-2 px-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2">
               Find your ideal health insurance
             </h1>
             <p className="text-gray-600 max-w-md mx-auto">
