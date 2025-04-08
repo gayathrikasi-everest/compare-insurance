@@ -38,7 +38,7 @@ const Index = () => {
         <img 
           src="/lovable-uploads/856d3ede-141c-42e6-9b25-045580f72363.png" 
           alt="Insurance Illustration" 
-          className="w-full max-w-md mx-auto mb-8"
+          className="w-[60%] max-w-[60%] mx-auto mb-8"
         />
         <div className="text-center md:text-left mb-8">
           <h1 className="text-4xl font-bold text-cc-blue mb-4">Find Your Ideal Health Plan</h1>
