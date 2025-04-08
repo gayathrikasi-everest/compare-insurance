@@ -72,32 +72,34 @@ const RecommendedPlans: React.FC = () => {
       </div>
       
       {/* Right content area with new layout - taking full height */}
-      <div className="w-3/4 flex-1 py-4 px-[8%] bg-[#EEE] flex flex-col h-screen">
+      <div className="w-3/4 py-4 px-[8%] bg-[#EEE] flex flex-col h-screen">
         {/* Title for the section */}
-        <h2 className="text-2xl font-bold text-cc-blue mb-6">Your recommended plans</h2>
+        <h2 className="text-2xl font-bold text-cc-blue mb-4">Your recommended plans</h2>
         
-        <div className="flex-grow flex flex-col md:flex-row gap-4">
+        <div className="flex-grow flex flex-col md:flex-row gap-8">
           {/* Left column: Stacked insurance plan cards - 35% width */}
-          <div className="md:w-[35%] flex flex-col">
-            <div className="flex-grow">
-              <InsurancePlanList
-                plans={recommendedInsurancePlans}
-                expandedPlanId={expandedPlanId}
-                onSeeMore={handleSeeMore}
-                onBuyPlan={handleBuyPlan}
-              />
-            </div>
-            
-            {/* "I don't like..." button positioned at the bottom of this column */}
-            <div className="mt-6">
-              <Button 
-                variant="outline" 
-                onClick={handleRegenerateOptions}
-                className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2 w-full"
-              >
-                <RefreshCw size={16} />
-                I don't like these options
-              </Button>
+          <div className="md:w-[35%] flex flex-col justify-between pr-4">
+            <div className="flex-grow flex flex-col justify-between">
+              <div className="flex-shrink">
+                <InsurancePlanList
+                  plans={recommendedInsurancePlans}
+                  expandedPlanId={expandedPlanId}
+                  onSeeMore={handleSeeMore}
+                  onBuyPlan={handleBuyPlan}
+                />
+              </div>
+              
+              {/* "I don't like..." button positioned at the bottom of this column */}
+              <div className="mb-6 mt-4">
+                <Button 
+                  variant="outline" 
+                  onClick={handleRegenerateOptions}
+                  className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2 w-full"
+                >
+                  <RefreshCw size={16} />
+                  I don't like these options
+                </Button>
+              </div>
             </div>
           </div>
           
