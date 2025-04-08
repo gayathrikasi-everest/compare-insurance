@@ -9,13 +9,10 @@ import RecommendedPlans from "./pages/RecommendedPlans";
 import AskQuestions from "./pages/AskQuestions";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
-
 const queryClient = new QueryClient();
-
-const Header = () => (
-  <header className="header">
+const Header = () => <header className="header">
     <div className="flex items-center space-x-2">
-      <div className="text-lg font-bold text-cc-blue">CompareClub</div>
+      <div className="text-lg font-bold text-cc-blue">🤑</div>
     </div>
     <nav className="hidden md:flex items-center space-x-8">
       <Link to="/" className="nav-link font-medium">Insurance</Link>
@@ -32,11 +29,8 @@ const Header = () => (
         <Mail size={18} />
       </a>
     </div>
-  </header>
-);
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+  </header>;
+const App = () => <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
@@ -55,7 +49,5 @@ const App = () => (
         </div>
       </BrowserRouter>
     </TooltipProvider>
-  </QueryClientProvider>
-);
-
+  </QueryClientProvider>;
 export default App;
