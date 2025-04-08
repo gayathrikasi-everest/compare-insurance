@@ -9,6 +9,7 @@ import UnderstandingYou from "./pages/UnderstandingYou";
 import RecommendedPlans from "./pages/RecommendedPlans";
 import AskQuestions from "./pages/AskQuestions";
 import ChatPlans from "./pages/ChatPlans";
+import PurchaseNow from "./pages/PurchaseNow";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
 
@@ -52,6 +53,7 @@ const App = () => (
               <Route path="/recommended-plans" element={<RecommendedPlans />} />
               <Route path="/ask-questions" element={<AskQuestions />} />
               <Route path="/chat-plans" element={<ChatPlans />} />
+              <Route path="/purchase-now" element={<PurchaseNow />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>

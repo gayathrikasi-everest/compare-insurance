@@ -5,6 +5,7 @@ import { InsurancePlan } from '@/types';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from 'react-router-dom';
 
 interface InsurancePlanListProps {
   plans: Array<InsurancePlan & { isTopRecommendation?: boolean }>;
@@ -22,6 +23,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   onRegenerateOptions
 }) => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const handleSeeMore = (planId: string) => {
     const plan = plans.find(p => p.id === planId);
@@ -33,6 +35,11 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
       });
     }
     onSeeMore(planId);
+  };
+
+  const handleBuyPlan = (planId: string) => {
+    navigate('/purchase-now', { state: { planId } });
+    onBuyPlan(planId);
   };
 
   return (
@@ -52,7 +59,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
             price={plan.price}
             isTopRecommendation={plan.isTopRecommendation}
             onSeeMore={() => handleSeeMore(plan.id)}
-            onBuyPlan={() => onBuyPlan(plan.id)}
+            onBuyPlan={() => handleBuyPlan(plan.id)}
           />
         ))}
       </div>
