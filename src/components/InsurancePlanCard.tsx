@@ -1,12 +1,13 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Check } from 'lucide-react';
+import { Check, Tag } from 'lucide-react';
 
 interface InsurancePlanProps {
   name: string;
   provider: string;
   price: number;
+  isTopRecommendation?: boolean;
   onSeeMore: () => void;
   onBuyPlan: () => void;
 }
@@ -15,14 +16,24 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   name,
   provider,
   price,
+  isTopRecommendation = false,
   onSeeMore,
   onBuyPlan
 }) => {
   return (
-    <div className="glass-card p-6 transition-all hover:shadow-xl">
+    <div className={`glass-card backdrop-blur-md bg-white/70 border border-white/20 shadow-xl p-6 transition-all hover:shadow-2xl ${isTopRecommendation ? 'ring-2 ring-cc-green' : ''}`}>
       <div className="flex flex-col h-full">
+        {isTopRecommendation && (
+          <div className="absolute -top-3 -right-2">
+            <div className="bg-gradient-to-r from-cc-green to-cc-dark-green text-white text-xs font-bold px-3 py-1 rounded-full flex items-center">
+              <Tag size={12} className="mr-1" />
+              Best Match
+            </div>
+          </div>
+        )}
+        
         <div className="mb-3">
-          <div className="h-6 w-20 bg-gray-100 rounded mb-2"></div>
+          <div className="h-6 w-20 bg-cc-light-green rounded-full mb-2"></div>
           <h3 className="text-lg font-bold text-cc-blue">{name}</h3>
           <p className="text-sm text-gray-500">{provider}</p>
         </div>
@@ -53,7 +64,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
           
           <Button 
             onClick={onBuyPlan}
-            className="bg-cc-green hover:bg-cc-dark-green text-white w-full font-medium"
+            className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white w-full font-medium shadow-md"
           >
             Buy plan
           </Button>

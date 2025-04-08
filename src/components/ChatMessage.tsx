@@ -15,10 +15,10 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ content, isUser, timestamp })
       isUser ? "ml-auto" : "mr-auto"
     )}>
       <div className={cn(
-        "p-3 rounded-2xl",
+        "p-3 rounded-2xl backdrop-blur-sm shadow-md",
         isUser 
           ? "bg-gradient-to-r from-cc-green to-cc-dark-green text-white" 
-          : "bg-white shadow-md border border-gray-100"
+          : "bg-white/80 border border-white/30"
       )}>
         <p className={cn(
           "text-sm md:text-base",

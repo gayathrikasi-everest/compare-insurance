@@ -28,7 +28,12 @@ const UnderstandingYou: React.FC = () => {
   return (
     <div className="min-h-[calc(100vh-65px)] flex items-center justify-center bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       <div className="w-full max-w-2xl p-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
+          <img 
+            src="/insurance-illustration.svg" 
+            alt="Health Insurance" 
+            className="w-36 h-36 mx-auto mb-6"
+          />
           <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2">
             Find your ideal health insurance
           </h1>
@@ -37,20 +42,20 @@ const UnderstandingYou: React.FC = () => {
           </p>
         </div>
         
-        <div className="glass-card p-6 mb-8">
+        <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 mb-8">
           <label className="block text-cc-blue font-medium mb-2">How can we help you today?</label>
           <Textarea
             placeholder="Ask something like: I'm married and we are expecting a baby and want the best plan out there for our new family..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="min-h-[150px] border-gray-200 focus:border-cc-green focus:ring-cc-green"
+            className="min-h-[150px] backdrop-blur-md bg-white/50 border-gray-200 focus:border-cc-green focus:ring-cc-green"
           />
         </div>
         
         <Button
           onClick={handleSubmit}
           disabled={query.trim() === '' || isSubmitting}
-          className="w-full bg-cc-green hover:bg-cc-dark-green text-white py-6 text-lg font-medium flex items-center justify-center"
+          className="w-full bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white py-6 text-lg font-medium shadow-md flex items-center justify-center"
         >
           {isSubmitting ? 'Processing...' : (
             <>
