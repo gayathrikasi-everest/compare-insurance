@@ -42,7 +42,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
               </div>
               
               {/* Step Text */}
-              <div>
+              <div className="bg-gray-200">
                 <h3 className={cn("font-semibold text-lg", step.active || step.completed ? "text-cc-blue" : "text-gray-500")}>
                   {step.title}
                 </h3>
