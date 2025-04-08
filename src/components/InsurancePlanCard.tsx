@@ -43,15 +43,6 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
           <span className="text-gray-500 ml-1 text-sm">/ month</span>
         </div>
         
-        <div className="flex items-start space-x-2 mb-2">
-          <Check size={18} className="text-cc-green mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-gray-600">Full hospital cover</p>
-        </div>
-        <div className="flex items-start space-x-2 mb-2">
-          <Check size={18} className="text-cc-green mt-0.5 flex-shrink-0" />
-          <p className="text-sm text-gray-600">Extra dental benefits</p>
-        </div>
-        
         <div className="flex flex-col space-y-3 mt-auto">
           <button 
             onClick={onSeeMore} 
