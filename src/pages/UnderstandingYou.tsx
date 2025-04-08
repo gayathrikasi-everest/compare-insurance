@@ -5,12 +5,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
-
 const UnderstandingYou: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  
   const steps = [{
     number: 1,
     title: 'Understanding You',
@@ -36,11 +34,9 @@ const UnderstandingYou: React.FC = () => {
     completed: false,
     active: false
   }];
-
   const handleSubmit = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
-
     const userInfo: UserInfo = {
       query
     };
@@ -50,9 +46,7 @@ const UnderstandingYou: React.FC = () => {
       setIsSubmitting(false);
     }, 1000);
   };
-
-  return (
-    <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
+  return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
         <ProgressBar steps={steps} currentStep={1} />
       </div>
@@ -61,16 +55,12 @@ const UnderstandingYou: React.FC = () => {
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
             <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
-            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2">
-              Find your ideal health insurance
-            </h1>
-            <p className="text-gray-600 max-w-md mx-auto">
-              Tell us about your needs and we'll find the perfect plan for you
-            </p>
+            <h1 className="text-3xl font-bold text-cc-blue mb-2 md:text-2xl">Tell us about your needs and we'll find the perfect plan for you</h1>
+            
           </div>
           
           <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 mb-8">
-            <label className="block text-cc-blue font-medium mb-2">How can we help you today?</label>
+            
             <Textarea placeholder="Ask something like: I'm married and we are expecting a baby and want the best plan out there for our new family..." value={query} onChange={e => setQuery(e.target.value)} className="min-h-[150px] backdrop-blur-md bg-white/50 border-gray-200 focus:border-cc-green focus:ring-cc-green" />
           </div>
           
@@ -86,8 +76,6 @@ const UnderstandingYou: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default UnderstandingYou;
