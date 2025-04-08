@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -5,10 +6,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
+
 const UnderstandingYou: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  
   const steps = [{
     number: 1,
     title: 'Understanding You',
@@ -27,7 +30,14 @@ const UnderstandingYou: React.FC = () => {
     description: 'Get answers about your plans',
     completed: false,
     active: false
+  }, {
+    number: 4,
+    title: 'Purchase Insurance',
+    description: 'Buy your ideal insurance',
+    completed: false,
+    active: false
   }];
+
   const handleSubmit = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
@@ -42,13 +52,15 @@ const UnderstandingYou: React.FC = () => {
       setIsSubmitting(false);
     }, 1000);
   };
-  return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
+
+  return (
+    <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
         <ProgressBar steps={steps} currentStep={1} />
       </div>
       
-      {/* Main content area */}
+      {/* Main content area - Updated background to gray-100 */}
       <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
@@ -78,6 +90,8 @@ const UnderstandingYou: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default UnderstandingYou;

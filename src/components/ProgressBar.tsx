@@ -70,7 +70,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ steps, currentStep }) => {
         );
       })}
       
-      {/* Trust Badge - Updated rounded corners to match other UI elements and changed background to gray-100 */}
+      {/* Trust Badge - Updated to use bg-gray-100 for consistency */}
       <div className="mt-10 bg-gray-100 rounded-md p-4">
         <div className="flex items-center">
           <div className="bg-cc-green rounded-md p-2 mr-4">
