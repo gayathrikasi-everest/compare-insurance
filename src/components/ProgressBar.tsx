@@ -38,8 +38,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       const isLast = index === steps.length - 1;
       const showUserQuery = step.number === 1 && step.completed && userInfo.query;
       return <div key={step.number} className="relative">
-            {/* Connecting Line */}
-            {!isLast && <div className={cn("absolute h-16 w-0.5 left-7 top-14 -z-10", step.completed ? "bg-cc-green" : "bg-gray-200")} />}
+            {/* Connecting Line - Adjusted height to connect steps properly */}
+            {!isLast && <div className={cn(
+              "absolute h-full w-0.5 left-7 top-14 -z-10", 
+              step.completed ? "bg-cc-green" : "bg-gray-200"
+            )} />}
             
             <div className="flex items-start mb-8">
               {/* Step Circle */}
