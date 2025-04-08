@@ -22,14 +22,14 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   onRegenerateOptions
 }) => {
   return (
-    <div className="flex flex-col h-[100vh]">
+    <div className="flex flex-col h-full">
       {/* Header - 10vh */}
       <div className="h-[10vh] flex items-center">
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
       {/* Cards container - 85vh */}
-      <div className="flex flex-col gap-3 h-[85vh] overflow-y-auto pr-2">
+      <div className="flex flex-col gap-3 h-[85vh] overflow-y-auto pr-4">
         {plans.map(plan => (
           <InsurancePlanCard
             key={plan.id}

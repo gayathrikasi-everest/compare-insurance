@@ -66,7 +66,7 @@ const RecommendedPlans: React.FC = () => {
       {/* Right content area - taking full height */}
       <div className="w-3/4 flex bg-[#EEE] h-screen">
         {/* Left column: Stacked insurance plan cards - 35% width */}
-        <div className="w-[35%] pr-4">
+        <div className="w-[35%] p-4">
           <InsurancePlanList 
             plans={recommendedInsurancePlans} 
             expandedPlanId={expandedPlanId} 
@@ -77,7 +77,7 @@ const RecommendedPlans: React.FC = () => {
         </div>
         
         {/* Right column: Profile-based recommendation explanation - 65% width */}
-        <div className="w-[65%] p-4">
+        <div className="w-[65%] p-4 h-full">
           <RecommendationExplanation 
             recommendationText={recommendationText} 
             onAskQuestions={handleAskQuestions} 

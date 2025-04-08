@@ -32,19 +32,25 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
 
   return (
     <div className="h-full flex flex-col">
-      <ScrollArea className="flex-grow h-[calc(100vh-240px)]">
+      {/* Header area - 10vh to match the left column */}
+      <div className="h-[10vh]">
+        <h3 className="text-lg font-bold text-cc-blue">Your Personalized Recommendation</h3>
+      </div>
+      
+      {/* Content area - 85vh to match cards container */}
+      <ScrollArea className="h-[85vh] pr-4">
         <div className="pr-4">
-          <h3 className="text-lg font-bold text-cc-blue mb-4">Your Personalized Recommendation</h3>
           <p className="text-gray-700 whitespace-pre-line mb-6">
             {formatTextWithBold(recommendationText)}
           </p>
         </div>
       </ScrollArea>
       
-      <div className="sticky bottom-0 pt-4 bg-[#EEE] mt-auto">
+      {/* Footer area - 5vh to match the bottom button */}
+      <div className="h-[5vh] mt-auto">
         <Button 
           onClick={onAskQuestions}
-          className="bg-green-500 hover:bg-green-600 text-white shadow-md flex items-center gap-2 mb-8 w-full md:w-auto"
+          className="bg-green-500 hover:bg-green-600 text-white shadow-md flex items-center gap-2 w-full"
         >
           <MessageCircle size={16} />
           Ask questions about these plans
