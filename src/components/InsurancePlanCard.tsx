@@ -21,10 +21,10 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   onBuyPlan
 }) => {
   return (
-    <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-cc-green' : 'border-gray-200'} p-4 relative`}>
+    <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-cc-green' : 'border-gray-200'} p-4 relative mt-4`}>
       {/* Best Match Badge */}
       {isTopRecommendation && (
-        <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-cc-green text-white text-xs px-3 py-1 rounded-full">
+        <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-cc-green text-white text-xs px-3 py-1 rounded-full z-10">
           Best Match
         </div>
       )}
