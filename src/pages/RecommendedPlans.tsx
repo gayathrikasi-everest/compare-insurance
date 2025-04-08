@@ -71,7 +71,7 @@ const RecommendedPlans: React.FC = () => {
       </div>
       
       {/* Right content area with new layout - taking full height */}
-      <div className="w-3/4 flex-1 py-4 px-2 bg-[#EEE] flex flex-col">
+      <div className="w-3/4 flex-1 py-4 px-[8%] bg-[#EEE] flex flex-col">
         <div className="flex-grow flex flex-col md:flex-row gap-4">
           {/* Left column: Stacked insurance plan cards - 35% width */}
           <div className="md:w-[35%]">
