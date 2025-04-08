@@ -125,15 +125,15 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
   return (
     <div className="min-h-screen flex bg-white">
       {/* Left sidebar with progress */}
-      <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md">
+      <div className="w-1/4 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md">
         <ProgressBar steps={steps} currentStep={2} />
       </div>
       
-      {/* Right content area */}
-      <div className="w-5/8 flex-1 p-8 overflow-y-auto bg-[#EEE]">
-        <div className="max-w-4xl mx-auto">
-          {/* Plan cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      {/* Right content area with new layout */}
+      <div className="w-3/4 flex-1 p-8 overflow-y-auto bg-[#EEE]">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-6">
+          {/* Left column: Stacked insurance plan cards */}
+          <div className="md:w-1/2 flex flex-col gap-6">
             {insurancePlans.map(plan => (
               <InsurancePlanCard
                 key={plan.id}
@@ -145,55 +145,57 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
                 onBuyPlan={() => handleBuyPlan(plan.id)}
               />
             ))}
-          </div>
-          
-          {/* Expanded plan details */}
-          {expandedPlanId && (
-            <div className="glass-card backdrop-blur-md bg-white/70 border border-white/20 shadow-xl p-6 mb-8 animate-fade-in">
-              {insurancePlans.filter(p => p.id === expandedPlanId).map(plan => (
-                <div key={plan.id}>
-                  <h3 className="text-xl font-bold text-cc-blue mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 mb-4">{plan.description}</p>
-                  <h4 className="font-semibold text-cc-blue mt-4 mb-2">Key Features:</h4>
-                  <ul className="list-disc pl-5 space-y-1">
-                    {plan.features.map((feature, index) => (
-                      <li key={index} className="text-gray-700">{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          )}
-          
-          {/* Profile-based recommendation explanation with scrollbar */}
-          <div className="glass-card backdrop-blur-md bg-white/70 border border-white/20 shadow-xl p-6 mb-8">
-            <ScrollArea className="h-60">
-              <div className="pr-4">
-                <h3 className="text-lg font-bold text-cc-blue mb-2">Your Personalized Recommendation</h3>
-                <p className="text-gray-700 whitespace-pre-line">{recommendationText}</p>
-              </div>
-            </ScrollArea>
-          </div>
-          
-          {/* Action buttons */}
-          <div className="flex flex-col sm:flex-row justify-between gap-4">
-            <Button 
-              variant="outline" 
-              onClick={handleRegenerateOptions}
-              className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2"
-            >
-              <RefreshCw size={16} />
-              I don't like these options
-            </Button>
             
-            <Button 
-              onClick={handleAskQuestions}
-              className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white shadow-md flex items-center gap-2"
-            >
-              <MessageCircle size={16} />
-              Ask questions about these plans
-            </Button>
+            {/* Expanded plan details */}
+            {expandedPlanId && (
+              <div className="glass-card backdrop-blur-md bg-white/70 border border-white/20 shadow-xl p-6 mt-4 animate-fade-in">
+                {insurancePlans.filter(p => p.id === expandedPlanId).map(plan => (
+                  <div key={plan.id}>
+                    <h3 className="text-xl font-bold text-cc-blue mb-2">{plan.name}</h3>
+                    <p className="text-gray-600 mb-4">{plan.description}</p>
+                    <h4 className="font-semibold text-cc-blue mt-4 mb-2">Key Features:</h4>
+                    <ul className="list-disc pl-5 space-y-1">
+                      {plan.features.map((feature, index) => (
+                        <li key={index} className="text-gray-700">{feature}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
+          
+          {/* Right column: Profile-based recommendation explanation */}
+          <div className="md:w-1/2">
+            <div className="glass-card backdrop-blur-md bg-white/70 border border-white/20 shadow-xl p-6 h-full">
+              <ScrollArea className="h-[600px]">
+                <div className="pr-4">
+                  <h3 className="text-lg font-bold text-cc-blue mb-4">Your Personalized Recommendation</h3>
+                  <p className="text-gray-700 whitespace-pre-line">{recommendationText}</p>
+                </div>
+              </ScrollArea>
+            </div>
+          </div>
+        </div>
+        
+        {/* Action buttons */}
+        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-8">
+          <Button 
+            variant="outline" 
+            onClick={handleRegenerateOptions}
+            className="text-cc-blue border-cc-blue hover:bg-cc-light-blue backdrop-blur-md flex items-center gap-2"
+          >
+            <RefreshCw size={16} />
+            I don't like these options
+          </Button>
+          
+          <Button 
+            onClick={handleAskQuestions}
+            className="bg-gradient-to-r from-cc-green to-cc-dark-green hover:opacity-90 text-white shadow-md flex items-center gap-2"
+          >
+            <MessageCircle size={16} />
+            Ask questions about these plans
+          </Button>
         </div>
       </div>
     </div>
