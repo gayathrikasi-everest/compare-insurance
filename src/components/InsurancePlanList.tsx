@@ -36,7 +36,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full pb-[3%]">
+    <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center mb-4">
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
@@ -57,7 +57,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         ))}
       </div>
       
-      {/* "I don't like" button - visible at the bottom with proper navbar spacing */}
+      {/* "I don't like" button - visible at the bottom */}
       <div className="mt-auto pt-4 border-t border-gray-100">
         <Button 
           variant="outline" 

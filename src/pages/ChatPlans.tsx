@@ -64,7 +64,7 @@ const ChatPlans: React.FC = () => {
 
   return (
     <>
-      <div className="h-screen flex bg-white overflow-hidden">
+      <div className="h-[calc(100vh-56px)] flex bg-white overflow-hidden">
         {/* Left sidebar with progress */}
         <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
           <ProgressBar steps={steps} currentStep={3} />
@@ -76,7 +76,7 @@ const ChatPlans: React.FC = () => {
         {/* Right content area */}
         <div className="w-3/4 flex bg-[#f8f9fa]">
           {/* Left column: Insurance plan cards - 35% width */}
-          <div className="w-[35%] p-4 flex flex-col h-screen">
+          <div className="w-[35%] p-4 flex flex-col h-full">
             <InsurancePlanList 
               plans={recommendedInsurancePlans} 
               expandedPlanId={expandedPlanId} 
@@ -87,7 +87,7 @@ const ChatPlans: React.FC = () => {
           </div>
           
           {/* Right column: Chat interface - 65% width */}
-          <div className="w-[65%] p-4 flex flex-col h-screen">
+          <div className="w-[65%] p-4 flex flex-col h-full">
             <ChatInterface planNames={planNames} />
           </div>
         </div>
