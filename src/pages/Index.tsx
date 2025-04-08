@@ -85,7 +85,7 @@ const Index = () => {
         </div>
         
         {/* Trust Badge */}
-        <div className="bg-gray-50 rounded-md p-6 max-w-md">
+        <div className="bg-gray-200 rounded-md p-6 max-w-md">
           <div className="flex items-center">
             <div className="bg-cc-green rounded-md p-2 mr-4">
               <Check className="w-5 h-5 text-white" />
