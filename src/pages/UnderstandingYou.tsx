@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
+
 const UnderstandingYou: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -28,6 +29,7 @@ const UnderstandingYou: React.FC = () => {
     completed: false,
     active: false
   }];
+
   const handleSubmit = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
@@ -42,6 +44,7 @@ const UnderstandingYou: React.FC = () => {
       setIsSubmitting(false);
     }, 1000);
   };
+
   return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
@@ -53,7 +56,7 @@ const UnderstandingYou: React.FC = () => {
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
             <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
-            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2 glass-card py-2 px-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2 py-2 px-4">
               Find your ideal health insurance
             </h1>
             <p className="text-gray-600 max-w-md mx-auto">
@@ -80,4 +83,5 @@ const UnderstandingYou: React.FC = () => {
       </div>
     </div>;
 };
+
 export default UnderstandingYou;
