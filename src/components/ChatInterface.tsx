@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -95,9 +94,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
     navigate('/recommended-plans');
   };
 
+  const handleBuyPlan = (planId: string) => {
+    navigate('/purchase-now', { state: { planId } });
+  };
+
   return (
     <div className="flex flex-col h-full">
-      {/* Chat header bar */}
       <div className="bg-cc-green text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">
           <MessageSquare size={20} />
@@ -108,7 +110,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
         </Button>
       </div>
       
-      {/* Chat messages area */}
       <div className="flex-1 overflow-y-auto mb-4 bg-white/80 rounded-b-lg shadow-sm border border-gray-100">
         <div className="p-4">
           {messages.map(message => (
@@ -132,7 +133,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
         </div>
       </div>
       
-      {/* Sample questions */}
       <div className="bg-gray-50 border border-gray-100 rounded-md p-3 mb-4">
         <p className="text-sm text-gray-500 mb-2">Suggested questions:</p>
         <div className="flex flex-wrap gap-2">
@@ -148,7 +148,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
         </div>
       </div>
       
-      {/* Input area */}
       <div className="mt-auto pt-4 border-t border-gray-100 bg-[#f8f9fa]">
         <div className="flex gap-2">
           <Input 

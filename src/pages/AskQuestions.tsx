@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -71,7 +70,6 @@ const AskQuestions: React.FC = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate response based on keywords
     setTimeout(() => {
       let responseContent = "I don't have specific information on that. Would you like to speak with a health insurance specialist?";
       const lowerCaseInput = inputValue.toLowerCase();
@@ -117,7 +115,6 @@ const AskQuestions: React.FC = () => {
   
   return (
     <div className="min-h-screen flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
-      {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white p-8 border-r">
         <h2 className="text-2xl font-bold text-cc-blue mb-6">
           Find and contract your ideal<br />health insurance
@@ -130,10 +127,8 @@ const AskQuestions: React.FC = () => {
         </Button>
       </div>
       
-      {/* Right content area */}
       <div className="w-5/8 flex-1 p-8 overflow-y-auto">
         <div className="max-w-4xl mx-auto">
-          {/* Compact plan cards */}
           <div className="flex flex-wrap gap-4 mb-8">
             {mockInsurancePlans.map(plan => <div key={plan.id} className="glass-card p-4 flex-1 min-w-[200px]">
                 <h3 className="text-sm font-bold text-cc-blue">{plan.name}</h3>
@@ -147,11 +142,9 @@ const AskQuestions: React.FC = () => {
               </div>)}
           </div>
           
-          {/* Chat section */}
           <div className="glass-card mb-4 overflow-hidden flex flex-col" style={{
           height: 'calc(100vh - 300px)'
         }}>
-            {/* Chat messages */}
             <div className="flex-1 p-4 overflow-y-auto">
               {messages.map(message => <ChatMessage key={message.id} content={message.content} isUser={message.isUser} timestamp={message.timestamp} />)}
               
@@ -164,14 +157,12 @@ const AskQuestions: React.FC = () => {
               <div ref={messagesEndRef} />
             </div>
             
-            {/* Sample questions */}
             <div className="px-4 py-2 bg-gray-50 border-t border-gray-100 flex overflow-x-auto gap-2">
               {sampleQuestions.map((question, index) => <button key={index} onClick={() => handleSampleQuestion(question)} className="whitespace-nowrap px-3 py-1 text-sm bg-white border border-gray-200 rounded-full hover:border-cc-green">
                   {question}
                 </button>)}
             </div>
             
-            {/* Input area */}
             <div className="p-4 border-t border-gray-100 flex gap-2 bg-white">
               <Input value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress} placeholder="Ask a question about these plans..." className="flex-1" />
               <Button onClick={handleSendMessage} disabled={inputValue.trim() === ''} className="bg-cc-green hover:bg-cc-dark-green text-white">

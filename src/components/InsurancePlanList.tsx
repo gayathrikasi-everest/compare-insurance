@@ -38,8 +38,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   };
 
   const handleBuyPlan = (planId: string) => {
+    // Always navigate to purchase screen with the plan ID
     navigate('/purchase-now', { state: { planId } });
-    onBuyPlan(planId);
   };
 
   return (
