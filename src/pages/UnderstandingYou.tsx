@@ -56,7 +56,7 @@ const UnderstandingYou: React.FC = () => {
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
             <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
-            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2 py-2 px-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2">
               Find your ideal health insurance
             </h1>
             <p className="text-gray-600 max-w-md mx-auto">
