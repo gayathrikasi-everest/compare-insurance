@@ -32,7 +32,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
 
   return (
     <div className="h-full flex flex-col">
-      <ScrollArea className="flex-grow h-[80%]">
+      <ScrollArea className="flex-grow h-[calc(100vh-240px)]">
         <div className="pr-4">
           <h3 className="text-lg font-bold text-cc-blue mb-4">Your Personalized Recommendation</h3>
           <p className="text-gray-700 whitespace-pre-line mb-6">
