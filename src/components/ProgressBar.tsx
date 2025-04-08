@@ -43,7 +43,10 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             
             <div className="flex items-start mb-8">
               {/* Step Circle */}
-              <div className={cn("flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4", step.completed ? "bg-cc-light-green text-cc-green" : step.active ? "bg-cc-green text-white" : "bg-gray-100 text-gray-400")}>
+              <div className={cn("flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4", 
+                step.completed ? "bg-cc-light-green text-cc-green" : 
+                step.active ? "bg-[#E83F6F] text-white" : 
+                "bg-gray-100 text-gray-400")}>
                 {step.completed ? <Check className="w-6 h-6" /> : step.number}
               </div>
               
