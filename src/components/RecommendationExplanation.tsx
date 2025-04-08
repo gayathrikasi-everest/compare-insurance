@@ -1,12 +1,18 @@
 
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from '@/components/ui/button';
+import { MessageCircle } from 'lucide-react';
 
 interface RecommendationExplanationProps {
   recommendationText: string;
+  onAskQuestions: () => void;
 }
 
-const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({ recommendationText }) => {
+const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({ 
+  recommendationText, 
+  onAskQuestions 
+}) => {
   // Function to format text with asterisks as bold
   const formatTextWithBold = (text: string) => {
     // Split the text by the bold marker pattern **text**
@@ -26,12 +32,20 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({ r
 
   return (
     <div className="h-full">
-      <ScrollArea className="h-[calc(100vh-180px)]">
+      <ScrollArea className="h-[calc(100vh-240px)]">
         <div className="pr-4">
           <h3 className="text-lg font-bold text-cc-blue mb-4">Your Personalized Recommendation</h3>
-          <p className="text-gray-700 whitespace-pre-line">
+          <p className="text-gray-700 whitespace-pre-line mb-6">
             {formatTextWithBold(recommendationText)}
           </p>
+          
+          <Button 
+            onClick={onAskQuestions}
+            className="bg-green-500 hover:bg-green-600 text-white shadow-md flex items-center gap-2 mt-4 mb-8 w-full md:w-auto"
+          >
+            <MessageCircle size={16} />
+            Ask questions about these plans
+          </Button>
         </div>
       </ScrollArea>
     </div>

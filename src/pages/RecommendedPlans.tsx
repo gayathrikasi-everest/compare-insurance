@@ -85,7 +85,10 @@ const RecommendedPlans: React.FC = () => {
           
           {/* Right column: Profile-based recommendation explanation - 65% width */}
           <div className="md:w-[65%]">
-            <RecommendationExplanation recommendationText={recommendationText} />
+            <RecommendationExplanation 
+              recommendationText={recommendationText} 
+              onAskQuestions={handleAskQuestions}
+            />
           </div>
         </div>
         
