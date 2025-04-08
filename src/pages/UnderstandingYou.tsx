@@ -26,7 +26,7 @@ const UnderstandingYou: React.FC = () => {
       <div className="w-full max-w-2xl p-8">
         <div className="text-center mb-8">
           <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
-          <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold text-cc-blue mb-2\nbackground: rgba( 255, 255, 255, 0.25 );\nbox-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );\nbackdrop-filter: blur( 4px );\n-webkit-backdrop-filter: blur( 4px );\nborder-radius: 10px;\nborder: 1px solid rgba( 255, 255, 255, 0.18 );">
             Find your ideal health insurance
           </h1>
           <p className="text-gray-600 max-w-md mx-auto">
