@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -5,7 +6,7 @@ import InsurancePlanCard from '@/components/InsurancePlanCard';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { UserInfo } from '@/types';
-import { ArrowLeft, RefreshCw, MessageCircle } from 'lucide-react';
+import { RefreshCw, MessageCircle } from 'lucide-react';
 
 // Real insurance plan data
 const insurancePlans = [
@@ -99,10 +100,6 @@ const RecommendedPlans: React.FC = () => {
     alert('This would regenerate new insurance options based on your preferences');
   };
 
-  const handleEditInfo = () => {
-    navigate('/');
-  };
-
   const handleSeeMore = (planId: string) => {
     setExpandedPlanId(expandedPlanId === planId ? null : planId);
   };
@@ -130,15 +127,6 @@ After evaluating these options, the **Medibank Gold Protect and Growing Family 6
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md">
         <ProgressBar steps={steps} currentStep={2} />
-        
-        <Button 
-          variant="outline" 
-          onClick={handleEditInfo}
-          className="mt-4 text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center gap-2"
-        >
-          <ArrowLeft size={16} />
-          Edit info
-        </Button>
       </div>
       
       {/* Right content area */}

@@ -1,8 +1,10 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Check, Circle } from 'lucide-react';
+import { Check, Circle, ArrowLeft } from 'lucide-react';
 import { UserInfo } from '@/types';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 interface Step {
   number: number;
@@ -20,6 +22,11 @@ interface ProgressBarProps {
 const ProgressBar: React.FC<ProgressBarProps> = ({ steps, currentStep }) => {
   // Get user info from localStorage
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
+  const navigate = useNavigate();
+  
+  const handleEditInfo = () => {
+    navigate('/');
+  };
   
   return (
     <div className="relative py-4 max-w-xs">
@@ -74,6 +81,16 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ steps, currentStep }) => {
                 {showUserQuery && (
                   <div className="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-700">
                     {userInfo.query}
+                    
+                    {/* Edit info button */}
+                    <Button 
+                      variant="outline" 
+                      onClick={handleEditInfo}
+                      className="mt-3 text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center gap-2"
+                    >
+                      <ArrowLeft size={16} />
+                      Edit info
+                    </Button>
                   </div>
                 )}
               </div>
