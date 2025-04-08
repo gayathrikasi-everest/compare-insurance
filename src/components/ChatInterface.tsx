@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import ChatMessage from '@/components/ChatMessage';
-import { Send } from 'lucide-react';
+import { Send, MessageSquare, X } from 'lucide-react';
 import { chatResponses, sampleQuestions } from '@/data/mockData';
 
 interface Message {
@@ -20,7 +20,7 @@ interface ChatInterfaceProps {
 const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
   const [messages, setMessages] = useState<Message[]>([{
     id: '1',
-    content: "Hi there! I'm your insurance guide. Ask me any questions about these plans.",
+    content: "Hi there! I'm your insurance guide. Feel free to ask me any questions about these plans.",
     isUser: false,
     timestamp: new Date().toLocaleTimeString()
   }]);
@@ -91,12 +91,19 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="flex items-center mb-4">
-        <h2 className="text-2xl font-bold text-cc-blue">Ask questions about your plans</h2>
+      {/* Chat header bar */}
+      <div className="bg-cc-green text-white p-4 rounded-t-lg flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <MessageSquare size={20} />
+          <h2 className="font-medium">Ask questions about these plans</h2>
+        </div>
+        <Button variant="ghost" size="icon" className="hover:bg-cc-dark-green text-white">
+          <X size={20} />
+        </Button>
       </div>
       
       {/* Chat messages area */}
-      <div className="flex-1 overflow-y-auto mb-4 bg-white/80 rounded-lg shadow-sm border border-gray-100">
+      <div className="flex-1 overflow-y-auto mb-4 bg-white/80 rounded-b-lg shadow-sm border border-gray-100">
         <div className="p-4">
           {messages.map(message => (
             <ChatMessage 
