@@ -1,10 +1,10 @@
 
 import React from 'react';
 import InsurancePlanCard from '@/components/InsurancePlanCard';
-import ExpandedPlanDetails from '@/components/ExpandedPlanDetails';
 import { InsurancePlan } from '@/types';
 import { Button } from '@/components/ui/button';
 import { RefreshCw } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 interface InsurancePlanListProps {
   plans: Array<InsurancePlan & { isTopRecommendation?: boolean }>;
@@ -21,6 +21,20 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   onBuyPlan,
   onRegenerateOptions
 }) => {
+  const { toast } = useToast();
+  
+  const handleSeeMore = (planId: string) => {
+    const plan = plans.find(p => p.id === planId);
+    if (plan) {
+      toast({
+        title: plan.name,
+        description: `Learn more about ${plan.name} by ${plan.provider}. This would show detailed plan information in a full implementation.`,
+        duration: 5000,
+      });
+    }
+    onSeeMore(planId);
+  };
+
   return (
     <div className="flex flex-col h-full">
       {/* Header - 10vh */}
@@ -29,7 +43,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
       </div>
       
       {/* Cards container - 85vh */}
-      <div className="flex flex-col gap-3 h-[85vh] overflow-y-auto pr-4">
+      <div className="flex flex-col space-y-6 h-[85vh]">
         {plans.map(plan => (
           <InsurancePlanCard
             key={plan.id}
@@ -37,14 +51,10 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
             provider={plan.provider}
             price={plan.price}
             isTopRecommendation={plan.isTopRecommendation}
-            onSeeMore={() => onSeeMore(plan.id)}
+            onSeeMore={() => handleSeeMore(plan.id)}
             onBuyPlan={() => onBuyPlan(plan.id)}
           />
         ))}
-        
-        {expandedPlanId && (
-          <ExpandedPlanDetails planId={expandedPlanId} plans={plans} />
-        )}
       </div>
       
       {/* Footer with button - 5vh */}

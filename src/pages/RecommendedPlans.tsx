@@ -6,6 +6,7 @@ import { UserInfo } from '@/types';
 import InsurancePlanList from '@/components/InsurancePlanList';
 import RecommendationExplanation from '@/components/RecommendationExplanation';
 import { recommendedInsurancePlans, recommendationText } from '@/data/mockData';
+import { Toaster } from "@/components/ui/toaster";
 
 const RecommendedPlans: React.FC = () => {
   const navigate = useNavigate();
@@ -57,34 +58,37 @@ const RecommendedPlans: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex bg-white overflow-hidden">
-      {/* Left sidebar with progress */}
-      <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
-        <ProgressBar steps={steps} currentStep={2} />
-      </div>
-      
-      {/* Right content area - taking full height */}
-      <div className="w-3/4 flex bg-[#EEE] h-screen">
-        {/* Left column: Stacked insurance plan cards - 35% width */}
-        <div className="w-[35%] p-4">
-          <InsurancePlanList 
-            plans={recommendedInsurancePlans} 
-            expandedPlanId={expandedPlanId} 
-            onSeeMore={handleSeeMore} 
-            onBuyPlan={handleBuyPlan}
-            onRegenerateOptions={handleRegenerateOptions} 
-          />
+    <>
+      <div className="h-screen flex bg-white overflow-hidden">
+        {/* Left sidebar with progress */}
+        <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
+          <ProgressBar steps={steps} currentStep={2} />
         </div>
         
-        {/* Right column: Profile-based recommendation explanation - 65% width */}
-        <div className="w-[65%] p-4 h-full">
-          <RecommendationExplanation 
-            recommendationText={recommendationText} 
-            onAskQuestions={handleAskQuestions} 
-          />
+        {/* Right content area - taking full height */}
+        <div className="w-3/4 flex bg-[#f8f9fa] h-screen">
+          {/* Left column: Stacked insurance plan cards - 35% width */}
+          <div className="w-[35%] p-4">
+            <InsurancePlanList 
+              plans={recommendedInsurancePlans} 
+              expandedPlanId={expandedPlanId} 
+              onSeeMore={handleSeeMore} 
+              onBuyPlan={handleBuyPlan}
+              onRegenerateOptions={handleRegenerateOptions} 
+            />
+          </div>
+          
+          {/* Right column: Profile-based recommendation explanation - 65% width */}
+          <div className="w-[65%] p-4 h-full">
+            <RecommendationExplanation 
+              recommendationText={recommendationText} 
+              onAskQuestions={handleAskQuestions} 
+            />
+          </div>
         </div>
       </div>
-    </div>
+      <Toaster />
+    </>
   );
 };
 
