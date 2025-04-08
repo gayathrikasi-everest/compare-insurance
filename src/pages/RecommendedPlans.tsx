@@ -42,7 +42,7 @@ const RecommendedPlans: React.FC = () => {
 
   const handleRegenerateOptions = () => {
     // In a real app, this would fetch new recommendations
-    alert('This would regenerate new insurance options based on your preferences');
+    console.log('Regenerating insurance options based on preferences');
   };
 
   const handleSeeMore = (planId: string) => {
@@ -50,7 +50,7 @@ const RecommendedPlans: React.FC = () => {
   };
 
   const handleBuyPlan = (planId: string) => {
-    alert(`In a real application, this would start the process to purchase plan ${planId}`);
+    navigate('/purchase-now', { state: { planId } });
   };
 
   const handleAskQuestions = () => {

@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -7,12 +8,14 @@ import { Input } from '@/components/ui/input';
 import InsurancePlanCard from '@/components/InsurancePlanCard';
 import { mockInsurancePlans, sampleQuestions, chatResponses } from '@/data/mockData';
 import { UserInfo } from '@/types';
+
 interface Message {
   id: string;
   content: string;
   isUser: boolean;
   timestamp: string;
 }
+
 const AskQuestions: React.FC = () => {
   const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([{
@@ -25,6 +28,7 @@ const AskQuestions: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
+  
   const steps = [{
     number: 1,
     title: "Understanding you",
@@ -44,14 +48,17 @@ const AskQuestions: React.FC = () => {
     completed: false,
     active: true
   }];
+  
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+  
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({
       behavior: "smooth"
     });
   };
+  
   const handleSendMessage = () => {
     if (inputValue.trim() === '') return;
     const newMessage: Message = {
@@ -89,21 +96,27 @@ const AskQuestions: React.FC = () => {
       setIsTyping(false);
     }, 1500);
   };
+  
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       handleSendMessage();
     }
   };
+  
   const handleSampleQuestion = (question: string) => {
     setInputValue(question);
   };
+  
   const handleBack = () => {
     navigate('/recommended-plans');
   };
+  
   const handleBuyPlan = (planId: string) => {
-    alert(`In a real application, this would start the process to purchase plan ${planId}`);
+    navigate('/purchase-now', { state: { planId } });
   };
-  return <div className="min-h-screen flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
+  
+  return (
+    <div className="min-h-screen flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       {/* Left sidebar with progress */}
       <div className="w-3/8 bg-white p-8 border-r">
         <h2 className="text-2xl font-bold text-cc-blue mb-6">
@@ -168,6 +181,8 @@ const AskQuestions: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default AskQuestions;

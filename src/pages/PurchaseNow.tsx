@@ -94,14 +94,27 @@ const PurchaseNow: React.FC = () => {
               <p className="text-center font-medium text-cc-green mb-2">
                 That's an amazing choice!!
               </p>
-              <InsurancePlanCard
-                name={selectedPlan.name}
-                provider={selectedPlan.provider}
-                price={selectedPlan.price}
-                isTopRecommendation={selectedPlan.isTopRecommendation}
-                onSeeMore={() => {}}
-                onBuyPlan={() => {}}
-              />
+              <div className="rounded-xl bg-white border border-gray-200 p-4 relative mt-4">
+                {selectedPlan.isTopRecommendation && (
+                  <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-cc-green text-white text-xs px-3 py-1 rounded-full z-10">
+                    Best Match
+                  </div>
+                )}
+                
+                {/* Plan Header */}
+                <div className="mb-4">
+                  <h3 className="text-lg font-semibold text-gray-800">{selectedPlan.name}</h3>
+                  <p className="text-sm text-gray-500">{selectedPlan.provider}</p>
+                </div>
+                
+                {/* Price */}
+                <div className="mb-4">
+                  <div className="flex items-baseline">
+                    <span className="text-xl font-bold text-gray-900">${selectedPlan.price}</span>
+                    <span className="text-gray-500 ml-1 text-sm">/ month</span>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
