@@ -65,10 +65,10 @@ const RecommendedPlans: React.FC = () => {
           <ProgressBar steps={steps} currentStep={2} />
         </div>
         
-        {/* Right content area - taking full height */}
-        <div className="w-3/4 flex bg-[#f8f9fa] h-full">
+        {/* Right content area */}
+        <div className="w-3/4 flex bg-[#f8f9fa]">
           {/* Left column: Insurance plan cards - 35% width */}
-          <div className="w-[35%] p-4 h-full">
+          <div className="w-[35%] p-4 flex flex-col h-screen">
             <InsurancePlanList 
               plans={recommendedInsurancePlans} 
               expandedPlanId={expandedPlanId} 
@@ -79,7 +79,7 @@ const RecommendedPlans: React.FC = () => {
           </div>
           
           {/* Right column: Recommendation explanation - 65% width */}
-          <div className="w-[65%] p-4 h-full">
+          <div className="w-[65%] p-4 flex flex-col h-screen">
             <RecommendationExplanation 
               recommendationText={recommendationText} 
               onAskQuestions={handleAskQuestions} 

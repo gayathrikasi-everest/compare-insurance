@@ -70,22 +70,15 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header area - 10vh to match the left column */}
-      <div className="h-[10vh]">
-        {/* Empty space to match height */}
-      </div>
-      
-      {/* Content area - takes remaining space minus the "Still have doubts" section height */}
-      <div className="flex-1 overflow-y-auto">
+      {/* Content area - takes remaining space but leaves room for the bottom section */}
+      <div className="flex-1 overflow-y-auto mb-4">
         <ScrollArea className="h-full pr-4">
-          <div className="pr-4 pb-4">
-            {formatNumberedExplanations(recommendationText)}
-          </div>
+          {formatNumberedExplanations(recommendationText)}
         </ScrollArea>
       </div>
       
-      {/* "Still have doubts" section - at the bottom of the container */}
-      <div className="mt-4 pt-2 border-t border-gray-100 bg-[#f8f9fa]">
+      {/* "Still have doubts" section at the bottom */}
+      <div className="border-t border-gray-100 bg-[#f8f9fa] py-4">
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 flex items-center justify-between">
           <p className="text-gray-900 font-medium">Still have doubts? We get it.</p>
           <Button 

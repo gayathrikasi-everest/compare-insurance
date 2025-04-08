@@ -37,30 +37,28 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
 
   return (
     <div className="flex flex-col h-full">
-      {/* Header - 10vh */}
-      <div className="h-[10vh] flex items-center">
+      {/* Header */}
+      <div className="flex items-center mb-4">
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
-      {/* Cards container - with limited height to ensure button visibility */}
-      <div className="flex-1 overflow-y-auto">
-        <div className="flex flex-col space-y-4 pb-4">
-          {plans.map(plan => (
-            <InsurancePlanCard
-              key={plan.id}
-              name={plan.name}
-              provider={plan.provider}
-              price={plan.price}
-              isTopRecommendation={plan.isTopRecommendation}
-              onSeeMore={() => handleSeeMore(plan.id)}
-              onBuyPlan={() => onBuyPlan(plan.id)}
-            />
-          ))}
-        </div>
+      {/* Cards container - set to flex-1 to take available space but leave room for button */}
+      <div className="flex-1 overflow-y-auto mb-4">
+        {plans.map(plan => (
+          <InsurancePlanCard
+            key={plan.id}
+            name={plan.name}
+            provider={plan.provider}
+            price={plan.price}
+            isTopRecommendation={plan.isTopRecommendation}
+            onSeeMore={() => handleSeeMore(plan.id)}
+            onBuyPlan={() => onBuyPlan(plan.id)}
+          />
+        ))}
       </div>
       
-      {/* "I don't like" button - at the bottom of the container */}
-      <div className="mt-4 pt-2 border-t border-gray-100 bg-[#f8f9fa]">
+      {/* "I don't like" button - fixed at the bottom */}
+      <div className="border-t border-gray-100 bg-[#f8f9fa] py-4">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}
