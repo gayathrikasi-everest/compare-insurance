@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -51,8 +52,33 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
     setInputValue('');
     setIsTyping(true);
 
-    // Navigate back to recommended plans
-    navigate('/recommended-plans');
+    // Simulate response based on keywords
+    setTimeout(() => {
+      let responseContent = "I don't have specific information on that. Would you like to speak with a health insurance specialist?";
+      const lowerCaseInput = inputValue.toLowerCase();
+      
+      if (lowerCaseInput.includes('pregnancy')) {
+        responseContent = chatResponses.pregnancy;
+      } else if (lowerCaseInput.includes('wait') || lowerCaseInput.includes('period')) {
+        responseContent = chatResponses.waitingPeriods;
+      } else if (lowerCaseInput.includes('child') || lowerCaseInput.includes('kid')) {
+        responseContent = chatResponses.children;
+      } else if (lowerCaseInput.includes('dental')) {
+        responseContent = chatResponses.dental;
+      } else if (lowerCaseInput.includes('discount')) {
+        responseContent = chatResponses.discounts;
+      }
+
+      const botResponse: Message = {
+        id: Date.now().toString(),
+        content: responseContent,
+        isUser: false,
+        timestamp: new Date().toLocaleTimeString()
+      };
+
+      setMessages(prev => [...prev, botResponse]);
+      setIsTyping(false);
+    }, 1500);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -65,6 +91,10 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
     setInputValue(question);
   };
 
+  const handleClose = () => {
+    navigate('/recommended-plans');
+  };
+
   return (
     <div className="flex flex-col h-full">
       {/* Chat header bar */}
@@ -73,7 +103,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
           <MessageSquare size={20} />
           <h2 className="font-medium">Ask questions about these plans</h2>
         </div>
-        <Button variant="ghost" size="icon" className="hover:bg-cc-dark-green text-white">
+        <Button variant="ghost" size="icon" onClick={handleClose} className="hover:bg-cc-dark-green text-white">
           <X size={20} />
         </Button>
       </div>
