@@ -36,7 +36,7 @@ const Index = () => {
     <div className="min-h-screen flex flex-col md:flex-row items-center justify-center bg-gradient-to-br from-white to-blue-50 p-4 md:p-8">
       <div className="w-full md:w-1/2 max-w-xl">
         <img 
-          src="/insurance-illustration.svg" 
+          src="/lovable-uploads/856d3ede-141c-42e6-9b25-045580f72363.png" 
           alt="Insurance Illustration" 
           className="w-full max-w-md mx-auto mb-8"
         />
