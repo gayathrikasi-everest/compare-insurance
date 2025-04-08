@@ -77,7 +77,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       
       {/* Content area - takes remaining space minus the "Still have doubts" section */}
       <div className="flex-1 overflow-y-auto">
-        <ScrollArea className="h-full pr-4 pb-16">
+        <ScrollArea className="h-full pr-4 pb-20">
           <div className="pr-4">
             {formatNumberedExplanations(recommendationText)}
           </div>

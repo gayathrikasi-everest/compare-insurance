@@ -43,7 +43,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
       </div>
       
       {/* Cards container */}
-      <div className="overflow-y-auto pr-2 mb-16">
+      <div className="overflow-y-auto pr-2 pb-20">
         <div className="flex flex-col space-y-4 pb-4">
           {plans.map(plan => (
             <InsurancePlanCard
@@ -59,8 +59,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         </div>
       </div>
       
-      {/* "I don't like" button - fixed to the bottom of the viewport */}
-      <div className="fixed bottom-0 left-0 w-[35%] p-4 bg-[#f8f9fa] border-t border-gray-100">
+      {/* "I don't like" button - sticky to the bottom of the content area */}
+      <div className="sticky bottom-0 left-0 w-full p-4 bg-[#f8f9fa] border-t border-gray-100 mt-auto">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}
