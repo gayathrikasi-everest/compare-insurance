@@ -36,14 +36,14 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full relative">
       {/* Header - 10vh */}
       <div className="h-[10vh] flex items-center">
         <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
       </div>
       
-      {/* Cards container - 80vh to leave room for the button */}
-      <div className="flex flex-col space-y-4 h-[80vh] overflow-y-auto pr-2">
+      {/* Cards container - adjusted to leave space for sticky button */}
+      <div className="flex flex-col space-y-4 overflow-y-auto pr-2 pb-16">
         {plans.map(plan => (
           <InsurancePlanCard
             key={plan.id}
@@ -57,8 +57,8 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
         ))}
       </div>
       
-      {/* "I don't like" button - 10vh, moved closer to cards */}
-      <div className="h-[10vh] mt-4">
+      {/* "I don't like" button - sticky to bottom */}
+      <div className="absolute bottom-0 left-0 right-0 py-4 bg-[#f8f9fa]">
         <Button 
           variant="outline" 
           onClick={onRegenerateOptions}
