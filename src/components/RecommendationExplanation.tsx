@@ -67,9 +67,9 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
             </div>
             
             {/* Option 3 */}
-            <div className="border-l-4 border-[#7c95e1] pl-4">
+            <div className="border-l-4 border-[#3DA6E1] pl-4">
               <div className="flex items-start mb-2">
-                <div className="bg-[#7c95e1] text-white text-xs px-2 py-1 rounded mr-2">
+                <div className="bg-[#3DA6E1] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 3
                 </div>
                 <div>
