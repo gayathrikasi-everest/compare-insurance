@@ -7,7 +7,6 @@ import InsurancePlanList from '@/components/InsurancePlanList';
 import ChatInterface from '@/components/ChatInterface';
 import { recommendedInsurancePlans } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
-import { Button } from "@/components/ui/button";
 
 const ChatPlans: React.FC = () => {
   const navigate = useNavigate();
@@ -68,12 +67,6 @@ const ChatPlans: React.FC = () => {
         {/* Left sidebar with progress */}
         <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
           <ProgressBar steps={steps} currentStep={3} />
-          <Button
-            onClick={handleBack}
-            className="mt-6 w-full bg-white border border-gray-200 hover:bg-gray-50 text-cc-blue"
-          >
-            Back to Insurance Plans
-          </Button>
         </div>
         
         {/* Right content area */}
