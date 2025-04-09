@@ -14,9 +14,9 @@ const PlanActionButtons: React.FC<PlanActionButtonsProps> = ({
     <div className="flex justify-center mt-8">
       <Button 
         onClick={onAskQuestions}
-        className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-[1.15em] py-6 px-5"
+        className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6"
       >
-        <MessageCircle size={18} />
+        <MessageCircle size={20} />
         Ask questions about these plans
       </Button>
     </div>

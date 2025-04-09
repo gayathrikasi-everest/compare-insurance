@@ -3,10 +3,12 @@ import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Star } from 'lucide-react';
+
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
 }
+
 const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   recommendationText,
   onAskQuestions
@@ -89,16 +91,17 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
         </ScrollArea>
       </div>
       
-      {/* "Still have doubts" section at the bottom */}
-      <div className="border-t border-gray-100 bg-[#f8f9fa] py-4">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 flex items-center justify-between">
-          <p className="text-gray-900 font-medium">Still have doubts? We get it.</p>
-          <Button onClick={onAskQuestions} className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2">
-            <MessageCircle size={16} />
-            Ask questions about these plans
-          </Button>
-        </div>
+      {/* "Ask questions" button at the bottom, centered */}
+      <div className="border-t border-gray-100 bg-[#f8f9fa] py-4 flex justify-center">
+        <Button 
+          onClick={onAskQuestions} 
+          className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6"
+        >
+          <MessageCircle size={20} />
+          Ask questions about these plans
+        </Button>
       </div>
     </div>;
 };
+
 export default RecommendationExplanation;
