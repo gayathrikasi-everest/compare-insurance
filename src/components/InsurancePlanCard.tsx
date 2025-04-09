@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Info } from 'lucide-react';
+import { ShoppingCart, Info, Star } from 'lucide-react';
 
 interface InsurancePlanProps {
   name: string;
@@ -39,23 +39,33 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
 
   return (
     <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-[#00b67a]' : 'border-gray-200'} p-4 relative mt-4`}>
-      {/* Option Number Badge */}
-      {optionNumber && (
-        <Badge className={`absolute top-0 left-4 transform -translate-y-1/2 ${getBadgeColor()} text-white px-3 py-1 z-10`}>
-          Option {optionNumber}
-        </Badge>
-      )}
-      
-      {/* Best Match Badge */}
-      {isTopRecommendation && (
-        <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-[#00b67a] text-white text-xs px-3 py-1 rounded-full z-10">
-          Best Match
-        </div>
-      )}
+      {/* Badges at the top */}
+      <div className="absolute top-0 left-4 transform -translate-y-1/2 flex gap-2 z-10">
+        {/* Option Number Badge */}
+        {optionNumber && (
+          <Badge className={`${getBadgeColor()} text-white px-3 py-1`}>
+            Option {optionNumber}
+          </Badge>
+        )}
+        
+        {/* Best Match Badge - Now next to the option number badge */}
+        {isTopRecommendation && (
+          <Badge className="bg-[#00b67a] text-white px-3 py-1">
+            <Star size={14} className="mr-1" /> Best Match
+          </Badge>
+        )}
+      </div>
       
       {/* Plan Header */}
-      <div className="mb-4">
-        <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+      <div className="mb-4 mt-2">
+        <div className="flex items-center">
+          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+          {isTopRecommendation && optionNumber === 1 && (
+            <Badge className="ml-2 bg-[#00b67a] text-white px-2 py-0.5 text-xs">
+              <Star size={12} className="mr-1" /> Best Match
+            </Badge>
+          )}
+        </div>
         <p className="text-sm text-gray-500">{provider}</p>
       </div>
       
