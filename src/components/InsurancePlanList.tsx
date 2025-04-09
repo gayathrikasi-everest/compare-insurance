@@ -10,13 +10,15 @@ interface InsurancePlanListProps {
   expandedPlanId: string | null;
   onSeeMore: (planId: string) => void;
   onBuyPlan: (planId: string) => void;
+  onRegenerateOptions?: () => void; // Make this optional to fix TypeScript error
 }
 
 const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   plans,
   expandedPlanId,
   onSeeMore,
-  onBuyPlan
+  onBuyPlan,
+  onRegenerateOptions
 }) => {
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -42,7 +44,7 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="flex items-center mb-4">
-        <h2 className="text-2xl font-bold text-cc-blue">Your recommended plans</h2>
+        <h2 className="text-2xl font-bold text-[#1a3352]">Your recommended plans</h2>
       </div>
       
       {/* Cards container - using flex-1 to allow it to grow/shrink */}

@@ -37,7 +37,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
     return (
       <>
         <div className="flex items-center mb-4">
-          <h3 className="text-lg font-bold text-cc-blue">Your Personalized Recommendation</h3>
+          <h3 className="text-lg font-bold text-[#1a3352]">Your Personalized Recommendation</h3>
           <div className="bg-green-50 px-3 py-1 rounded-full text-green-800 text-xs font-medium inline-flex items-center ml-3">
             <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
@@ -56,7 +56,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           {paragraphs.slice(1).map((paragraph, index) => {
             if (paragraph.trim().match(/^\d+\.\s/)) {
               return (
-                <div key={index} className="border-l-2 border-cc-blue pl-3">
+                <div key={index} className="border-l-2 border-[#1a3352] pl-3">
                   <p className="text-gray-700">{formatTextWithBold(paragraph)}</p>
                 </div>
               );
@@ -83,7 +83,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           <p className="text-gray-900 font-medium">Still have doubts? We get it.</p>
           <Button 
             onClick={onAskQuestions}
-            className="bg-cc-green hover:bg-cc-dark-green text-white shadow-md flex items-center gap-2"
+            className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2"
           >
             <MessageCircle size={16} />
             Ask questions about these plans

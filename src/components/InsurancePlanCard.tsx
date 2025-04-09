@@ -23,18 +23,32 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   onSeeMore,
   onBuyPlan
 }) => {
+  // Get the badge color based on the option number
+  const getBadgeColor = () => {
+    switch(optionNumber) {
+      case 1:
+        return 'bg-[#00b67a]'; // Green for option 1
+      case 2:
+        return 'bg-[#3a86ff]'; // Blue for option 2
+      case 3:
+        return 'bg-[#8338ec]'; // Purple for option 3
+      default:
+        return 'bg-gray-500';
+    }
+  };
+
   return (
-    <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-cc-green' : 'border-gray-200'} p-4 relative mt-4`}>
+    <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-[#00b67a]' : 'border-gray-200'} p-4 relative mt-4`}>
       {/* Option Number Badge */}
       {optionNumber && (
-        <Badge className="absolute top-0 left-4 transform -translate-y-1/2 bg-cc-green text-white px-3 py-1 z-10">
+        <Badge className={`absolute top-0 left-4 transform -translate-y-1/2 ${getBadgeColor()} text-white px-3 py-1 z-10`}>
           Option {optionNumber}
         </Badge>
       )}
       
       {/* Best Match Badge */}
       {isTopRecommendation && (
-        <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-cc-green text-white text-xs px-3 py-1 rounded-full z-10">
+        <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-[#00b67a] text-white text-xs px-3 py-1 rounded-full z-10">
           Best Match
         </div>
       )}
@@ -58,7 +72,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
         <Button 
           variant="outline"
           onClick={onSeeMore} 
-          className="flex-1 border-cc-blue text-cc-blue hover:bg-cc-light-blue"
+          className="flex-1 border-[#1a3352] text-[#1a3352] hover:bg-[#e5f1ff]"
         >
           <Info size={16} className="mr-1" />
           Learn more
@@ -66,7 +80,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
         
         <Button 
           onClick={onBuyPlan} 
-          className="flex-1 bg-cc-green hover:bg-cc-dark-green text-white"
+          className="flex-1 bg-[#00b67a] hover:bg-[#018e5f] text-white"
         >
           <ShoppingCart size={16} className="mr-1" />
           Buy plan
