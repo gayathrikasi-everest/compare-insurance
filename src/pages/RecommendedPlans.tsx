@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -7,7 +6,6 @@ import InsurancePlanList from '@/components/InsurancePlanList';
 import RecommendationExplanation from '@/components/RecommendationExplanation';
 import { recommendedInsurancePlans, recommendationText } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
-
 const RecommendedPlans: React.FC = () => {
   const navigate = useNavigate();
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);
@@ -39,21 +37,20 @@ const RecommendedPlans: React.FC = () => {
     completed: false,
     active: false
   }];
-
   const handleSeeMore = (planId: string) => {
     setExpandedPlanId(expandedPlanId === planId ? null : planId);
   };
-
   const handleBuyPlan = (planId: string) => {
-    navigate('/purchase-now', { state: { planId } });
+    navigate('/purchase-now', {
+      state: {
+        planId
+      }
+    });
   };
-
   const handleAskQuestions = () => {
     navigate('/chat-plans');
   };
-
-  return (
-    <>
+  return <>
       <div className="h-[calc(100vh-56px)] flex bg-white overflow-hidden">
         {/* Left sidebar with progress */}
         <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
@@ -61,29 +58,19 @@ const RecommendedPlans: React.FC = () => {
         </div>
         
         {/* Right content area */}
-        <div className="w-3/4 flex bg-[#f8f9fa]">
+        <div className="w-3/4 flex bg-[#f8f9fa] my-0 py-[10px] px-[10px]">
           {/* Left column: Insurance plan cards - 35% width */}
           <div className="w-[35%] p-4 flex flex-col h-full">
-            <InsurancePlanList 
-              plans={recommendedInsurancePlans} 
-              expandedPlanId={expandedPlanId} 
-              onSeeMore={handleSeeMore} 
-              onBuyPlan={handleBuyPlan}
-            />
+            <InsurancePlanList plans={recommendedInsurancePlans} expandedPlanId={expandedPlanId} onSeeMore={handleSeeMore} onBuyPlan={handleBuyPlan} />
           </div>
           
           {/* Right column: Recommendation explanation - 65% width */}
           <div className="w-[65%] p-4 flex flex-col h-full">
-            <RecommendationExplanation 
-              recommendationText={recommendationText} 
-              onAskQuestions={handleAskQuestions} 
-            />
+            <RecommendationExplanation recommendationText={recommendationText} onAskQuestions={handleAskQuestions} />
           </div>
         </div>
       </div>
       <Toaster />
-    </>
-  );
+    </>;
 };
-
 export default RecommendedPlans;
