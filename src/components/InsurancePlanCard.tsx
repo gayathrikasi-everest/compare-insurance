@@ -29,7 +29,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
       case 1:
         return 'bg-[#e05c86]'; // Reverted back to pink/red for option 1
       case 2:
-        return 'bg-slate-800'; // Changed to slate-800 for option 2
+        return 'bg-[#3DA6E1]'; // Changed to #3DA6E1 as requested
       case 3:
         return 'bg-[#7c95e1]'; // Light blue/purple for option 3 as in the image
       default:
