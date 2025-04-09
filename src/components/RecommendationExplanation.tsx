@@ -3,10 +3,12 @@ import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Star } from 'lucide-react';
+
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
 }
+
 const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   recommendationText,
   onAskQuestions
@@ -15,10 +17,9 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       {/* Content area - takes remaining space but leaves room for the bottom section */}
       <div className="flex-1 overflow-y-auto mb-4">
         <ScrollArea className="h-full pr-4">
-          <div className="flex items-center mb-4">
-            <h3 className="text-xl font-bold text-[#1a3352]">
-          </h3>
-            <div className="bg-green-50 px-3 py-1 rounded-full text-green-800 text-xs font-medium inline-flex items-center ml-3">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold text-[#1a3352]"></h3>
+            <div className="bg-green-50 px-3 py-1 rounded-full text-green-800 text-xs font-medium inline-flex items-center">
               <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
               </svg>
@@ -98,4 +99,5 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       </div>
     </div>;
 };
+
 export default RecommendationExplanation;
