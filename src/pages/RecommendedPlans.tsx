@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -7,14 +6,12 @@ import InsurancePlanList from '@/components/InsurancePlanList';
 import RecommendationExplanation from '@/components/RecommendationExplanation';
 import { recommendedInsurancePlans, recommendationText } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
-
 const RecommendedPlans: React.FC = () => {
   const navigate = useNavigate();
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);
 
   // In a real app, this would come from an API based on user input
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
-  
   const steps = [{
     number: 1,
     title: 'Understanding You',
@@ -40,11 +37,9 @@ const RecommendedPlans: React.FC = () => {
     completed: false,
     active: false
   }];
-  
   const handleSeeMore = (planId: string) => {
     setExpandedPlanId(expandedPlanId === planId ? null : planId);
   };
-  
   const handleBuyPlan = (planId: string) => {
     navigate('/purchase-now', {
       state: {
@@ -52,20 +47,18 @@ const RecommendedPlans: React.FC = () => {
       }
     });
   };
-  
   const handleAskQuestions = () => {
     navigate('/chat-plans');
   };
-  
   return <>
-      <div className="h-[calc(100vh-56px)] flex app-background overflow-hidden">
+      <div className="h-[calc(100vh-56px)] flex bg-white overflow-hidden">
         {/* Left sidebar with progress */}
-        <div className="w-1/4 glass-strong p-6 border-r border-white/20 shadow-md">
+        <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
           <ProgressBar steps={steps} currentStep={2} />
         </div>
         
         {/* Right content area */}
-        <div className="w-3/4 flex bg-transparent my-0 py-[10px] px-[10px]">
+        <div className="w-3/4 flex bg-[#f8f9fa] my-0 py-[10px] px-[10px]">
           {/* Left column: Insurance plan cards - 35% width */}
           <div className="w-[35%] p-4 flex flex-col h-full">
             <InsurancePlanList plans={recommendedInsurancePlans} expandedPlanId={expandedPlanId} onSeeMore={handleSeeMore} onBuyPlan={handleBuyPlan} />
@@ -80,5 +73,4 @@ const RecommendedPlans: React.FC = () => {
       <Toaster />
     </>;
 };
-
 export default RecommendedPlans;

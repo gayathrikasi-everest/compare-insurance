@@ -38,7 +38,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   };
 
   return (
-    <div className={`rounded-xl glass ${isTopRecommendation ? 'border-[#00b67a] border-2' : 'border-white/30'} p-4 relative mt-4`}>
+    <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-[#00b67a]' : 'border-gray-200'} p-4 relative mt-4`}>
       {/* Badges at the top */}
       <div className="absolute top-0 left-4 transform -translate-y-1/2 flex gap-2 z-10">
         {/* Option Number Badge */}
