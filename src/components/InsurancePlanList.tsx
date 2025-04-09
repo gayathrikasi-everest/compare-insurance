@@ -50,16 +50,17 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
       {/* Cards container - using flex-1 to allow it to grow/shrink */}
       <div className="flex-1 overflow-y-auto mb-4">
         {plans.map((plan, index) => (
-          <InsurancePlanCard
-            key={plan.id}
-            name={plan.name}
-            provider={plan.provider}
-            price={plan.price}
-            optionNumber={index + 1}
-            isTopRecommendation={plan.isTopRecommendation}
-            onSeeMore={() => handleSeeMore(plan.id)}
-            onBuyPlan={() => handleBuyPlan(plan.id)}
-          />
+          <div key={plan.id} className="mb-6">
+            <InsurancePlanCard
+              name={plan.name}
+              provider={plan.provider}
+              price={plan.price}
+              optionNumber={index + 1}
+              isTopRecommendation={plan.isTopRecommendation}
+              onSeeMore={() => handleSeeMore(plan.id)}
+              onBuyPlan={() => handleBuyPlan(plan.id)}
+            />
+          </div>
         ))}
       </div>
     </div>
