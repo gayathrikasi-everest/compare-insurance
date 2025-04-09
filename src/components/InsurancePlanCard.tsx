@@ -60,11 +60,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
       <div className="mb-4 mt-2">
         <div className="flex items-center">
           <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-          {isTopRecommendation && optionNumber === 1 && (
-            <Badge className="ml-2 bg-[#00b67a] text-white px-2 py-0.5 text-xs">
-              <Star size={12} className="mr-1" /> Best Match
-            </Badge>
-          )}
+          {/* Removed the Best Match badge that was next to the plan name */}
         </div>
         <p className="text-sm text-gray-500">{provider}</p>
       </div>
