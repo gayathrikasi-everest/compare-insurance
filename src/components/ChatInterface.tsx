@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -91,7 +92,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     });
   };
   return <div className="flex flex-col h-full">
-      <div className="bg-cc-green text-white p-4 rounded-t-lg flex items-center justify-between">
+      <div className="bg-[#1E293B] text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">
           <MessageSquare size={20} />
           <h2 className="font-medium">Ask questions about these plans</h2>
