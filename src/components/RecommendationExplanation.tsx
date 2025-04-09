@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
@@ -53,7 +54,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
             {/* Option 2 */}
             <div className="border-l-4 border-[#1E293B] pl-4">
               <div className="flex items-start mb-2">
-                <div className="bg-[#3d7fef] text-white text-xs px-2 py-1 rounded mr-2">
+                <div className="bg-slate-800 text-white text-xs px-2 py-1 rounded mr-2">
                   Option 2
                 </div>
                 <div>
