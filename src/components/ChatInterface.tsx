@@ -108,7 +108,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full glass rounded-lg overflow-hidden">
+    <div className="flex flex-col h-full bg-white/70 backdrop-blur-md border border-white/30 shadow-lg rounded-lg overflow-hidden">
       <div className="bg-[#1E293B] text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">
           <MessageSquare size={20} />
@@ -119,7 +119,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </Button>
       </div>
       
-      <div className="flex-1 overflow-y-auto mb-4 glass-strong rounded-b-lg shadow-sm">
+      <div className="flex-1 overflow-y-auto mb-4 bg-white/60 backdrop-blur-md rounded-b-lg shadow-sm">
         <div className="p-4">
           {messages.map(message => <ChatMessage key={message.id} content={message.content} isUser={message.isUser} timestamp={message.timestamp} />)}
           
@@ -135,14 +135,14 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </div>
       </div>
       
-      <div className="glass-strong rounded-md p-3 mb-4">
+      <div className="bg-white/70 backdrop-blur-md rounded-md p-3 mb-4 mx-3">
         <p className="text-sm text-gray-500 mb-2">Suggested questions:</p>
         <div className="flex flex-wrap gap-2">
           {sampleQuestions.map((question, index) => (
             <button 
               key={index} 
               onClick={() => handleSampleQuestion(question)} 
-              className="whitespace-nowrap px-3 py-1 bg-white/60 border border-white/40 rounded-full hover:border-cc-green text-xs"
+              className="whitespace-nowrap px-3 py-1 bg-white/80 backdrop-blur-sm border border-white/40 rounded-full hover:border-cc-green text-xs"
             >
               {question}
             </button>
@@ -150,14 +150,14 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </div>
       </div>
       
-      <div className="mt-auto pt-4 border-t border-white/20 bg-white/30 backdrop-blur-sm">
-        <div className="flex gap-2">
+      <div className="mt-auto pt-4 border-t border-white/20 bg-white/70 backdrop-blur-md">
+        <div className="flex gap-2 px-3 pb-3">
           <Input 
             value={inputValue} 
             onChange={e => setInputValue(e.target.value)} 
             onKeyPress={handleKeyPress} 
             placeholder="Ask a question about these plans..." 
-            className="flex-1 bg-white/60" 
+            className="flex-1 bg-white/90" 
           />
           <Button 
             onClick={handleSendMessage} 

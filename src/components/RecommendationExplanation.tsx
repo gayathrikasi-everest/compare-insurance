@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Button } from '@/components/ui/button';
-import { MessageCircle, Star } from 'lucide-react';
+import PlanActionButtons from '@/components/PlanActionButtons';
+import { Star } from 'lucide-react';
 
 interface RecommendationExplanationProps {
   recommendationText: string;
@@ -93,14 +93,8 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       </div>
       
       {/* "Ask questions" button at the bottom, centered */}
-      <div className="border-t border-white/30 py-4 flex justify-center">
-        <Button 
-          onClick={onAskQuestions} 
-          className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6 scale-120"
-        >
-          <MessageCircle size={24} />
-          Ask questions about these plans
-        </Button>
+      <div className="flex justify-center mt-2">
+        <PlanActionButtons onAskQuestions={onAskQuestions} />
       </div>
     </div>
   );

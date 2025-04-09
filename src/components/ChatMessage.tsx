@@ -18,7 +18,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ content, isUser, timestamp })
         "p-3 rounded-2xl backdrop-blur-sm shadow-md",
         isUser 
           ? "bg-[#1E293B] text-white" 
-          : "glass"
+          : "bg-white/70 backdrop-blur-md border border-white/30"
       )}>
         <p className={cn(
           "text-sm md:text-base",
