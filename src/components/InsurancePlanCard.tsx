@@ -27,11 +27,11 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   const getBadgeColor = () => {
     switch(optionNumber) {
       case 1:
-        return 'bg-[#00b67a]'; // Green for option 1
+        return 'bg-[#e05c86]'; // Pink/Red for option 1 as in the image
       case 2:
-        return 'bg-[#3a86ff]'; // Blue for option 2
+        return 'bg-[#3d7fef]'; // Blue for option 2 as in the image
       case 3:
-        return 'bg-[#8338ec]'; // Purple for option 3
+        return 'bg-[#7c95e1]'; // Light blue/purple for option 3 as in the image
       default:
         return 'bg-gray-500';
     }

@@ -10,7 +10,7 @@ interface InsurancePlanListProps {
   expandedPlanId: string | null;
   onSeeMore: (planId: string) => void;
   onBuyPlan: (planId: string) => void;
-  onRegenerateOptions?: () => void; // Make this optional to fix TypeScript error
+  onRegenerateOptions?: () => void; // This is kept optional to fix TypeScript error
 }
 
 const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
