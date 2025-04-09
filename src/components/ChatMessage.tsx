@@ -17,7 +17,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ content, isUser, timestamp })
       <div className={cn(
         "p-3 rounded-2xl backdrop-blur-sm shadow-md",
         isUser 
-          ? "bg-gradient-to-r from-cc-green to-cc-dark-green text-white" 
+          ? "bg-gradient-to-r from-[#E83F6F] to-[#d03861] text-white" 
           : "bg-white/80 border border-white/30"
       )}>
         <p className={cn(

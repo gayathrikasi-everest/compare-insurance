@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -5,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import ChatMessage from '@/components/ChatMessage';
 import { Send, MessageSquare, X } from 'lucide-react';
 import { chatResponses, sampleQuestions } from '@/data/mockData';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface Message {
   id: string;
@@ -100,37 +102,39 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
 
   return (
     <div className="flex flex-col h-full">
-      <div className="bg-cc-green text-white p-4 rounded-t-lg flex items-center justify-between">
+      <div className="bg-[#E83F6F] text-white p-4 rounded-t-lg flex items-center justify-between">
         <div className="flex items-center gap-2">
           <MessageSquare size={20} />
           <h2 className="font-medium">Ask questions about these plans</h2>
         </div>
-        <Button variant="ghost" size="icon" onClick={handleClose} className="hover:bg-cc-dark-green text-white">
+        <Button variant="ghost" size="icon" onClick={handleClose} className="hover:bg-[#d03861] text-white">
           <X size={20} />
         </Button>
       </div>
       
-      <div className="flex-1 overflow-y-auto mb-4 bg-white/80 rounded-b-lg shadow-sm border border-gray-100">
-        <div className="p-4">
-          {messages.map(message => (
-            <ChatMessage 
-              key={message.id} 
-              content={message.content} 
-              isUser={message.isUser} 
-              timestamp={message.timestamp} 
-            />
-          ))}
-          
-          {isTyping && (
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-2 h-2 bg-cc-green rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-cc-green rounded-full animate-pulse delay-150"></div>
-              <div className="w-2 h-2 bg-cc-green rounded-full animate-pulse delay-300"></div>
-            </div>
-          )}
-          
-          <div ref={messagesEndRef} />
-        </div>
+      <div className="flex-1 overflow-hidden mb-4 bg-white/80 rounded-b-lg shadow-sm border border-gray-100">
+        <ScrollArea className="h-full p-4">
+          <div className="p-4">
+            {messages.map(message => (
+              <ChatMessage 
+                key={message.id} 
+                content={message.content} 
+                isUser={message.isUser} 
+                timestamp={message.timestamp} 
+              />
+            ))}
+            
+            {isTyping && (
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-2 h-2 bg-[#E83F6F] rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-[#E83F6F] rounded-full animate-pulse delay-150"></div>
+                <div className="w-2 h-2 bg-[#E83F6F] rounded-full animate-pulse delay-300"></div>
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
+        </ScrollArea>
       </div>
       
       <div className="bg-gray-50 border border-gray-100 rounded-md p-3 mb-4">
@@ -140,7 +144,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
             <button 
               key={index} 
               onClick={() => handleSampleQuestion(question)} 
-              className="whitespace-nowrap px-3 py-1 text-sm bg-white border border-gray-200 rounded-full hover:border-cc-green"
+              className="whitespace-nowrap px-3 py-1 text-sm bg-white border border-gray-200 rounded-full hover:border-[#E83F6F]"
             >
               {question}
             </button>
@@ -160,7 +164,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
           <Button 
             onClick={handleSendMessage} 
             disabled={inputValue.trim() === ''} 
-            className="bg-cc-green hover:bg-cc-dark-green text-white"
+            className="bg-[#E83F6F] hover:bg-[#d03861] text-white"
           >
             <Send size={16} className="mr-1" /> Send
           </Button>
