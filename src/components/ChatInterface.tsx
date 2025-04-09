@@ -96,10 +96,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
     navigate('/recommended-plans');
   };
 
-  const handleBuyPlan = (planId: string) => {
-    navigate('/purchase-now', { state: { planId } });
-  };
-
   return (
     <div className="flex flex-col h-full">
       <div className="bg-[#E83F6F] text-white p-4 rounded-t-lg flex items-center justify-between">
@@ -137,14 +133,14 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
         </ScrollArea>
       </div>
       
-      <div className="bg-gray-50 border border-gray-100 rounded-md p-3 mb-4">
-        <p className="text-sm text-gray-500 mb-2">Suggested questions:</p>
-        <div className="flex flex-wrap gap-2">
+      {/* Updated suggestion questions to match the image design */}
+      <div className="mb-4">
+        <div className="flex flex-wrap gap-3">
           {sampleQuestions.map((question, index) => (
             <button 
               key={index} 
               onClick={() => handleSampleQuestion(question)} 
-              className="whitespace-nowrap px-3 py-1 text-sm bg-white border border-gray-200 rounded-full hover:border-[#E83F6F]"
+              className="px-5 py-3 text-sm bg-white border border-gray-200 rounded-full hover:border-[#E83F6F] hover:shadow-sm transition-all"
             >
               {question}
             </button>
@@ -159,12 +155,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ planNames }) => {
             onChange={e => setInputValue(e.target.value)} 
             onKeyPress={handleKeyPress} 
             placeholder="Ask a question about these plans..." 
-            className="flex-1"
+            className="flex-1 py-6 px-5 rounded-full"
           />
           <Button 
             onClick={handleSendMessage} 
             disabled={inputValue.trim() === ''} 
-            className="bg-[#E83F6F] hover:bg-[#d03861] text-white"
+            className="bg-[#E83F6F] hover:bg-[#d03861] text-white rounded-full"
           >
             <Send size={16} className="mr-1" /> Send
           </Button>
