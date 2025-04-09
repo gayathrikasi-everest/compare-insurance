@@ -63,14 +63,14 @@ const ChatPlans: React.FC = () => {
   
   return (
     <>
-      <div className="h-[calc(100vh-56px)] flex bg-white overflow-hidden">
+      <div className="h-[calc(100vh-56px)] flex app-background overflow-hidden">
         {/* Left sidebar with progress */}
-        <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
+        <div className="w-1/4 glass-strong p-6 border-r border-white/20 shadow-md">
           <ProgressBar steps={steps} currentStep={3} />
         </div>
         
         {/* Right content area */}
-        <div className="w-3/4 flex bg-[#f8f9fa]">
+        <div className="w-3/4 flex bg-transparent">
           {/* Left column: Insurance plan cards - 35% width */}
           <div className="w-[35%] p-4 flex flex-col h-full">
             <InsurancePlanList 

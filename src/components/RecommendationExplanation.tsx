@@ -13,7 +13,8 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   recommendationText,
   onAskQuestions
 }) => {
-  return <div className="flex flex-col h-full">
+  return (
+    <div className="flex flex-col h-full glass rounded-lg p-4">
       {/* Content area - takes remaining space but leaves room for the bottom section */}
       <div className="flex-1 overflow-y-auto mb-4">
         <ScrollArea className="h-full pr-4">
@@ -36,7 +37,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           {/* Numbered points with option badges and details */}
           <div className="space-y-6">
             {/* Option 1 */}
-            <div className="border-l-4 border-[#e05c86] pl-4">
+            <div className="border-l-4 border-[#e05c86] glass-card pl-4 p-3">
               <div className="flex items-start mb-2">
                 <div className="bg-[#e05c86] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 1
@@ -54,7 +55,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
             </div>
             
             {/* Option 2 */}
-            <div className="border-l-4 border-[#3d7fef] pl-4">
+            <div className="border-l-4 border-[#3d7fef] glass-card pl-4 p-3">
               <div className="flex items-start mb-2">
                 <div className="bg-[#3d7fef] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 2
@@ -69,7 +70,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
             </div>
             
             {/* Option 3 */}
-            <div className="border-l-4 border-[#7c95e1] pl-4">
+            <div className="border-l-4 border-[#7c95e1] glass-card pl-4 p-3">
               <div className="flex items-start mb-2">
                 <div className="bg-[#7c95e1] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 3
@@ -92,16 +93,17 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       </div>
       
       {/* "Ask questions" button at the bottom, centered */}
-      <div className="border-t border-gray-100 bg-[#f8f9fa] py-4 flex justify-center">
+      <div className="border-t border-white/30 py-4 flex justify-center">
         <Button 
           onClick={onAskQuestions} 
-          className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6"
+          className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6 scale-120"
         >
-          <MessageCircle size={20} />
+          <MessageCircle size={24} />
           Ask questions about these plans
         </Button>
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default RecommendationExplanation;
