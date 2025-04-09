@@ -1,14 +1,11 @@
-
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Star } from 'lucide-react';
-
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
 }
-
 const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   recommendationText,
   onAskQuestions
@@ -54,7 +51,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
             </div>
             
             {/* Option 2 */}
-            <div className="border-l-4 border-[#3d7fef] pl-4">
+            <div className="border-l-4 border-[#1E293B] pl-4">
               <div className="flex items-start mb-2">
                 <div className="bg-[#3d7fef] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 2
@@ -93,15 +90,11 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       
       {/* "Ask questions" button at the bottom, centered */}
       <div className="border-t border-gray-100 bg-[#f8f9fa] py-4 flex justify-center">
-        <Button 
-          onClick={onAskQuestions} 
-          className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6"
-        >
+        <Button onClick={onAskQuestions} className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6">
           <MessageCircle size={20} />
           Ask questions about these plans
         </Button>
       </div>
     </div>;
 };
-
 export default RecommendationExplanation;
