@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, Star } from 'lucide-react';
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
@@ -37,6 +38,9 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
               <div className="flex items-start mb-2">
                 <div className="bg-[#e05c86] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 1
+                </div>
+                <div className="bg-[#00b67a] text-white text-xs px-2 py-1 rounded mr-2 flex items-center">
+                  <Star size={12} className="mr-1" /> Best Match
                 </div>
                 <div>
                   <strong className="text-gray-900">1. Medibank Gold Protect and Growing Family 60 (Policy ID: 5):</strong>
