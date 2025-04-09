@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -128,7 +127,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       <div className="mt-auto pt-4 border-t border-gray-100 bg-[#f8f9fa]">
         <div className="flex gap-2">
           <Input value={inputValue} onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress} placeholder="Ask a question about these plans..." className="flex-1" />
-          <Button onClick={handleSendMessage} disabled={inputValue.trim() === ''} className="bg-cc-green hover:bg-cc-dark-green text-white">
+          <Button onClick={handleSendMessage} disabled={inputValue.trim() === ''} className="hover:bg-cc-dark-green text-white bg-slate-800 hover:bg-slate-700">
             <Send size={16} className="mr-1" /> Send
           </Button>
         </div>
