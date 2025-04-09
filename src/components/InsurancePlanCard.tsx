@@ -1,12 +1,14 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { ShoppingCart, Info } from 'lucide-react';
 
 interface InsurancePlanProps {
   name: string;
   provider: string;
   price: number;
+  optionNumber?: number;
   isTopRecommendation?: boolean;
   onSeeMore: () => void;
   onBuyPlan: () => void;
@@ -16,12 +18,20 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   name,
   provider,
   price,
+  optionNumber,
   isTopRecommendation = false,
   onSeeMore,
   onBuyPlan
 }) => {
   return (
     <div className={`rounded-xl bg-white border ${isTopRecommendation ? 'border-cc-green' : 'border-gray-200'} p-4 relative mt-4`}>
+      {/* Option Number Badge */}
+      {optionNumber && (
+        <Badge className="absolute top-0 left-4 transform -translate-y-1/2 bg-cc-green text-white px-3 py-1 z-10">
+          Option {optionNumber}
+        </Badge>
+      )}
+      
       {/* Best Match Badge */}
       {isTopRecommendation && (
         <div className="absolute top-0 right-8 transform -translate-y-1/2 bg-cc-green text-white text-xs px-3 py-1 rounded-full z-10">

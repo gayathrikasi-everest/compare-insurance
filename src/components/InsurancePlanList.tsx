@@ -2,8 +2,6 @@
 import React from 'react';
 import InsurancePlanCard from '@/components/InsurancePlanCard';
 import { InsurancePlan } from '@/types';
-import { Button } from '@/components/ui/button';
-import { RefreshCw } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
 
@@ -12,15 +10,13 @@ interface InsurancePlanListProps {
   expandedPlanId: string | null;
   onSeeMore: (planId: string) => void;
   onBuyPlan: (planId: string) => void;
-  onRegenerateOptions: () => void;
 }
 
 const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   plans,
   expandedPlanId,
   onSeeMore,
-  onBuyPlan,
-  onRegenerateOptions
+  onBuyPlan
 }) => {
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -51,29 +47,18 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
       
       {/* Cards container - using flex-1 to allow it to grow/shrink */}
       <div className="flex-1 overflow-y-auto mb-4">
-        {plans.map(plan => (
+        {plans.map((plan, index) => (
           <InsurancePlanCard
             key={plan.id}
             name={plan.name}
             provider={plan.provider}
             price={plan.price}
+            optionNumber={index + 1}
             isTopRecommendation={plan.isTopRecommendation}
             onSeeMore={() => handleSeeMore(plan.id)}
             onBuyPlan={() => handleBuyPlan(plan.id)}
           />
         ))}
-      </div>
-      
-      {/* "I don't like" button - visible at the bottom */}
-      <div className="mt-auto pt-4 border-t border-gray-100">
-        <Button 
-          variant="outline" 
-          onClick={onRegenerateOptions}
-          className="text-cc-blue border-cc-blue hover:bg-cc-light-blue flex items-center gap-2 w-full"
-        >
-          <RefreshCw size={16} />
-          I don't like these options
-        </Button>
       </div>
     </div>
   );

@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Progress } from '@/components/ui/progress';
-import InsurancePlanCard from '@/components/InsurancePlanCard';
 import { mockInsurancePlans } from '@/data/mockData';
 import { InsurancePlan } from '@/types';
 import ProgressBar from '@/components/ProgressBar';
@@ -88,7 +87,7 @@ const PurchaseNow: React.FC = () => {
             Finalizing Your Selection
           </h1>
 
-          {/* Selected plan */}
+          {/* Selected plan - without buttons */}
           {selectedPlan && (
             <div className="mb-8">
               <p className="text-center font-medium text-cc-green mb-2">
@@ -108,7 +107,7 @@ const PurchaseNow: React.FC = () => {
                 </div>
                 
                 {/* Price */}
-                <div className="mb-4">
+                <div>
                   <div className="flex items-baseline">
                     <span className="text-xl font-bold text-gray-900">${selectedPlan.price}</span>
                     <span className="text-gray-500 ml-1 text-sm">/ month</span>

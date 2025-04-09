@@ -40,11 +40,6 @@ const RecommendedPlans: React.FC = () => {
     active: false
   }];
 
-  const handleRegenerateOptions = () => {
-    // In a real app, this would fetch new recommendations
-    console.log('Regenerating insurance options based on preferences');
-  };
-
   const handleSeeMore = (planId: string) => {
     setExpandedPlanId(expandedPlanId === planId ? null : planId);
   };
@@ -74,7 +69,6 @@ const RecommendedPlans: React.FC = () => {
               expandedPlanId={expandedPlanId} 
               onSeeMore={handleSeeMore} 
               onBuyPlan={handleBuyPlan}
-              onRegenerateOptions={handleRegenerateOptions} 
             />
           </div>
           

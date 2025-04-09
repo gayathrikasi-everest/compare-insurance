@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Check, Circle, ArrowLeft } from 'lucide-react';
@@ -36,8 +37,8 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             {!isLast && <div className={cn("absolute h-full w-0.5 left-7 top-14 -z-10", step.completed ? "bg-cc-green" : "bg-gray-200")} />}
             
             <div className="flex items-start mb-8">
-              {/* Step Circle */}
-              <div className={cn("flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4", step.completed ? "bg-cc-light-green text-cc-green" : step.active ? "bg-cc-green text-white" : "bg-gray-100 text-gray-400")}>
+              {/* Step Circle - Ensuring perfect circle with aspect ratio 1:1 */}
+              <div className={cn("flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4 min-w-[3.5rem] aspect-square", step.completed ? "bg-cc-light-green text-cc-green" : step.active ? "bg-cc-green text-white" : "bg-gray-100 text-gray-400")}>
                 {step.completed ? <Check className="w-6 h-6" /> : step.number}
               </div>
               
