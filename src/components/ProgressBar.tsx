@@ -1,11 +1,9 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { Check, Circle, ArrowLeft } from 'lucide-react';
 import { UserInfo } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
-
 interface Step {
   number: number;
   title: string;
@@ -13,12 +11,10 @@ interface Step {
   completed: boolean;
   active: boolean;
 }
-
 interface ProgressBarProps {
   steps: Step[];
   currentStep: number;
 }
-
 const ProgressBar: React.FC<ProgressBarProps> = ({
   steps,
   currentStep
@@ -26,11 +22,9 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   // Get user info from localStorage
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
   const navigate = useNavigate();
-
   const handleEditInfo = () => {
     navigate('/understanding-you');
   };
-
   return <div className="relative py-4 max-w-xs">
       <h1 className="text-2xl font-bold text-cc-blue mb-8">Find Your Ideal Health Plan</h1>
       
@@ -39,17 +33,11 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       const showUserQuery = step.number === 1 && step.completed && userInfo.query;
       return <div key={step.number} className="relative">
             {/* Connecting Line - Adjusted height to connect steps properly */}
-            {!isLast && <div className={cn(
-              "absolute h-full w-0.5 left-7 top-14 -z-10", 
-              step.completed ? "bg-cc-green" : "bg-gray-200"
-            )} />}
+            {!isLast && <div className={cn("absolute h-full w-0.5 left-7 top-14 -z-10", step.completed ? "bg-cc-green" : "bg-gray-200")} />}
             
             <div className="flex items-start mb-8">
               {/* Step Circle */}
-              <div className={cn("flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4", 
-                step.completed ? "bg-cc-light-green text-cc-green" : 
-                step.active ? "bg-cc-green text-white" : 
-                "bg-gray-100 text-gray-400")}>
+              <div className={cn("flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4", step.completed ? "bg-cc-light-green text-cc-green" : step.active ? "bg-cc-green text-white" : "bg-gray-100 text-gray-400")}>
                 {step.completed ? <Check className="w-6 h-6" /> : step.number}
               </div>
               
@@ -80,7 +68,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       {/* Trust Badge */}
       <div className="mt-10 bg-gray-100 rounded-md p-4">
         <div className="flex items-center">
-          <div className="bg-cc-green rounded-md p-2 mr-4">
+          <div className="rounded-md p-2 mr-4 bg-slate-800">
             <Check className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -96,5 +84,4 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
       </div>
     </div>;
 };
-
 export default ProgressBar;
