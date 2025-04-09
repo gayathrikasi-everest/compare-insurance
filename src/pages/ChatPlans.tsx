@@ -83,7 +83,7 @@ const ChatPlans: React.FC = () => {
           </div>
           
           {/* Right column: Chat interface - 65% width */}
-          <div className="w-[65%] p-6 flex flex-col h-full">
+          <div className="w-[65%] p-6 pb-[5%] flex flex-col h-full">
             <ChatInterface planNames={planNames} />
           </div>
         </div>
