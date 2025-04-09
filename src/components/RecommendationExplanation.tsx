@@ -1,25 +1,22 @@
-
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Star } from 'lucide-react';
-
+import { MessageCircle } from 'lucide-react';
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
 }
-
-const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({ 
-  recommendationText, 
-  onAskQuestions 
+const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
+  recommendationText,
+  onAskQuestions
 }) => {
-  return (
-    <div className="flex flex-col h-full">
+  return <div className="flex flex-col h-full">
       {/* Content area - takes remaining space but leaves room for the bottom section */}
       <div className="flex-1 overflow-y-auto mb-4">
         <ScrollArea className="h-full pr-4">
           <div className="flex items-center mb-4">
-            <h3 className="text-xl font-bold text-[#1a3352]">Your Personalized Recommendation</h3>
+            <h3 className="text-xl font-bold text-[#1a3352]">
+          </h3>
             <div className="bg-green-50 px-3 py-1 rounded-full text-green-800 text-xs font-medium inline-flex items-center ml-3">
               <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
@@ -40,9 +37,6 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
               <div className="flex items-start mb-2">
                 <div className="bg-[#e05c86] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 1
-                </div>
-                <div className="bg-[#00b67a] text-white text-xs px-2 py-1 rounded mr-2 flex items-center">
-                  <Star size={12} className="mr-1" /> Best Match
                 </div>
                 <div>
                   <strong className="text-gray-900">1. Medibank Gold Protect and Growing Family 60 (Policy ID: 5):</strong>
@@ -95,17 +89,12 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       <div className="border-t border-gray-100 bg-[#f8f9fa] py-4">
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4 flex items-center justify-between">
           <p className="text-gray-900 font-medium">Still have doubts? We get it.</p>
-          <Button 
-            onClick={onAskQuestions}
-            className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2"
-          >
+          <Button onClick={onAskQuestions} className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2">
             <MessageCircle size={16} />
             Ask questions about these plans
           </Button>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default RecommendationExplanation;
