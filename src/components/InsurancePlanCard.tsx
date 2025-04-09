@@ -27,7 +27,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   const getBadgeColor = () => {
     switch(optionNumber) {
       case 1:
-        return 'bg-[#e05c86]'; // Pink/Red for option 1 as in the image
+        return 'bg-slate-800'; // Changed to slate-800 from e05c86
       case 2:
         return 'bg-[#3d7fef]'; // Blue for option 2 as in the image
       case 3:
@@ -60,7 +60,6 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
       <div className="mb-4 mt-2">
         <div className="flex items-center">
           <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-          {/* Removed the Best Match badge that was next to the plan name */}
         </div>
         <p className="text-sm text-gray-500">{provider}</p>
       </div>
