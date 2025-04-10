@@ -3,10 +3,12 @@ import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Star, Badge } from 'lucide-react';
+
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
 }
+
 const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   recommendationText,
   onAskQuestions
@@ -53,7 +55,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
                   Option 2
                 </div>
                 <div>
-                  <strong className="text-gray-900">2. HCF My Family Silver Plus (Policy ID: 3):</strong>
+                  <strong className="text-gray-900">HCF My Family Silver Plus:</strong>
                 </div>
               </div>
               <p className="text-gray-700">
@@ -68,7 +70,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
                   Option 3
                 </div>
                 <div>
-                  <strong className="text-gray-900">3. Bupa Gold Comprehensive Hospital + Freedom 60 Extras (Policy ID: 2):</strong>
+                  <strong className="text-gray-900">Bupa Gold Comprehensive Hospital + Freedom 60 Extras:</strong>
                 </div>
               </div>
               <p className="text-gray-700">
