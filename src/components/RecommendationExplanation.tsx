@@ -1,14 +1,11 @@
-
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, Star, Badge } from 'lucide-react';
-
 interface RecommendationExplanationProps {
   recommendationText: string;
   onAskQuestions: () => void;
 }
-
 const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
   recommendationText,
   onAskQuestions
@@ -28,9 +25,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           </div>
           
           {/* Introduction paragraph */}
-          <p className="text-gray-700 mb-6">
-            Based on your profile as a young couple with a 2-year-old child and another baby on the way, your health insurance needs will focus on comprehensive coverage for both hospital and extras services, particularly those related to pregnancy, childbirth, and pediatric care.
-          </p>
+          <p className="text-gray-700 mb-6">As a young couple with a 2-year-old and another baby on the way, your primary focus should be on comprehensive family health coverage that includes maternity services, pediatric care, and a range of extras for your child's health needs. It's essential to consider policies that provide good hospital cover, especially for pregnancy and birth, as well as extras for dental, optical, and other family-related health services.</p>
           
           {/* Best Match Card - New section */}
           <div className="bg-white rounded-lg border border-[#00b67a] p-5 shadow-md mb-8">
@@ -48,22 +43,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           {/* Numbered points with option badges and details */}
           <div className="space-y-6">
             {/* Option 1 */}
-            <div className="border-l-4 border-[#00b67a] pl-4">
-              <div className="flex items-start mb-2">
-                <div className="bg-[#00b67a] text-white text-xs px-2 py-1 rounded mr-2">
-                  Option 1
-                </div>
-                <div className="bg-[#00b67a] text-white text-xs px-2 py-1 rounded mr-2 flex items-center">
-                  <Star size={12} className="mr-1" /> Best Match
-                </div>
-                <div>
-                  <strong className="text-gray-900">1. Medibank Gold Protect and Growing Family 60 (Policy ID: 5):</strong>
-                </div>
-              </div>
-              <p className="text-gray-700">
-                This combined policy offers extensive hospital coverage, including pregnancy and birth services, which is crucial for your expanding family. The extras cover includes dental, optical, and physiotherapy, which are beneficial for both adults and children. However, the premium is relatively high at $650 per month, and there are waiting periods for certain services, particularly for pre-existing conditions and pregnancy-related claims.
-              </p>
-            </div>
+            
             
             {/* Option 2 */}
             <div className="border-l-4 border-[#1E293B] pl-4">
@@ -112,5 +92,4 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       </div>
     </div>;
 };
-
 export default RecommendationExplanation;
