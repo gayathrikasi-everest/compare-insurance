@@ -1,49 +1,40 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from 'lucide-react';
 import { Check } from 'lucide-react';
-
 const Index = () => {
   const navigate = useNavigate();
-  
-  const steps = [
-    {
-      number: 1,
-      title: "Understanding You",
-      description: "Tell us about your needs",
-      completed: false,
-      active: true
-    }, 
-    {
-      number: 2,
-      title: "Recommended Plans",
-      description: "Review your top options",
-      completed: false,
-      active: false
-    }, 
-    {
-      number: 3,
-      title: "Ask Questions",
-      description: "Get answers about your plans",
-      completed: false,
-      active: false
-    }, 
-    {
-      number: 4,
-      title: "Purchase Insurance",
-      description: "Buy your ideal insurance",
-      completed: false,
-      active: false
-    }
-  ];
-
+  const steps = [{
+    number: 1,
+    title: "Understanding You",
+    description: "Tell us about your needs",
+    completed: false,
+    active: true
+  }, {
+    number: 2,
+    title: "Recommended Plans",
+    description: "Review your top options",
+    completed: false,
+    active: false
+  }, {
+    number: 3,
+    title: "Ask Questions",
+    description: "Get answers about your plans",
+    completed: false,
+    active: false
+  }, {
+    number: 4,
+    title: "Purchase Insurance",
+    description: "Buy your ideal insurance",
+    completed: false,
+    active: false
+  }];
   return <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-white to-blue-50 p-4 md:p-8">
       <div className="w-full max-w-5xl flex flex-col items-center">
         {/* Insurance Illustration */}
         <div className="mb-8">
-          <img alt="Insurance Illustration" className="w-48 h-48 object-contain" src="/lovable-uploads/9fa1e01a-a89c-4dc5-bddb-685f479765b9.png" />
+          <img alt="Insurance Illustration" className="w-48 h-48 object-contain" src="/lovable-uploads/9979bce1-a280-4089-91eb-da4039a2faef.png" />
         </div>
         
         {/* Main Text */}
@@ -104,5 +95,4 @@ const Index = () => {
       </div>
     </div>;
 };
-
 export default Index;
