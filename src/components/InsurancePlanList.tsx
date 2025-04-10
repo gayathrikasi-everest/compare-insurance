@@ -36,8 +36,24 @@ const InsurancePlanList: React.FC<InsurancePlanListProps> = ({
   };
 
   const handleBuyPlan = (planId: string) => {
-    // Always navigate to purchase screen with the plan ID
-    navigate('/purchase-now', { state: { planId } });
+    // Find the plan to pass its complete data to the purchase page
+    const plan = plans.find(p => p.id === planId);
+    if (plan) {
+      // Navigate with the entire plan object instead of just the ID
+      navigate('/purchase-now', { 
+        state: { 
+          planId: plan.id,
+          planDetails: plan
+        } 
+      });
+    } else {
+      // Show error toast if plan not found
+      toast({
+        title: "Error",
+        description: "Could not find the selected plan. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

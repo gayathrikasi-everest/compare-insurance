@@ -5,12 +5,14 @@ import { Progress } from '@/components/ui/progress';
 import { mockInsurancePlans } from '@/data/mockData';
 import { InsurancePlan } from '@/types';
 import ProgressBar from '@/components/ProgressBar';
+import { useToast } from "@/hooks/use-toast";
 
 const PurchaseNow: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [selectedPlan, setSelectedPlan] = useState<InsurancePlan | null>(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { toast } = useToast();
 
   // Define the steps for the progress bar
   const steps = [{
@@ -40,13 +42,36 @@ const PurchaseNow: React.FC = () => {
   }];
 
   useEffect(() => {
-    // Get the plan ID from URL state
+    // First try to get the plan from the state
     const planId = location.state?.planId;
-    if (planId) {
+    const planFromState = location.state?.planDetails;
+    
+    if (planFromState) {
+      // Use the plan object passed directly in the state
+      setSelectedPlan(planFromState);
+    } else if (planId) {
+      // Fallback: Find the plan in our mock data if only ID was passed
       const plan = mockInsurancePlans.find(p => p.id === planId);
       if (plan) {
         setSelectedPlan(plan);
+      } else {
+        // Show error toast if plan not found
+        toast({
+          title: "Error",
+          description: "Could not find the selected plan. Please try again.",
+          variant: "destructive",
+        });
+        // Redirect back to recommendations
+        setTimeout(() => navigate('/recommended-plans'), 2000);
       }
+    } else {
+      // No plan ID was passed, redirect back
+      toast({
+        title: "Error",
+        description: "No plan was selected. Please choose a plan first.",
+        variant: "destructive",
+      });
+      setTimeout(() => navigate('/recommended-plans'), 2000);
     }
 
     // Progress animation
@@ -63,7 +88,6 @@ const PurchaseNow: React.FC = () => {
     // Simulate redirect after completion (in a real app, this would redirect to a payment gateway)
     const redirect = setTimeout(() => {
       // Replace this with actual redirection logic
-      // For now, we'll just log a message
       console.log('Redirecting to payment gateway...');
     }, 7000);
 
@@ -71,7 +95,7 @@ const PurchaseNow: React.FC = () => {
       clearInterval(timer);
       clearTimeout(redirect);
     };
-  }, [location.state, navigate]);
+  }, [location.state, navigate, toast]);
 
   return (
     <div className="h-[calc(100vh-56px)] flex bg-white overflow-hidden">
@@ -114,6 +138,12 @@ const PurchaseNow: React.FC = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          )}
+
+          {!selectedPlan && (
+            <div className="text-center text-red-500 mb-4">
+              Loading plan details...
             </div>
           )}
 
