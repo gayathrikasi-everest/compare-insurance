@@ -5,12 +5,10 @@ import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
-
 const UnderstandingYou: React.FC = () => {
   const [query, setQuery] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
-  
   useEffect(() => {
     const savedUserInfo = localStorage.getItem('userInfo');
     if (savedUserInfo) {
@@ -20,53 +18,43 @@ const UnderstandingYou: React.FC = () => {
       }
     }
   }, []);
-
-  const steps = [
-    {
-      number: 1,
-      title: 'Understanding You',
-      description: 'Tell us about your needs',
-      completed: false,
-      active: true
-    }, 
-    {
-      number: 2,
-      title: 'Recommended Plans',
-      description: 'Review your top options',
-      completed: false,
-      active: false
-    }, 
-    {
-      number: 3,
-      title: 'Ask Questions',
-      description: 'Get answers about your plans',
-      completed: false,
-      active: false
-    }, 
-    {
-      number: 4,
-      title: 'Purchase Insurance',
-      description: 'Buy your ideal insurance',
-      completed: false,
-      active: false
-    }
-  ];
-
+  const steps = [{
+    number: 1,
+    title: 'Understanding You',
+    description: 'Tell us about your needs',
+    completed: false,
+    active: true
+  }, {
+    number: 2,
+    title: 'Recommended Plans',
+    description: 'Review your top options',
+    completed: false,
+    active: false
+  }, {
+    number: 3,
+    title: 'Ask Questions',
+    description: 'Get answers about your plans',
+    completed: false,
+    active: false
+  }, {
+    number: 4,
+    title: 'Purchase Insurance',
+    description: 'Buy your ideal insurance',
+    completed: false,
+    active: false
+  }];
   const handleSubmit = () => {
     if (query.trim() === '') return;
     setIsSubmitting(true);
-    
     const userInfo: UserInfo = {
       query
     };
-    
     setTimeout(() => {
       localStorage.setItem('userInfo', JSON.stringify(userInfo));
       navigate('/recommended-plans');
       setIsSubmitting(false);
     }, 1000);
   };
-
   return <div className="min-h-[calc(100vh-65px)] flex bg-gradient-to-br from-white to-cc-light-green animate-fade-in">
       <div className="w-3/8 bg-white/80 backdrop-blur-md p-8 border-r border-white/20 shadow-md hidden md:block">
         <ProgressBar steps={steps} currentStep={1} />
@@ -75,7 +63,7 @@ const UnderstandingYou: React.FC = () => {
       <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-2xl p-4 md:p-8">
           <div className="text-center mb-8">
-            <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/ba50f7a2-cf55-4430-91c6-39b46030b83e.png" />
+            <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/228ce4b7-94c7-4603-b1ff-d3e573adb6cb.png" />
             <h1 className="text-3xl font-bold text-cc-blue mb-2 md:text-2xl">Tell us about your needs and we'll find the perfect plan for you</h1>
             
           </div>
@@ -99,5 +87,4 @@ const UnderstandingYou: React.FC = () => {
       </div>
     </div>;
 };
-
 export default UnderstandingYou;
