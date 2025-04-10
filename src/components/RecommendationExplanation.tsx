@@ -92,7 +92,7 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
       
       {/* "Ask questions" button at the bottom, centered */}
       <div className="border-t border-gray-100 bg-[#f8f9fa] py-4 flex justify-center">
-        <Button onClick={onAskQuestions} className="bg-[#E83F6F] hover:bg-[#d03861] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6">
+        <Button onClick={onAskQuestions} className="bg-[#00b67a] hover:bg-[#018e5f] text-white shadow-md flex items-center gap-2 text-lg py-7 px-6">
           <MessageCircle size={20} />
           Ask questions about these plans
         </Button>
