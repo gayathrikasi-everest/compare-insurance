@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
@@ -75,9 +76,9 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
               </p>
             </div>
             
-            {/* Recommendation summary */}
+            {/* Recommendation summary - now empty */}
             <p className="text-gray-700 mt-6">
-              After evaluating these options, the <strong>Medibank Gold Protect and Growing Family 60</strong> policy stands out as the top recommendation due to its comprehensive coverage for both hospital and extras, particularly for your current and future family needs. While the premium is high, the extensive benefits and coverage for pregnancy and child-related services justify the cost, making it the best fit for your situation.
+              
             </p>
           </div>
         </ScrollArea>
