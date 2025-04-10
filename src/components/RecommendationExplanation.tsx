@@ -2,7 +2,7 @@
 import React from 'react';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { MessageCircle, Star } from 'lucide-react';
+import { MessageCircle, Star, Badge } from 'lucide-react';
 
 interface RecommendationExplanationProps {
   recommendationText: string;
@@ -31,6 +31,19 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           <p className="text-gray-700 mb-6">
             Based on your profile as a young couple with a 2-year-old child and another baby on the way, your health insurance needs will focus on comprehensive coverage for both hospital and extras services, particularly those related to pregnancy, childbirth, and pediatric care.
           </p>
+          
+          {/* Best Match Card - New section */}
+          <div className="bg-white rounded-lg border border-[#00b67a] p-5 shadow-md mb-8">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="bg-[#00b67a] text-white text-sm px-3 py-1.5 rounded-full flex items-center">
+                <Star size={16} className="mr-1.5" /> Best Match
+              </div>
+              <h4 className="font-bold text-lg text-gray-900">Medibank Gold Protect and Growing Family 60</h4>
+            </div>
+            <p className="text-gray-700">
+              The Medibank Gold Protect and Growing Family 60 policy stands out as the best option for your family due to its comprehensive hospital cover, including essential maternity services and a robust extras component that caters to your child's health needs. While it has a 12-month waiting period for pregnancy and birth, the overall value it offers in terms of coverage for both hospital and extras makes it a strong choice for your expanding family. The premium is reasonable compared to the extensive benefits provided, making it a well-rounded option for your situation.
+            </p>
+          </div>
           
           {/* Numbered points with option badges and details */}
           <div className="space-y-6">
