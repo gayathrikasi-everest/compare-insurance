@@ -17,18 +17,24 @@ interface Step {
 interface ProgressBarProps {
   steps: Step[];
   currentStep: number;
+  onEditInfoClick?: () => void;
 }
 
 const ProgressBar: React.FC<ProgressBarProps> = ({
   steps,
-  currentStep
+  currentStep,
+  onEditInfoClick
 }) => {
   // Get user info from localStorage
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
   const navigate = useNavigate();
   
   const handleEditInfo = () => {
-    navigate('/understanding-you');
+    if (onEditInfoClick) {
+      onEditInfoClick();
+    } else {
+      navigate('/understanding-you');
+    }
   };
   
   return (

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -6,9 +7,20 @@ import InsurancePlanList from '@/components/InsurancePlanList';
 import RecommendationExplanation from '@/components/RecommendationExplanation';
 import { recommendedInsurancePlans, recommendationText } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+
 const RecommendedPlans: React.FC = () => {
   const navigate = useNavigate();
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);
+  const [showEditConfirmDialog, setShowEditConfirmDialog] = useState(false);
 
   // In a real app, this would come from an API based on user input
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
@@ -37,9 +49,11 @@ const RecommendedPlans: React.FC = () => {
     completed: false,
     active: false
   }];
+
   const handleSeeMore = (planId: string) => {
     setExpandedPlanId(expandedPlanId === planId ? null : planId);
   };
+
   const handleBuyPlan = (planId: string) => {
     navigate('/purchase-now', {
       state: {
@@ -47,14 +61,25 @@ const RecommendedPlans: React.FC = () => {
       }
     });
   };
+
   const handleAskQuestions = () => {
     navigate('/chat-plans');
   };
+  
+  const handleEditConfirm = () => {
+    navigate('/understanding-you');
+    setShowEditConfirmDialog(false);
+  };
+
   return <>
       <div className="h-[calc(100vh-56px)] flex bg-white overflow-hidden">
         {/* Left sidebar with progress */}
         <div className="w-1/4 bg-white/80 backdrop-blur-md p-6 border-r border-white/20 shadow-md">
-          <ProgressBar steps={steps} currentStep={2} />
+          <ProgressBar 
+            steps={steps} 
+            currentStep={2} 
+            onEditInfoClick={() => setShowEditConfirmDialog(true)} 
+          />
         </div>
         
         {/* Right content area */}
@@ -70,6 +95,27 @@ const RecommendedPlans: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Edit Info Confirmation Dialog */}
+      <Dialog open={showEditConfirmDialog} onOpenChange={setShowEditConfirmDialog}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>Edit your information?</DialogTitle>
+            <DialogDescription>
+              Are you sure you want to edit your info and start over?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setShowEditConfirmDialog(false)}>
+              No, keep my plans
+            </Button>
+            <Button onClick={handleEditConfirm}>
+              Yes, start over
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+      
       <Toaster />
     </>;
 };
