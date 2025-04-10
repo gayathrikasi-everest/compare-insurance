@@ -35,9 +35,9 @@ const RecommendationExplanation: React.FC<RecommendationExplanationProps> = ({
           {/* Numbered points with option badges and details */}
           <div className="space-y-6">
             {/* Option 1 */}
-            <div className="border-l-4 border-[#e05c86] pl-4">
+            <div className="border-l-4 border-[#00b67a] pl-4">
               <div className="flex items-start mb-2">
-                <div className="bg-[#e05c86] text-white text-xs px-2 py-1 rounded mr-2">
+                <div className="bg-[#00b67a] text-white text-xs px-2 py-1 rounded mr-2">
                   Option 1
                 </div>
                 <div className="bg-[#00b67a] text-white text-xs px-2 py-1 rounded mr-2 flex items-center">
