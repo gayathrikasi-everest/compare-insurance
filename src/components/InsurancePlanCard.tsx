@@ -27,11 +27,11 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   const getBadgeColor = () => {
     switch(optionNumber) {
       case 1:
-        return 'bg-[#e05c86]'; // Reverted back to pink/red for option 1
+        return 'bg-white text-[#00b67a] border border-[#00b67a]'; // White background, brand green text & border
       case 2:
-        return 'bg-slate-800'; // Reverting option 2 back to slate-800
+        return 'bg-slate-800'; // Keeping option 2 as is
       case 3:
-        return 'bg-[#3DA6E1]'; // Changed option 3 to #3DA6E1 as requested
+        return 'bg-[#3DA6E1]'; // Keeping option 3 as is
       default:
         return 'bg-gray-500';
     }
@@ -43,7 +43,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
       <div className="absolute top-0 left-4 transform -translate-y-1/2 flex gap-2 z-10">
         {/* Option Number Badge */}
         {optionNumber && (
-          <Badge className={`${getBadgeColor()} text-white px-3 py-1`}>
+          <Badge className={`${getBadgeColor()} px-3 py-1`}>
             Option {optionNumber}
           </Badge>
         )}
