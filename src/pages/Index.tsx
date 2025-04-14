@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -41,7 +42,8 @@ const Index = () => {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-cc-blue mb-4">Find Your Ideal Health Plan</h1>
           <p className="text-xl text-gray-600 max-w-2xl">
-        </p>
+            Compare insurance plans and find the right coverage for your needs and budget
+          </p>
         </div>
         
         {/* Action Button */}
