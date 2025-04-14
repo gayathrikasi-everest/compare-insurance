@@ -1,8 +1,10 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BadgeDollarSign } from 'lucide-react';
 import { Check } from 'lucide-react';
+
 const Index = () => {
   const navigate = useNavigate();
   const steps = [{
@@ -46,12 +48,19 @@ const Index = () => {
         </div>
         
         {/* Action Button */}
-        <Button onClick={() => navigate('/understanding-you')} className="bg-cc-green hover:opacity-90 text-white px-8 py-6 text-lg rounded-xl shadow-lg mb-16">
-          Start Comparing Now <ArrowRight className="ml-2" />
-        </Button>
+        <div className="flex flex-col items-center">
+          <Button onClick={() => navigate('/understanding-you')} className="bg-cc-green hover:opacity-90 text-white px-8 py-6 text-lg rounded-xl shadow-lg mb-2">
+            Start Comparing Now <ArrowRight className="ml-2" />
+          </Button>
+          
+          <div className="flex items-center justify-center text-sm text-cc-green mt-2">
+            <BadgeDollarSign size={16} className="mr-2" />
+            You only pay the insurer, not us
+          </div>
+        </div>
         
         {/* Process Steps */}
-        <div className="w-full max-w-4xl flex justify-between items-start mb-16">
+        <div className="w-full max-w-4xl flex justify-between items-start mb-16 mt-12">
           {steps.map((step, index) => {
           const isLast = index === steps.length - 1;
           return <div key={index} className="relative flex flex-col items-center text-center">
