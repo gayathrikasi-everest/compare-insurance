@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BadgeDollarSign } from 'lucide-react';
 import { Check } from 'lucide-react';
-
 const Index = () => {
   const navigate = useNavigate();
   const steps = [{
@@ -43,8 +41,7 @@ const Index = () => {
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-cc-blue mb-4">Find Your Ideal Health Plan</h1>
           <p className="text-xl text-gray-600 max-w-2xl">
-            We'll guide you through finding the perfect health insurance coverage for your needs.
-          </p>
+        </p>
         </div>
         
         {/* Action Button */}
