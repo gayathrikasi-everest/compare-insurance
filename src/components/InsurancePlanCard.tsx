@@ -1,8 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ShoppingCart, Info, Star } from 'lucide-react';
+import { ShoppingCart, Info, Star, ExternalLink } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface InsurancePlanProps {
   name: string;
@@ -23,6 +31,8 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
   onSeeMore,
   onBuyPlan
 }) => {
+  const [showLearnMoreDialog, setShowLearnMoreDialog] = useState(false);
+  
   // Get the badge color based on the option number
   const getBadgeColor = () => {
     switch(optionNumber) {
@@ -35,6 +45,15 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
       default:
         return 'bg-gray-500';
     }
+  };
+
+  const handleLearnMore = () => {
+    setShowLearnMoreDialog(true);
+  };
+
+  const handleConfirmLearnMore = () => {
+    setShowLearnMoreDialog(false);
+    onSeeMore();
   };
 
   return (
@@ -76,7 +95,7 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
       <div className="flex gap-2">
         <Button 
           variant="outline"
-          onClick={onSeeMore} 
+          onClick={handleLearnMore} 
           className="flex-1 border-[#1a3352] text-[#1a3352] hover:bg-[#e5f1ff]"
         >
           <Info size={16} className="mr-1" />
@@ -91,6 +110,29 @@ const InsurancePlanCard: React.FC<InsurancePlanProps> = ({
           Buy plan
         </Button>
       </div>
+
+      {/* Learn More Dialog */}
+      <Dialog open={showLearnMoreDialog} onOpenChange={setShowLearnMoreDialog}>
+        <DialogContent className="sm:max-w-[425px]">
+          <DialogHeader>
+            <DialogTitle>External Redirect</DialogTitle>
+            <DialogDescription>
+              You will be redirected to {provider}'s website to view the detailed information about {name}.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center gap-2 py-3">
+            <ExternalLink className="text-[#1a3352]" />
+            <p className="text-sm text-gray-600">
+              This will open the insurer's website in a new tab.
+            </p>
+          </div>
+          <DialogFooter>
+            <Button onClick={handleConfirmLearnMore}>
+              Ok, understood
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
