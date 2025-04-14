@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { UserInfo } from '@/types';
-import { ArrowRight, BadgeDollarSign } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
 
 const UnderstandingYou: React.FC = () => {
@@ -82,11 +82,6 @@ const UnderstandingYou: React.FC = () => {
                 <ArrowRight className="ml-2" size={18} />
               </>}
           </Button>
-          
-          <div className="flex items-center justify-center text-sm text-cc-green mt-2">
-            <BadgeDollarSign size={16} className="mr-2" />
-            You only pay the insurer, not us
-          </div>
         </div>
       </div>
     </div>;
