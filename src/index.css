@@ -1,29 +1,29 @@
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222.2 47.4% 11.2%;
 
-    --primary: 160 100% 36%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+ 
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
@@ -31,59 +31,42 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+ 
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 215 27.9% 16.9%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 216 34% 17%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --ring: 217.2 32.6% 17.5%;
+
+    --radius: 0.5rem;
   }
 }
 
@@ -93,56 +76,92 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', sans-serif;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
 }
 
-@layer components {
-  .glass {
-    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg;
+.animate-fade-in {
+  animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .glass-card {
-    @apply glass rounded-2xl;
+  to {
+    opacity: 1;
   }
-  
-  .progress-step {
-    @apply flex items-center justify-center w-12 h-12 rounded-full text-lg font-bold relative z-10;
-  }
-  
-  .progress-step-active {
-    @apply bg-cc-green text-white;
-  }
-  
-  .progress-step-inactive {
-    @apply bg-white text-cc-blue border border-gray-200;
-  }
-  
-  .progress-line {
-    @apply absolute w-0.5 bg-gray-200 left-1/2 -z-10 transform -translate-x-1/2;
-  }
-  
-  .progress-line-active {
-    @apply bg-cc-green;
-  }
-  
-  .header {
-    @apply flex items-center justify-between py-4 px-6 bg-white shadow-sm border-b;
-  }
-  
-  .nav-link {
-    @apply text-cc-blue hover:text-cc-green transition-colors;
-  }
-  
-  .compare-club-gradient {
-    @apply bg-gradient-to-r from-cc-green to-cc-dark-green;
-  }
-  
-  .btn-primary {
-    @apply bg-cc-green hover:bg-cc-dark-green text-white transition-all rounded-md px-4 py-2 shadow-sm;
-  }
-  
-  .btn-outline {
-    @apply border border-cc-blue text-cc-blue hover:bg-cc-light-blue transition-all rounded-md px-4 py-2;
-  }
+}
+
+/* Custom utility classes */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  @apply text-gray-700 hover:text-cc-blue transition-colors;
+}
+
+/* Custom colors */
+:root {
+  --cc-blue: #1a3352;
+  --cc-green: #00b67a;
+  --cc-dark-green: #009e6a;
+  --cc-light-green: #e0f7ef;
+}
+
+.text-cc-blue {
+  color: var(--cc-blue);
+}
+
+.text-cc-green {
+  color: var(--cc-green);
+}
+
+.bg-cc-blue {
+  background-color: var(--cc-blue);
+}
+
+.bg-cc-green {
+  background-color: var(--cc-green);
+}
+
+.bg-cc-dark-green {
+  background-color: var(--cc-dark-green);
+}
+
+.bg-cc-light-green {
+  background-color: var(--cc-light-green);
+}
+
+.border-cc-green {
+  border-color: var(--cc-green);
+}
+
+.from-cc-green {
+  --tw-gradient-from: var(--cc-green) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(0 182 122 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-cc-dark-green {
+  --tw-gradient-to: var(--cc-dark-green) var(--tw-gradient-to-position);
+}
+
+.to-cc-light-green {
+  --tw-gradient-to: var(--cc-light-green) var(--tw-gradient-to-position);
+}
+
+/* Header styling */
+.header {
+  @apply flex justify-between items-center px-4 md:px-8 py-4 border-b border-gray-200 bg-white shadow-sm sticky top-0 z-50;
 }
