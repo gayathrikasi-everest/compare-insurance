@@ -7,6 +7,11 @@ export const mockInsurancePlans: InsurancePlan[] = [
     name: 'Gold Protect and Growing Family 60',
     provider: 'Medibank',
     price: 90,
+    monthlyPrice: 90,
+    coverType: 'Hospital + Extras',
+    benefits: ['Full pregnancy and birth services', 'Comprehensive hospital coverage', 'Dental, optical, and physiotherapy extras'],
+    rating: 4.5,
+    reviews: 250,
     description: 'This combined policy offers extensive hospital coverage, including pregnancy and birth services, which is crucial for your expanding family. The extras cover includes dental, optical, and physiotherapy, which are beneficial for both adults and children.',
     features: [
       'Full pregnancy and birth services',
@@ -21,6 +26,11 @@ export const mockInsurancePlans: InsurancePlan[] = [
     name: 'My Family Silver Plus',
     provider: 'HCF',
     price: 90,
+    monthlyPrice: 90,
+    coverType: 'Hospital + Extras',
+    benefits: ['Pregnancy and birth services', 'Wide range of hospital procedures', 'Flexible extras'],
+    rating: 4.2,
+    reviews: 180,
     description: 'This policy provides a good balance of hospital and extras coverage, including pregnancy and birth services. The premium is competitive, and it offers a wide range of covered procedures and flexible extras.',
     features: [
       'Pregnancy and birth services covered',
@@ -35,6 +45,11 @@ export const mockInsurancePlans: InsurancePlan[] = [
     name: 'Gold Comprehensive Hospital + Freedom 60 Extras',
     provider: 'Bupa',
     price: 90,
+    monthlyPrice: 90,
+    coverType: 'Hospital + Extras',
+    benefits: ['Top-tier hospital coverage', 'Extensive pregnancy and birth benefits', 'Flexible extras'],
+    rating: 4.7,
+    reviews: 320,
     description: 'A comprehensive package that combines top-tier hospital cover with flexible extras. Ideal for growing families with extensive coverage for pregnancy, birth, and pediatric services.',
     features: [
       'Top-tier hospital coverage',
@@ -47,12 +62,17 @@ export const mockInsurancePlans: InsurancePlan[] = [
 ];
 
 // Real insurance plan data for the recommended plans page
-export const recommendedInsurancePlans = [
+export const recommendedInsurancePlans: InsurancePlan[] = [
   {
     id: "5",
     name: "Gold Protect & Growing Family 60",
     provider: "Medibank",
     price: 650,
+    monthlyPrice: 650,
+    coverType: 'Hospital + Extras',
+    benefits: ['Comprehensive pregnancy and birth services', 'Full hospital cover', 'Dental and optical extras'],
+    rating: 4.8,
+    reviews: 420,
     description: "Extensive hospital coverage including pregnancy and birth services. Extras cover for dental, optical, and physiotherapy.",
     features: [
       "Comprehensive pregnancy and birth services",
@@ -68,6 +88,11 @@ export const recommendedInsurancePlans = [
     name: "My Family Silver Plus",
     provider: "HCF",
     price: 780,
+    monthlyPrice: 780,
+    coverType: 'Hospital + Extras',
+    benefits: ['Pregnancy and birth services', 'Wide range of covered procedures', 'Flexible extras'],
+    rating: 4.5,
+    reviews: 310,
     description: "Good balance of hospital and extras coverage, including pregnancy and birth services.",
     features: [
       "Pregnancy and birth services",
@@ -83,6 +108,11 @@ export const recommendedInsurancePlans = [
     name: "Gold Comprehensive Hospital + Freedom 60",
     provider: "Bupa",
     price: 771.30,
+    monthlyPrice: 771.30,
+    coverType: 'Hospital + Extras',
+    benefits: ['Comprehensive maternity services', 'Pediatric care', 'Extensive hospital cover'],
+    rating: 4.6,
+    reviews: 280,
     description: "Robust option with extensive hospital cover and a wide range of extras. Includes comprehensive maternity services.",
     features: [
       "Comprehensive maternity services",

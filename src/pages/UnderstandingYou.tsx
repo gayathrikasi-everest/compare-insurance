@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -372,7 +371,7 @@ const UnderstandingYou: React.FC = () => {
                       </div>
                       <div className="flex flex-col sm:flex-row gap-3 mt-6">
                         <Button 
-                          onClick={onShowRecommendations}
+                          onClick={handleShowRecommendations}
                           className="bg-cc-green hover:bg-cc-dark-green text-white"
                         >
                           <Search className="mr-2" size={18} />
