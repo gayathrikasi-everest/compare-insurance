@@ -9,6 +9,7 @@ interface ChatInterfaceProps {
   formData: FormData;
   onClose: () => void;
   onShowRecommendations: () => void;
+  onEditInfo?: () => void; // Making this optional since not all uses require it
 }
 
 interface Message {
@@ -21,6 +22,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   formData,
   onClose,
   onShowRecommendations,
+  onEditInfo
 }) => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([{
@@ -146,4 +148,3 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 };
 
 export default ChatInterface;
-

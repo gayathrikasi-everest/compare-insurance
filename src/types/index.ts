@@ -31,4 +31,3 @@ export interface InsurancePlan {
   reviews: number;
   isTopRecommendation?: boolean;
 }
-

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,7 @@ import ServicesQuestion from '@/components/insurance/ServicesQuestion';
 import PostcodeQuestion from '@/components/insurance/PostcodeQuestion';
 import AcknowledgmentScreen from '@/components/insurance/AcknowledgmentScreen';
 import ChatInput from '@/components/insurance/ChatInput';
-import ChatInterface from '@/components/insurance/ChatInterface';
+import ChatInterface from '@/components/ChatInterface';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
