@@ -1,10 +1,17 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
 import { FormData } from '@/types';
-import { Search, Edit, X } from 'lucide-react';
+import { Search, Edit, X, Send } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 
 interface ChatInterfaceProps {
   formData: FormData;
@@ -71,22 +78,25 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <Textarea 
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Ask anything about health insurance or provide more details about what you need..."
-          className="min-h-[120px]"
-        />
-        
-        <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3">
+        <div className="relative">
+          <input
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Ask anything about health insurance..."
+            className="w-full pr-12 pl-4 py-3 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-cc-green focus:border-transparent"
+          />
           <Button 
             type="submit"
             disabled={!message.trim()}
-            className="bg-cc-green hover:bg-cc-dark-green"
+            variant="ghost"
+            size="icon"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-cc-green hover:text-cc-dark-green hover:bg-transparent"
           >
-            Send Message
+            <Send className="h-5 w-5" />
           </Button>
-          
+        </div>
+
+        <div className="flex justify-center">
           <Button 
             type="button"
             onClick={onShowRecommendations}
