@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -293,10 +294,16 @@ const UnderstandingYou: React.FC = () => {
       <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-3xl p-4 md:p-8">
           {!showChat && (
-            <div className="text-center mb-8">
-              <img alt="Health Insurance" className="w-36 h-36 mx-auto mb-6" src="/lovable-uploads/228ce4b7-94c7-4603-b1ff-d3e573adb6cb.png" />
-              <h1 className="text-3xl font-bold text-cc-blue mb-2">Tell us about your needs</h1>
-              <p className="text-gray-600">We'll find the perfect plan for you</p>
+            <div className="flex items-start gap-6 mb-12">
+              <div className="w-16 h-16 flex-shrink-0">
+                <div className="bg-cc-green rounded-lg p-4">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold text-[#1a3352] mb-3">Tell us about your needs</h1>
+                <p className="text-gray-600 text-lg">We'll find the perfect plan for you</p>
+              </div>
             </div>
           )}
           
