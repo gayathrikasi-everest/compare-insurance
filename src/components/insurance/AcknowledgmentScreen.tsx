@@ -22,9 +22,7 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
       </div>;
   }
   return <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-cc-blue text-center">
-        🎯 Your Insurance Preferences 📋
-      </h2>
+      <h2 className="text-2xl font-bold text-cc-blue text-center">Your Insurance Preferences </h2>
       
       <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
