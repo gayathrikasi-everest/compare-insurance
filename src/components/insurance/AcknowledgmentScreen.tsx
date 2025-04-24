@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { FormData } from '@/types';
@@ -33,8 +32,8 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
       <ChatInterface 
         formData={formData} 
         onClose={() => setShowChat(false)} 
-        onShowRecommendations={onShowRecommendations}
-        onEditInfo={onEditInfo}
+        onShowRecommendations={onShowRecommendations} 
+        onEditInfo={onEditInfo} 
       />
     </div>;
   }

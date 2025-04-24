@@ -12,7 +12,6 @@ import ServicesQuestion from '@/components/insurance/ServicesQuestion';
 import PostcodeQuestion from '@/components/insurance/PostcodeQuestion';
 import AcknowledgmentScreen from '@/components/insurance/AcknowledgmentScreen';
 import ChatInput from '@/components/insurance/ChatInput';
-import ChatInterface from '@/components/ChatInterface';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
@@ -28,6 +27,7 @@ const UnderstandingYou: React.FC = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
 
+  // Hospital and extra services options
   const hospitalServiceOptions: HospitalService[] = [
     'Maternity',
     'Heart Surgery',
@@ -44,20 +44,26 @@ const UnderstandingYou: React.FC = () => {
     'Chiropractic'
   ];
 
+  // Calculate total steps based on cover type
   const getTotalSteps = (): number => {
+    // Base steps: cover type, coverage for, and postcode
     let totalSteps = 4;
     
+    // If cover type is Extras Only, we don't need the hospital services question
     if (formData.coverType === 'Extras Only') {
       return totalSteps;
     }
     
+    // If cover type is Hospital Only, we don't need the extras services question
     if (formData.coverType === 'Hospital Only') {
       return totalSteps;
     }
     
+    // For Hospital + Extras or I don't know yet, include both questions
     return totalSteps + 1;
   };
 
+  // Load saved form data if exists
   useEffect(() => {
     const savedUserInfo = localStorage.getItem('userInfo');
     if (savedUserInfo) {
@@ -114,6 +120,7 @@ const UnderstandingYou: React.FC = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
     } else {
+      // All questions answered, show acknowledgment screen
       setCurrentStep(totalSteps + 1);
     }
   };
@@ -127,6 +134,7 @@ const UnderstandingYou: React.FC = () => {
   const handleShowRecommendations = () => {
     setIsSubmitting(true);
     
+    // Store form data in localStorage
     const userInfo: UserInfo = {
       formData,
       query: chatQuery || undefined
@@ -144,12 +152,15 @@ const UnderstandingYou: React.FC = () => {
   };
 
   const handleEditInfo = () => {
+    // Go back to the first question
     setCurrentStep(1);
   };
 
   const handleChatSubmit = (message: string) => {
+    // Store the message
     setChatQuery(message);
     
+    // Show a toast notification
     toast({
       title: "Message Received",
       description: "Thanks for providing more details!",
@@ -185,33 +196,11 @@ const UnderstandingYou: React.FC = () => {
   const renderCurrentStep = () => {
     if (showChat) {
       return (
-        <div className="w-full max-w-4xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="w-full md:w-5/12">
-              <div className="flex items-start gap-6 mb-8">
-                <div className="w-16 h-16 flex-shrink-0">
-                  <img 
-                    src="/lovable-uploads/aed60167-b684-4388-aec3-a903b0b65f17.png" 
-                    alt="Green Shield" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <div>
-                  <h1 className="text-3xl font-bold text-[#1a3352] mb-2">Tell us about your needs</h1>
-                  <p className="text-gray-600">We'll find the perfect plan for you</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="w-full md:w-7/12 bg-white rounded-lg shadow-lg overflow-hidden min-h-[600px]">
-              <ChatInterface 
-                formData={formData}
-                onClose={() => setShowChat(false)}
-                onShowRecommendations={handleShowRecommendations}
-              />
-            </div>
-          </div>
-        </div>
+        <ChatInput 
+          formData={formData} 
+          onSubmit={handleChatSubmit}
+          onShowRecommendations={handleShowRecommendations}
+        />
       );
     }
 
@@ -245,6 +234,7 @@ const UnderstandingYou: React.FC = () => {
         );
       case 3:
         if (formData.coverType === 'Extras Only') {
+          // Skip hospital services for Extras Only
           return (
             <ServicesQuestion 
               title="What extra services are important to you?" 
@@ -301,8 +291,57 @@ const UnderstandingYou: React.FC = () => {
         <ProgressBar steps={steps} currentStep={1} />
       </div>
       
-      <div className="w-full md:w-5/8 flex-1 p-4 md:p-8 bg-gray-100">
-        {renderCurrentStep()}
+      <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
+        <div className="w-full max-w-3xl p-4 md:p-8">
+          {!showChat && (
+            <div className="flex items-start gap-6 mb-12">
+              <div className="w-16 h-16 flex-shrink-0">
+                <img 
+                  src="/lovable-uploads/aed60167-b684-4388-aec3-a903b0b65f17.png" 
+                  alt="Green Shield" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="flex-1">
+                <h1 className="text-4xl font-bold text-[#1a3352] mb-3">Tell us about your needs</h1>
+                <p className="text-gray-600 text-lg">We'll find the perfect plan for you</p>
+              </div>
+            </div>
+          )}
+          
+          <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 mb-4">
+            {renderCurrentStep()}
+          </div>
+          
+          {!showChat && currentStep <= getTotalSteps() && (
+            <div className="space-y-6">
+              <FormProgress currentStep={currentStep} totalSteps={getTotalSteps()} />
+              
+              <div className="flex justify-between">
+                {currentStep > 1 && (
+                  <Button 
+                    onClick={handleBack} 
+                    variant="outline"
+                    className="flex items-center"
+                  >
+                    <ArrowLeft className="mr-2" size={18} />
+                    Back
+                  </Button>
+                )}
+                
+                {currentStep > 1 && currentStep <= getTotalSteps() && (
+                  <Button 
+                    onClick={handleNext} 
+                    className="ml-auto bg-cc-green hover:bg-cc-dark-green text-white"
+                  >
+                    Next
+                    <ArrowRight className="ml-2" size={18} />
+                  </Button>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

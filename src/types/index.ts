@@ -1,10 +1,8 @@
-
 export interface UserInfo {
   query?: string;
-  formData?: FormData;
 }
 
-// Insurance related types
+// New types for the structured questionnaire
 export type CoverType = 'Hospital Only' | 'Extras Only' | 'Hospital + Extras' | 'I don\'t know yet';
 export type CoverageFor = 'Myself only' | 'Couple / Family' | 'Single Parent Family';
 export type HospitalService = 'Maternity' | 'Heart Surgery' | 'Joint Replacements' | 'Cancer Treatment' | 'General Emergency Cover';
@@ -18,16 +16,19 @@ export interface FormData {
   postcode?: string;
 }
 
+export interface UserInfo {
+  query?: string;
+  formData?: FormData;
+}
+
 export interface InsurancePlan {
   id: string;
   name: string;
-  provider: string;
-  price: number;
-  monthlyPrice: number;
   description: string;
+  monthlyPrice: number;
   coverType: CoverType;
   benefits: string[];
   rating: number;
   reviews: number;
-  isTopRecommendation?: boolean;
+  recommended?: boolean;
 }

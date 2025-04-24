@@ -8,11 +8,6 @@ import ChatInterface from '@/components/ChatInterface';
 import { recommendedInsurancePlans } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
 
-// Update with custom props for ChatPlans usage
-interface ChatPlanProps {
-  planNames: string[];
-}
-
 const ChatPlans: React.FC = () => {
   const navigate = useNavigate();
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);
@@ -63,14 +58,8 @@ const ChatPlans: React.FC = () => {
     navigate('/recommended-plans');
   };
 
-  // Create a minimal form data object for the chat interface
-  const dummyFormData = {
-    coverType: userInfo.formData?.coverType,
-    coverageFor: userInfo.formData?.coverageFor,
-    hospitalServices: userInfo.formData?.hospitalServices || [],
-    extraServices: userInfo.formData?.extraServices || [],
-    postcode: userInfo.formData?.postcode
-  };
+  // Extract plan names for the chat context
+  const planNames = recommendedInsurancePlans.map(plan => plan.name);
   
   return (
     <>
@@ -95,11 +84,7 @@ const ChatPlans: React.FC = () => {
           
           {/* Right column: Chat interface - 65% width */}
           <div className="w-[65%] p-6 pb-[5%] flex flex-col h-full">
-            <ChatInterface 
-              formData={dummyFormData}
-              onClose={() => navigate('/recommended-plans')}
-              onShowRecommendations={() => {}} 
-            />
+            <ChatInterface planNames={planNames} />
           </div>
         </div>
       </div>
