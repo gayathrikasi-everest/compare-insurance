@@ -8,11 +8,6 @@ import ChatInterface from '@/components/ChatInterface';
 import { recommendedInsurancePlans } from '@/data/mockData';
 import { Toaster } from "@/components/ui/toaster";
 
-// Define the props expected by ChatInterface
-interface ChatInterfaceProps {
-  planNames: string[];
-}
-
 const ChatPlans: React.FC = () => {
   const navigate = useNavigate();
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);

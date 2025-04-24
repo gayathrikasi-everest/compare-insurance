@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from 'react-router-dom';
 
 interface InsurancePlanListProps {
-  plans: Array<InsurancePlan>;
+  plans: Array<InsurancePlan & { isTopRecommendation?: boolean }>;
   expandedPlanId: string | null;
   onSeeMore: (planId: string) => void;
   onBuyPlan: (planId: string) => void;

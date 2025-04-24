@@ -1,4 +1,3 @@
-
 export interface UserInfo {
   query?: string;
 }
@@ -25,16 +24,11 @@ export interface UserInfo {
 export interface InsurancePlan {
   id: string;
   name: string;
-  provider: string; // Added provider
-  price: number; // Added price
   description: string;
   monthlyPrice: number;
   coverType: CoverType;
   benefits: string[];
   rating: number;
   reviews: number;
-  features?: string[]; // Added features
   recommended?: boolean;
-  isTopRecommendation?: boolean; // Added isTopRecommendation
 }
-
