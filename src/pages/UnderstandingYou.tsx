@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { FormData, UserInfo, CoverType, CoverageFor, HospitalService, ExtraService } from '@/types';
-import { ArrowRight, ArrowLeft, SendHorizontal } from 'lucide-react';
+import { ArrowRight, ArrowLeft, SendHorizontal, Shield } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
 import FormProgress from '@/components/insurance/FormProgress';
 import CoverTypeQuestion from '@/components/insurance/CoverTypeQuestion';
