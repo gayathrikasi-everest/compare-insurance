@@ -3,6 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import { FormData } from '@/types';
 import { Search, Plus, Edit } from 'lucide-react';
+import ChatInterface from '@/components/ChatInterface';
 
 interface AcknowledgmentScreenProps {
   formData: FormData;
@@ -17,39 +18,65 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
   onAddMoreInfo,
   onEditInfo
 }) => {
+  const [showChat, setShowChat] = React.useState(false);
+
+  if (showChat) {
+    return (
+      <div className="space-y-6">
+        <ChatInterface
+          formData={formData}
+          onClose={() => setShowChat(false)}
+          onShowRecommendations={onShowRecommendations}
+          onEditInfo={onEditInfo}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-cc-blue text-center">Your Insurance Preferences</h2>
+      <h2 className="text-2xl font-bold text-cc-blue text-center">
+        🎯 Your Insurance Preferences 📋
+      </h2>
       
       <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-gray-500">Type of Cover</h3>
+            <h3 className="text-sm font-medium text-gray-500">🛡️ Type of Cover</h3>
             <p className="font-medium">{formData.coverType}</p>
           </div>
           
           <div className="space-y-2">
-            <h3 className="text-sm font-medium text-gray-500">Who's Covered</h3>
+            <h3 className="text-sm font-medium text-gray-500">👥 Who's Covered</h3>
             <p className="font-medium">{formData.coverageFor}</p>
           </div>
 
           {formData.hospitalServices && formData.hospitalServices.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-gray-500">Hospital Services</h3>
+              <h3 className="text-sm font-medium text-gray-500">🏥 Hospital Services</h3>
               <p className="font-medium">{formData.hospitalServices.join(', ')}</p>
+              <Button 
+                onClick={onEditInfo} 
+                variant="ghost"
+                size="sm"
+                className="mt-2"
+              >
+                <Edit className="mr-2 h-4 w-4" />
+                Edit Your Info
+              </Button>
             </div>
           )}
           
           {formData.extraServices && formData.extraServices.length > 0 && (
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-gray-500">Extra Services</h3>
+              <h3 className="text-sm font-medium text-gray-500">⭐ Extra Services</h3>
               <p className="font-medium">{formData.extraServices.join(', ')}</p>
             </div>
           )}
           
           {formData.postcode && (
             <div className="space-y-2">
-              <h3 className="text-sm font-medium text-gray-500">Postcode</h3>
+              <h3 className="text-sm font-medium text-gray-500">📍 Postcode</h3>
               <p className="font-medium">{formData.postcode}</p>
             </div>
           )}
@@ -72,21 +99,12 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
           </Button>
           
           <Button 
-            onClick={onAddMoreInfo} 
+            onClick={() => setShowChat(true)} 
             variant="outline"
             size="lg"
           >
             <Plus className="mr-2 h-4 w-4" />
             Add More Info
-          </Button>
-          
-          <Button 
-            onClick={onEditInfo} 
-            variant="ghost"
-            size="lg"
-          >
-            <Edit className="mr-2 h-4 w-4" />
-            Edit Given Info
           </Button>
         </div>
       </div>
