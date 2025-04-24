@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { FormData, UserInfo, CoverType, CoverageFor, HospitalService, ExtraService } from '@/types';
-import { ArrowRight, ArrowLeft, SendHorizontal, Shield } from 'lucide-react';
+import { ArrowRight, ArrowLeft, SendHorizontal, Shield, Search, X } from 'lucide-react';
 import ProgressBar from '@/components/ProgressBar';
 import FormProgress from '@/components/insurance/FormProgress';
 import CoverTypeQuestion from '@/components/insurance/CoverTypeQuestion';
@@ -291,56 +291,121 @@ const UnderstandingYou: React.FC = () => {
         <ProgressBar steps={steps} currentStep={1} />
       </div>
       
-      <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
-        <div className="w-full max-w-3xl p-4 md:p-8">
-          {!showChat && (
-            <div className="flex items-start gap-6 mb-12">
-              <div className="w-16 h-16 flex-shrink-0">
-                <img 
-                  src="/lovable-uploads/aed60167-b684-4388-aec3-a903b0b65f17.png" 
-                  alt="Green Shield" 
-                  className="w-full h-full object-contain"
+      <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8">
+        <div className="w-full max-w-3xl">
+          <div className="flex flex-col gap-6">
+            {!showChat ? (
+              <>
+                <div className="flex items-start gap-6">
+                  <div className="w-16 h-16 flex-shrink-0">
+                    <img 
+                      src="/lovable-uploads/aed60167-b684-4388-aec3-a903b0b65f17.png" 
+                      alt="Green Shield" 
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h1 className="text-4xl font-bold text-[#1a3352] mb-3">Tell us about your needs</h1>
+                    <p className="text-gray-600 text-lg">We'll find the perfect plan for you</p>
+                  </div>
+                </div>
+
+                {currentStep <= getTotalSteps() && (
+                  <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 mb-4 rounded-xl">
+                    {renderCurrentStep()}
+                    <div className="space-y-6 mt-6">
+                      <FormProgress currentStep={currentStep} totalSteps={getTotalSteps()} />
+                      
+                      <div className="flex justify-between">
+                        {currentStep > 1 && (
+                          <Button 
+                            onClick={handleBack} 
+                            variant="outline"
+                            className="flex items-center"
+                          >
+                            <ArrowLeft className="mr-2" size={18} />
+                            Back
+                          </Button>
+                        )}
+                        
+                        {currentStep > 1 && currentStep <= getTotalSteps() && (
+                          <Button 
+                            onClick={handleNext} 
+                            className="ml-auto bg-cc-green hover:bg-cc-dark-green text-white"
+                          >
+                            Next
+                            <ArrowRight className="ml-2" size={18} />
+                          </Button>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {currentStep > getTotalSteps() && (
+                  <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 rounded-xl">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold text-[#1a3352]">Your Selections:</h3>
+                      <div className="grid gap-4">
+                        <div className="flex items-center gap-2">
+                          <Shield className="w-5 h-5 text-cc-green" />
+                          <span className="font-medium">Cover Type:</span> {formData.coverType}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">👥 Who's Covered:</span> {formData.coverageFor}
+                        </div>
+                        {formData.hospitalServices && formData.hospitalServices.length > 0 && (
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium">🏥 Hospital Services:</span> {formData.hospitalServices.join(', ')}
+                          </div>
+                        )}
+                        {formData.extraServices && formData.extraServices.length > 0 && (
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium">⭐ Extra Services:</span> {formData.extraServices.join(', ')}
+                          </div>
+                        )}
+                        {formData.postcode && (
+                          <div className="flex items-center gap-2">
+                            <span className="font-medium">📍 Postcode:</span> {formData.postcode}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                        <Button 
+                          onClick={onShowRecommendations}
+                          className="bg-cc-green hover:bg-cc-dark-green text-white"
+                        >
+                          <Search className="mr-2" size={18} />
+                          Show Recommendations
+                        </Button>
+                        <Button
+                          onClick={handleAddMoreInfo}
+                          variant="outline"
+                        >
+                          Add More Info
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 rounded-xl">
+                <div className="flex items-center justify-between bg-slate-800 text-white p-4 mb-6 rounded-lg">
+                  <h2 className="font-medium">Tell us more about your needs</h2>
+                  <Button variant="ghost" size="icon" onClick={() => setShowChat(false)} className="text-white hover:text-gray-200">
+                    <X size={20} />
+                  </Button>
+                </div>
+                
+                <ChatInput 
+                  formData={formData} 
+                  onSubmit={handleChatSubmit}
+                  onShowRecommendations={handleShowRecommendations}
                 />
               </div>
-              <div className="flex-1">
-                <h1 className="text-4xl font-bold text-[#1a3352] mb-3">Tell us about your needs</h1>
-                <p className="text-gray-600 text-lg">We'll find the perfect plan for you</p>
-              </div>
-            </div>
-          )}
-          
-          <div className="glass-card backdrop-blur-md bg-white/50 border border-white/20 shadow-xl p-6 mb-4">
-            {renderCurrentStep()}
+            )}
           </div>
-          
-          {!showChat && currentStep <= getTotalSteps() && (
-            <div className="space-y-6">
-              <FormProgress currentStep={currentStep} totalSteps={getTotalSteps()} />
-              
-              <div className="flex justify-between">
-                {currentStep > 1 && (
-                  <Button 
-                    onClick={handleBack} 
-                    variant="outline"
-                    className="flex items-center"
-                  >
-                    <ArrowLeft className="mr-2" size={18} />
-                    Back
-                  </Button>
-                )}
-                
-                {currentStep > 1 && currentStep <= getTotalSteps() && (
-                  <Button 
-                    onClick={handleNext} 
-                    className="ml-auto bg-cc-green hover:bg-cc-dark-green text-white"
-                  >
-                    Next
-                    <ArrowRight className="ml-2" size={18} />
-                  </Button>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </div>
