@@ -12,7 +12,10 @@ interface PostcodeQuestionProps {
 const PostcodeQuestion: React.FC<PostcodeQuestionProps> = ({ value, onChange }) => {
   return (
     <div className="space-y-4">
-      <h3 className="text-xl font-semibold text-cc-blue">5. Where do you live?</h3>
+      <div className="space-y-2">
+        <h3 className="text-xl font-semibold text-cc-blue">5. Where do you live?</h3>
+        <p className="text-gray-600">Your location helps us find health insurance plans available in your area with the right network of providers.</p>
+      </div>
       <div className="max-w-xs">
         <Label htmlFor="postcode" className="sr-only">Postcode</Label>
         <div className="relative">

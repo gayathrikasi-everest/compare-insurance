@@ -20,3 +20,15 @@ export interface UserInfo {
   query?: string;
   formData?: FormData;
 }
+
+export interface InsurancePlan {
+  id: string;
+  name: string;
+  description: string;
+  monthlyPrice: number;
+  coverType: CoverType;
+  benefits: string[];
+  rating: number;
+  reviews: number;
+  recommended?: boolean;
+}
