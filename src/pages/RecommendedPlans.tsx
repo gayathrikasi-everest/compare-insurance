@@ -70,7 +70,7 @@ const RecommendedPlans: React.FC = () => {
   };
   
   const handleEditConfirm = () => {
-    navigate('/ask-questions');
+    navigate('/understanding-you', { state: { showAcknowledgment: true } });
     setShowEditConfirmDialog(false);
   };
 
@@ -130,4 +130,5 @@ const RecommendedPlans: React.FC = () => {
       <Toaster />
     </>;
 };
+
 export default RecommendedPlans;

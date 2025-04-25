@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { FormData, UserInfo, CoverType, CoverageFor, HospitalService, ExtraService } from '@/types';
 import { ArrowRight, ArrowLeft, SendHorizontal, Shield } from 'lucide-react';
@@ -26,8 +25,9 @@ const UnderstandingYou: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+  const location = useLocation();
+  const showAcknowledgment = location.state?.showAcknowledgment;
 
-  // Hospital and extra services options
   const hospitalServiceOptions: HospitalService[] = [
     'Maternity',
     'Heart Surgery',
@@ -44,37 +44,32 @@ const UnderstandingYou: React.FC = () => {
     'Chiropractic'
   ];
 
-  // Calculate total steps based on cover type
   const getTotalSteps = (): number => {
-    // Base steps: cover type, coverage for, and postcode
     let totalSteps = 4;
     
-    // If cover type is Extras Only, we don't need the hospital services question
     if (formData.coverType === 'Extras Only') {
       return totalSteps;
     }
     
-    // If cover type is Hospital Only, we don't need the extras services question
     if (formData.coverType === 'Hospital Only') {
       return totalSteps;
     }
     
-    // For Hospital + Extras or I don't know yet, include both questions
     return totalSteps + 1;
   };
 
-  // Load saved form data if exists
   useEffect(() => {
-    const savedUserInfo = localStorage.getItem('userInfo');
-    if (savedUserInfo) {
-      const userInfo = JSON.parse(savedUserInfo) as UserInfo;
-      if (userInfo.formData) {
-        setFormData(userInfo.formData);
-      } else if (userInfo.query) {
-        setChatQuery(userInfo.query);
+    if (showAcknowledgment) {
+      const savedUserInfo = localStorage.getItem('userInfo');
+      if (savedUserInfo) {
+        const userInfo = JSON.parse(savedUserInfo) as UserInfo;
+        if (userInfo.formData) {
+          setFormData(userInfo.formData);
+          setCurrentStep(getTotalSteps() + 1);
+        }
       }
     }
-  }, []);
+  }, [showAcknowledgment]);
 
   const handleCoverTypeSelect = (coverType: CoverType) => {
     setFormData(prev => ({ ...prev, coverType }));
@@ -120,7 +115,6 @@ const UnderstandingYou: React.FC = () => {
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
     } else {
-      // All questions answered, show acknowledgment screen
       setCurrentStep(totalSteps + 1);
     }
   };
@@ -134,7 +128,6 @@ const UnderstandingYou: React.FC = () => {
   const handleShowRecommendations = () => {
     setIsSubmitting(true);
     
-    // Store form data in localStorage
     const userInfo: UserInfo = {
       formData,
       query: chatQuery || undefined
@@ -152,15 +145,12 @@ const UnderstandingYou: React.FC = () => {
   };
 
   const handleEditInfo = () => {
-    // Go back to the first question
     setCurrentStep(1);
   };
 
   const handleChatSubmit = (message: string) => {
-    // Store the message
     setChatQuery(message);
     
-    // Show a toast notification
     toast({
       title: "Message Received",
       description: "Thanks for providing more details!",
@@ -234,7 +224,6 @@ const UnderstandingYou: React.FC = () => {
         );
       case 3:
         if (formData.coverType === 'Extras Only') {
-          // Skip hospital services for Extras Only
           return (
             <ServicesQuestion 
               title="What extra services are important to you?" 
