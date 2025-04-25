@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressBar from '@/components/ProgressBar';
@@ -22,33 +21,37 @@ const RecommendedPlans: React.FC = () => {
   const [expandedPlanId, setExpandedPlanId] = useState<string | null>(null);
   const [showEditConfirmDialog, setShowEditConfirmDialog] = useState(false);
 
-  // In a real app, this would come from an API based on user input
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
-  const steps = [{
-    number: 1,
-    title: 'Understanding You',
-    description: 'Tell us about your needs',
-    completed: true,
-    active: false
-  }, {
-    number: 2,
-    title: 'Recommended Plans',
-    description: 'Review your top options',
-    completed: false,
-    active: true
-  }, {
-    number: 3,
-    title: 'Ask Questions',
-    description: 'Get answers about your plans',
-    completed: false,
-    active: false
-  }, {
-    number: 4,
-    title: 'Purchase Insurance',
-    description: 'Buy your ideal insurance',
-    completed: false,
-    active: false
-  }];
+  const steps = [
+    {
+      number: 1,
+      title: 'Understanding You',
+      description: 'Tell us about your needs',
+      completed: true,
+      active: false
+    },
+    {
+      number: 2,
+      title: 'Recommended Plans',
+      description: 'Review your top options',
+      completed: false,
+      active: true
+    },
+    {
+      number: 3,
+      title: 'Ask Questions',
+      description: 'Get answers about your plans',
+      completed: false,
+      active: false
+    },
+    {
+      number: 4,
+      title: 'Purchase Insurance',
+      description: 'Buy your ideal insurance',
+      completed: false,
+      active: false
+    }
+  ];
 
   const handleSeeMore = (planId: string) => {
     setExpandedPlanId(expandedPlanId === planId ? null : planId);
@@ -67,7 +70,7 @@ const RecommendedPlans: React.FC = () => {
   };
   
   const handleEditConfirm = () => {
-    navigate('/understanding-you');
+    navigate('/ask-questions');
     setShowEditConfirmDialog(false);
   };
 
@@ -86,12 +89,20 @@ const RecommendedPlans: React.FC = () => {
         <div className="w-3/4 flex bg-[#f8f9fa] my-0 py-[10px] px-[10px]">
           {/* Left column: Insurance plan cards - 35% width */}
           <div className="w-[35%] p-4 flex flex-col h-full">
-            <InsurancePlanList plans={recommendedInsurancePlans} expandedPlanId={expandedPlanId} onSeeMore={handleSeeMore} onBuyPlan={handleBuyPlan} />
+            <InsurancePlanList 
+              plans={recommendedInsurancePlans} 
+              expandedPlanId={expandedPlanId} 
+              onSeeMore={handleSeeMore} 
+              onBuyPlan={handleBuyPlan} 
+            />
           </div>
           
           {/* Right column: Recommendation explanation - 65% width */}
           <div className="w-[65%] p-4 flex flex-col h-full">
-            <RecommendationExplanation recommendationText={recommendationText} onAskQuestions={handleAskQuestions} />
+            <RecommendationExplanation 
+              recommendationText={recommendationText} 
+              onAskQuestions={handleAskQuestions} 
+            />
           </div>
         </div>
       </div>
@@ -102,15 +113,15 @@ const RecommendedPlans: React.FC = () => {
           <DialogHeader>
             <DialogTitle>Edit your information?</DialogTitle>
             <DialogDescription>
-              Are you sure you want to edit your info and start over?
+              Are you sure you want to go back to edit the info you provided?
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowEditConfirmDialog(false)}>
-              No, keep my plans
+              No
             </Button>
             <Button onClick={handleEditConfirm}>
-              Yes, start over
+              Yes
             </Button>
           </DialogFooter>
         </DialogContent>
