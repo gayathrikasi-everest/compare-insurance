@@ -83,39 +83,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       </form>
 
       <div className="flex justify-center">
-        <Button type="button" onClick={() => setShowDialog(true)} variant="outline" className="flex items-center">
-          <Search className="mr-2 h-4 w-4" />
-          Show Recommendations Now
-        </Button>
-      </div>
-
-      <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Review Your Selections</DialogTitle>
-          </DialogHeader>
-          <div className="py-4">
-            <div className="space-y-2">
-              <p><span className="font-medium">🛡️ Cover Type:</span> {formData.coverType}</p>
-              <p><span className="font-medium">👥 Who's Covered:</span> {formData.coverageFor}</p>
-              {formData.hospitalServices && formData.hospitalServices.length > 0 && <p><span className="font-medium">🏥 Hospital Services:</span> {formData.hospitalServices.join(', ')}</p>}
-              {formData.extraServices && formData.extraServices.length > 0 && <p><span className="font-medium">⭐ Extra Services:</span> {formData.extraServices.join(', ')}</p>}
-              {formData.postcode && <p><span className="font-medium">📍 Postcode:</span> {formData.postcode}</p>}
-            </div>
-          </div>
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowDialog(false)}>
-              Go Back
-            </Button>
-            <Button onClick={() => {
-            setShowDialog(false);
-            onShowRecommendations();
-          }} className="bg-cc-green hover:bg-cc-dark-green">
-              View Recommendations Now
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </div>;
-};
-export default ChatInterface;
+        <Button 
+        type="button" 
+        onClick={onShowRecommendations} 
+        className="bg-cc-green hover:bg-cc-dark-green flex items-center"
+      >
+        <Search className="mr-2 h-4 w-4" />
+        Show Recommendations Now
+      </Button>
+    </div>
