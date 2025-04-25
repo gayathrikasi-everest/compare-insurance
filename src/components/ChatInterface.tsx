@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { FormData } from '@/types';
 import { Search, X, Send } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   text: string;
@@ -30,7 +29,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
     isUser: false,
     timestamp: new Date()
   }]);
-  const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,10 +47,6 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         timestamp: new Date()
       };
       setMessages(prev => [...prev, userMessage, botMessage]);
-      toast({
-        title: "Message received",
-        description: "Thanks for providing more details!"
-      });
       setMessage('');
     }
   };
@@ -111,4 +105,3 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 };
 
 export default ChatInterface;
-
