@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Check, Circle, ArrowLeft } from 'lucide-react';
+import { Check, Circle, Edit } from 'lucide-react';
 import { UserInfo } from '@/types';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +24,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
   currentStep,
   onEditInfoClick
 }) => {
-  // Get user info from localStorage
   const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{"query": ""}') as UserInfo;
   const navigate = useNavigate();
   
@@ -47,7 +45,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         
         return (
           <div key={step.number} className="relative">
-            {/* Connecting Line - Adjusted height to connect steps properly */}
             {!isLast && (
               <div 
                 className={cn(
@@ -58,7 +55,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
             )}
             
             <div className="flex items-start mb-8">
-              {/* Step Circle - Using fixed width AND height with aspect-ratio for perfect circle */}
               <div 
                 className={cn(
                   "flex items-center justify-center w-14 h-14 rounded-full text-lg font-semibold mr-4 flex-shrink-0", 
@@ -70,8 +66,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                 {step.completed ? <Check className="w-6 h-6" /> : step.number}
               </div>
               
-              {/* Step Text */}
-              <div className="bg-transparent">
+              <div className="bg-transparent flex-1">
                 <h3 className={cn(
                   "font-semibold text-lg", 
                   step.active || step.completed ? "text-[#1a3352]" : "text-gray-500"
@@ -82,19 +77,18 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
                   {step.description}
                 </p>
                 
-                {/* User Query Display */}
-                {showUserQuery && (
+                {step.number === 1 && step.completed && (
                   <div className="mt-3 p-3 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-700">
-                    {userInfo.query}
-                    
-                    {/* Edit info button */}
+                    {userInfo.query && (
+                      <p className="mb-3">{userInfo.query}</p>
+                    )}
                     <Button 
                       variant="outline" 
                       onClick={handleEditInfo} 
-                      className="mt-3 text-[#1a3352] border-[#1a3352] hover:bg-[#e5f1ff] flex items-center gap-2"
+                      className="text-[#1a3352] border-[#1a3352] hover:bg-[#e5f1ff] flex items-center gap-2 w-full justify-center"
                     >
-                      <ArrowLeft size={16} />
-                      Edit info
+                      <Edit className="h-4 w-4" />
+                      Edit information
                     </Button>
                   </div>
                 )}
@@ -104,7 +98,6 @@ const ProgressBar: React.FC<ProgressBarProps> = ({
         );
       })}
       
-      {/* Trust Badge */}
       <div className="mt-10 bg-gray-100 rounded-md p-4">
         <div className="flex items-center">
           <div className="rounded-md p-2 mr-4 bg-slate-800">
