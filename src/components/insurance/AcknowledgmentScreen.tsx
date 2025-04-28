@@ -2,7 +2,7 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { FormData } from '@/types';
-import { Search, Edit } from 'lucide-react';
+import { Edit } from 'lucide-react';
 import ChatInterface from '@/components/ChatInterface';
 
 interface AcknowledgmentScreenProps {
@@ -16,19 +16,6 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
   onShowRecommendations,
   onEditInfo
 }) => {
-  const [showChat, setShowChat] = React.useState(false);
-  
-  if (showChat) {
-    return <div className="space-y-6">
-      <ChatInterface 
-        formData={formData} 
-        onClose={() => setShowChat(false)} 
-        onShowRecommendations={onShowRecommendations} 
-        onEditInfo={onEditInfo} 
-      />
-    </div>;
-  }
-  
   return <div className="flex gap-6">
     <div className="flex-1 space-y-4">
       <div className="flex items-start gap-6 mb-6">
@@ -46,7 +33,6 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
-        <h2 className="text-2xl font-bold text-cc-blue">Your Insurance Preferences</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <h3 className="text-sm font-medium text-gray-500">🛡️ Type of Cover</h3>
