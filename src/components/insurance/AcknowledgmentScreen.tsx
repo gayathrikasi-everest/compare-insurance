@@ -60,10 +60,7 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
           
           {/* Skip to Recommendations button - properly aligned under the box */}
           <div className="mt-6 w-full flex justify-center">
-            <Button onClick={onShowRecommendations} className="w-full max-w-xs bg-white border border-cc-green text-cc-green hover:bg-cc-light-green" variant="outline">
-              Skip to Recommendations
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            
           </div>
         </div>
       </div>
