@@ -17,6 +17,12 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
   onEditInfo
 }) => {
   return <div className="flex gap-8">
+    {/* Chat interface now on the left */}
+    <div className="w-[600px] space-y-4">
+      <ChatInterface formData={formData} onClose={() => {}} onShowRecommendations={onShowRecommendations} onEditInfo={onEditInfo} />
+    </div>
+    
+    {/* User info summary now on the right */}
     <div className="flex-1 space-y-6">
       <div className="bg-white rounded-xl border border-gray-200 p-8 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -51,10 +57,6 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
           Edit Your Info
         </Button>
       </div>
-    </div>
-
-    <div className="w-[500px] space-y-4">
-      <ChatInterface formData={formData} onClose={() => {}} onShowRecommendations={onShowRecommendations} onEditInfo={onEditInfo} />
     </div>
   </div>;
 };

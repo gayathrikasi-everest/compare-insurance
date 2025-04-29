@@ -201,7 +201,6 @@ const UnderstandingYou: React.FC = () => {
         <AcknowledgmentScreen 
           formData={formData}
           onShowRecommendations={handleShowRecommendations}
-          onAddMoreInfo={handleAddMoreInfo}
           onEditInfo={handleEditInfo}
         />
       );
