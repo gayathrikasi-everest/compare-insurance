@@ -193,7 +193,7 @@ const UnderstandingYou: React.FC = () => {
               <div className="w-16 h-16 flex-shrink-0">
                 
               </div>
-              <div className="flex-1">
+              <div className="flex items-start mb-12">
                 <h1 className="text-4xl font-bold text-[#1a3352] mb-3">Tell us about your needs</h1>
                 <p className="text-gray-600 text-lg">We'll find the perfect plan for you</p>
               </div>
