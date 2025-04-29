@@ -18,14 +18,14 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
 }) => {
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-[1400px] mx-auto">
-      <div className="w-full flex flex-col md:flex-row gap-8 px-4">
+      <div className="w-full flex flex-col md:flex-row gap-8 px-4 items-center">
         {/* Left side: Chat interface */}
-        <div className="w-full md:w-[600px] space-y-4">
+        <div className="w-full md:w-[600px]">
           <ChatInterface formData={formData} onClose={() => {}} onShowRecommendations={onShowRecommendations} onEditInfo={onEditInfo} />
         </div>
         
-        {/* Right side: User info summary and skip button */}
-        <div className="flex-1 flex flex-col items-center space-y-6">
+        {/* Right side: User info summary */}
+        <div className="flex-1 flex flex-col items-center w-full">
           <div className="bg-white rounded-xl border border-gray-200 p-8 space-y-6 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2.5">
@@ -39,19 +39,19 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
               </div>
 
               {formData.hospitalServices && formData.hospitalServices.length > 0 && <div className="space-y-2.5">
-                  <h3 className="text-sm font-medium text-gray-500">🏥 Hospital Services</h3>
-                  <p className="font-medium text-base">{formData.hospitalServices.join(', ')}</p>
-                </div>}
+                <h3 className="text-sm font-medium text-gray-500">🏥 Hospital Services</h3>
+                <p className="font-medium text-base">{formData.hospitalServices.join(', ')}</p>
+              </div>}
               
               {formData.extraServices && formData.extraServices.length > 0 && <div className="space-y-2.5">
-                  <h3 className="text-sm font-medium text-gray-500">⭐ Extra Services</h3>
-                  <p className="font-medium text-base">{formData.extraServices.join(', ')}</p>
-                </div>}
+                <h3 className="text-sm font-medium text-gray-500">⭐ Extra Services</h3>
+                <p className="font-medium text-base">{formData.extraServices.join(', ')}</p>
+              </div>}
               
               {formData.postcode && <div className="space-y-2.5">
-                  <h3 className="text-sm font-medium text-gray-500">📍 Postcode</h3>
-                  <p className="font-medium text-base">{formData.postcode}</p>
-                </div>}
+                <h3 className="text-sm font-medium text-gray-500">📍 Postcode</h3>
+                <p className="font-medium text-base">{formData.postcode}</p>
+              </div>}
             </div>
             
             <div className="flex justify-center">
@@ -62,15 +62,17 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
             </div>
           </div>
           
-          {/* Skip to Recommendations button */}
-          <Button 
-            onClick={onShowRecommendations} 
-            className="w-full max-w-xs bg-white border border-cc-green text-cc-green hover:bg-cc-light-green"
-            variant="outline"
-          >
-            Skip to Recommendations
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          {/* Skip to Recommendations button - properly aligned under the box */}
+          <div className="mt-6 w-full flex justify-center">
+            <Button 
+              onClick={onShowRecommendations} 
+              className="w-full max-w-xs bg-white border border-cc-green text-cc-green hover:bg-cc-light-green"
+              variant="outline"
+            >
+              Skip to Recommendations
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </div>
         </div>
       </div>
     </div>

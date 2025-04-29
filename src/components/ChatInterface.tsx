@@ -10,7 +10,7 @@ interface Message {
   timestamp: Date;
 }
 
-interface ChatInterfaceProps {
+export interface ChatInterfaceProps {
   formData: FormData;
   onClose: () => void;
   onShowRecommendations: () => void;
