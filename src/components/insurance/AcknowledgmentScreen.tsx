@@ -18,14 +18,14 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
 }) => {
   return (
     <div className="flex flex-col md:flex-row gap-8 w-full md:w-[140%] max-w-[1400px] mx-auto">
-      {/* Chat interface now on the left */}
+      {/* Left side: Chat interface */}
       <div className="w-full md:w-[600px] space-y-4">
         <ChatInterface formData={formData} onClose={() => {}} onShowRecommendations={onShowRecommendations} onEditInfo={onEditInfo} />
       </div>
       
-      {/* User info summary now on the right */}
-      <div className="flex-1 space-y-6">
-        <div className="bg-white rounded-xl border border-gray-200 p-8 space-y-6">
+      {/* Right side: User info summary and skip button */}
+      <div className="flex-1 space-y-6 flex flex-col items-center">
+        <div className="bg-white rounded-xl border border-gray-200 p-8 space-y-6 w-full">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2.5">
               <h3 className="text-sm font-medium text-gray-500">🛡️ Type of Cover</h3>
@@ -53,16 +53,19 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
               </div>}
           </div>
           
-          <Button onClick={onEditInfo} variant="ghost" size="sm" className="text-cc-green hover:text-cc-dark-green">
-            <Edit className="mr-2 h-4 w-4" />
-            Edit Your Info
-          </Button>
+          <div className="flex justify-center">
+            <Button onClick={onEditInfo} variant="ghost" size="sm" className="text-cc-green hover:text-cc-dark-green">
+              <Edit className="mr-2 h-4 w-4" />
+              Edit Your Info
+            </Button>
+          </div>
         </div>
         
         {/* Skip to Recommendations button */}
         <Button 
           onClick={onShowRecommendations} 
-          className="w-full bg-cc-green hover:bg-cc-dark-green text-white"
+          className="w-full max-w-xs bg-white border border-cc-green text-cc-green hover:bg-cc-light-green"
+          variant="outline"
         >
           Skip to Recommendations
           <ArrowRight className="ml-2 h-4 w-4" />

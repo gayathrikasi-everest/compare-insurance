@@ -52,8 +52,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
   };
 
   return (
-    <div className="w-full space-y-4">
-      <div className="flex items-center justify-between bg-slate-800 text-white p-4 rounded-t-lg">
+    <div className="w-full flex flex-col items-center">
+      <div className="flex items-center justify-between bg-slate-800 text-white p-4 rounded-t-lg w-full">
         <div>
           <h2 className="text-xl font-bold">Personalize Your Options</h2>
           <p className="text-sm text-gray-300">Chat with us to find your ideal plan</p>
@@ -63,7 +63,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </Button>
       </div>
 
-      <div className="bg-gray-50 rounded-xl border border-gray-200 p-4 h-[400px] overflow-y-auto">
+      <div className="bg-gray-50 rounded-b-xl border border-gray-200 p-4 h-[400px] overflow-y-auto w-full">
         <div className="space-y-4">
           {messages.map((msg, index) => (
             <div key={index} className={`flex ${msg.isUser ? 'justify-end' : 'justify-start'}`}>
@@ -75,7 +75,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="relative">
+      <form onSubmit={handleSubmit} className="relative w-full mt-4">
         <input 
           value={message} 
           onChange={e => setMessage(e.target.value)} 
@@ -93,12 +93,12 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         </Button>
       </form>
 
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-4 w-full">
         <Button 
           type="button" 
           onClick={onShowRecommendations} 
           disabled={questionCount < 4}
-          className={`flex items-center ${
+          className={`flex items-center justify-center w-full max-w-md ${
             questionCount < 4 
               ? 'bg-gray-400 cursor-not-allowed' 
               : 'bg-cc-green hover:bg-cc-dark-green'
