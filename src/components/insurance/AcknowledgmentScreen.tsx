@@ -14,7 +14,7 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
   onEditInfo
 }) => {
   return <div className="flex flex-col items-center justify-center w-full max-w-[1400px] mx-auto">
-      <div className="w-full flex flex-col md:flex-row gap-8 px-4 items-start">
+      <div className="w-full flex flex-col md:flex-row gap-8 items-start px-0">
         {/* Left side: Chat interface */}
         <div className="w-full md:w-[600px]">
           <ChatInterface formData={formData} onClose={() => {}} onShowRecommendations={onShowRecommendations} onEditInfo={onEditInfo} />
