@@ -17,11 +17,7 @@ export type CoverType =
   | 'Hospital + Extras'
   | "I don't know yet";
 
-export type CoverageFor =
-  | 'Single'
-  | 'Couple'
-  | 'Family'
-  | 'Single Parent Family';
+export type CoverageFor = 'Myself only' | 'Couple / Family' | string;
 
 export type HospitalService =
   | 'Maternity'
