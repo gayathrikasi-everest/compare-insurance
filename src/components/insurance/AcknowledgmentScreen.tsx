@@ -21,7 +21,7 @@ const AcknowledgmentScreen: React.FC<AcknowledgmentScreenProps> = ({
         </div>
         
         {/* Right side: User info summary */}
-        <div className="flex-1 flex flex-col items-center w-full">
+        <div className="flex-1 flex flex-col w-full">
           <div className="bg-white rounded-xl border border-gray-200 p-8 w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2.5">
