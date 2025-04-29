@@ -189,7 +189,7 @@ const UnderstandingYou: React.FC = () => {
       
       <div className="w-full md:w-5/8 flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-3xl p-4 md:p-8">
-          {!showChat && <div className="flex items-start gap-6 mb-12">
+          {!showChat && <div className="flex imb-12">
               <div className="w-16 h-16 flex-shrink-0">
                 
               </div>
